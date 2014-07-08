@@ -14,7 +14,8 @@ html.no-js(ng-app='app')
     link(rel='stylesheet', href='styles/main.css')
     <!-- endbuild -->
 
-  body
+  body(ng-controller='AppController')
+    div(ui-view)
 
     <!--[if lt IE 9]>
     script(src='bower_components/es5-shim/es5-shim.js')
@@ -36,5 +37,5 @@ html.no-js(ng-app='app')
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     script(src='scripts/app.js')
-    script(src='scripts/controllers/main.js')
+    script(src='scripts/app-controller.js')
     <!-- endbuild -->
