@@ -3,7 +3,10 @@
 angular.module('app', [
   'restangular',
   'ui.router',
-  'ngProgressLite'
+  'ngProgressLite',
+  'ui-bootstrap',
+
+  'app.newspaperModule'
 ])
   .config(
     [
@@ -18,9 +21,9 @@ angular.module('app', [
         $locationProvider,
         RestangularProvider
       ) {
-        $urlRouterProvider.otherwise('/');
+        // $urlRouterProvider.otherwise('/');
 
-        RestangularProvider.setBaseUrl('');
+        RestangularProvider.setBaseUrl('http://api.blanchemaille.pinkpanda.io');
 
         $stateProvider
           .state('home', {

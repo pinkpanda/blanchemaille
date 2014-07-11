@@ -5,13 +5,18 @@ html.no-js(ng-app='app')
     title Bl@nchemaille
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600', rel='stylesheet')
+    link(href='http://fonts.googleapis.com/css?family=Raleway:400,600', rel='stylesheet')
+    link(href='http://fonts.googleapis.com/css?family=Lobster', rel='stylesheet')
+    link(href='http://weloveiconfonts.com/api/?family=entypo', rel='stylesheet')
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    link(rel='stylesheet', href='bower_components/ngprogress-lite/ngprogress-lite.css')
+    link(href='bower_components/ngprogress-lite/ngprogress-lite.css', rel='stylesheet')
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    link(rel='stylesheet', href='styles/main.css')
+    <!-- build:css({.tmp,app}) styles/styles.css -->
+    link(href='styles/app.css', rel='stylesheet')
+    link(href='styles/main.css', rel='stylesheet')
     <!-- endbuild -->
 
   body(ng-controller='AppController')
@@ -38,4 +43,8 @@ html.no-js(ng-app='app')
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     script(src='scripts/app.js')
     script(src='scripts/app-controller.js')
+
+    script(src='scripts/newspaper/newspaper-module.js')
+    script(src='scripts/newspaper/newspaper-controllers.js')
+    script(src='scripts/newspaper/newspaper-data.js')
     <!-- endbuild -->
