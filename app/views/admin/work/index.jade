@@ -1,0 +1,6 @@
+a.btn.btn-success(ui-sref='admin.works.new') Nouveau
+
+div(ng-repeat='work in works')
+  p
+    | Editer
+    a(ui-sref='admin.works.edit({ id: work.id })') {{work.title}}

@@ -1,0 +1,6 @@
+a.btn.btn-success(ui-sref='admin.pages.new') Nouveau
+
+div(ng-repeat='page in pages')
+  p
+    | Editer
+    a(ui-sref='admin.pages.edit({ id: page.id })') {{page.title}}

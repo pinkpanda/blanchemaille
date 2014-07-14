@@ -1,63 +1,63 @@
-angular.module('app.newspaperModule')
+angular.module('app.workModule')
   .controller(
-    'NewspaperIndexController',
+    'WorkIndexController',
     [
       '$log',
       '$scope',
-      'newspapers',
+      'works',
 
       function(
         $log,
         $scope,
-        newspapers
+        works
       ) {
-        $scope.newspapers = newspapers;
+        $scope.works = works;
       }
     ]
   )
 
   .controller(
-    'NewspaperShowController',
+    'WorkShowController',
 
     [
       '$log',
       '$scope',
-      'newspaperData',
-      'newspaper',
+      'workData',
+      'work',
 
       function(
         $log,
         $scope,
-        newspaperData,
-        newspaper
+        workData,
+        work
       ) {
-        $scope.newspaper = newspaper;
+        $scope.work = work;
       }
     ]
   )
 
   .controller(
-    'NewspaperNewController',
+    'WorkNewController',
 
     [
       '$log',
       '$scope',
       '$state',
-      'newspaperData',
+      'workData',
 
       function(
         $log,
         $scope,
         $state,
-        newspaperData
+        workData
       ) {
-        $scope.newspaper = {};
+        $scope.work = {};
 
         $scope.save = function(form) {
           if (form.$valid) {
-            newspaperData.saveOne($scope.newspaper).then(
+            workData.saveOne($scope.work).then(
               function(data) {
-                $state.go('admin.newspapers.index');
+                $state.go('admin.works.index');
               }
             );
           }
@@ -67,38 +67,38 @@ angular.module('app.newspaperModule')
   )
 
   .controller(
-    'NewspaperEditController',
+    'WorkEditController',
 
     [
       '$log',
       '$scope',
       '$state',
-      'newspaperData',
-      'newspaper',
+      'workData',
+      'work',
 
       function(
         $log,
         $scope,
         $state,
-        newspaperData,
-        newspaper
+        workData,
+        work
       ) {
-        $scope.newspaper = newspaper;
+        $scope.work = work;
 
         $scope.save = function(form) {
           if (form.$valid) {
-            newspaperData.saveOne($scope.newspaper).then(
+            workData.saveOne($scope.work).then(
               function(data) {
-                $state.go('admin.newspapers.index');
+                $state.go('admin.works.index');
               }
             );
           }
         };
 
         $scope.delete = function() {
-          newspaperData.deleteOne($scope.newspaper.id).then(
+          workData.deleteOne($scope.work.id).then(
             function(data) {
-              $state.go('admin.newspapers.index');
+              $state.go('admin.works.index');
             }
           );
         };

@@ -19,8 +19,8 @@ html.no-js(ng-app='app')
     link(href='styles/main.css', rel='stylesheet')
     <!-- endbuild -->
 
-  body(ng-controller='AppController')
-    div(ui-view)
+  body(ng-controller='AppController', class='{{bodyClass}}')
+    .ui-view
 
     <!--[if lt IE 9]>
     script(src='bower_components/es5-shim/es5-shim.js')
@@ -44,7 +44,26 @@ html.no-js(ng-app='app')
     script(src='scripts/app.js')
     script(src='scripts/app-controller.js')
 
+    script(src='scripts/admin/admin-module.js')
+    script(src='scripts/admin/admin-directives.js')
+
     script(src='scripts/newspaper/newspaper-module.js')
     script(src='scripts/newspaper/newspaper-controllers.js')
     script(src='scripts/newspaper/newspaper-data.js')
+
+    script(src='scripts/organization/organization-module.js')
+    script(src='scripts/organization/organization-controllers.js')
+    script(src='scripts/organization/organization-data.js')
+
+    script(src='scripts/page/page-module.js')
+    script(src='scripts/page/page-controllers.js')
+    script(src='scripts/page/page-data.js')
+
+    script(src='scripts/partner/partner-module.js')
+    script(src='scripts/partner/partner-controllers.js')
+    script(src='scripts/partner/partner-data.js')
+
+    script(src='scripts/work/work-module.js')
+    script(src='scripts/work/work-controllers.js')
+    script(src='scripts/work/work-data.js')
     <!-- endbuild -->

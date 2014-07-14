@@ -1,22 +1,20 @@
-angular.module('app.newspaperModule')
+angular.module('app.partnerModule')
   .service(
-    'newspaperData',
+    'partnerData',
     [
       '$log',
       '$q',
-      '$http',
       'Restangular',
 
       function(
         $log,
         $q,
-        $http,
         Restangular
       ) {
         this.getIndex = function() {
           var deferred = $q.defer();
 
-          Restangular.all('newspapers').getList().then(
+          Restangular.all('partners').getList().then(
             function(data) {
               deferred.resolve(data);
             }
@@ -28,7 +26,7 @@ angular.module('app.newspaperModule')
         this.getOne = function(id) {
           var deferred = $q.defer();
 
-          Restangular.one('newspapers', id).get().then(
+          Restangular.one('partners', id).get().then(
             function(data) {
               deferred.resolve(data);
             },
@@ -44,29 +42,17 @@ angular.module('app.newspaperModule')
           var deferred = $q.defer();
 
           if (typeof model.id === 'number') {
-            Restangular.one('newspapers', model.id).put(model).then(
+            Restangular.one('partners', model.id).put(model).then(
               function(data) {
                 deferred.resolve(data);
               }
             );
           } else {
-            var fd = new FormData();
-            fd.append('title', model.title);
-            fd.append('image', model.image);
-            fd.append('newspaper_name', model.newspaper_name);
-
-            // Restangular.all('newspapers').post(fd).then(
-            //   function(data) {
-            //     deferred.resolve(data);
-            //   }
-            // );
-
-            $http.post('http://api.blanchemaille.pinkpanda.io/newspapers', fd, {
-              transformRequest: angular.identity,
-              headers: { 'Content-Type': undefined }
-            }).success(function(data) {
-              deferred.resolve(data);
-            });
+            Restangular.all('partners').post(model).then(
+              function(data) {
+                deferred.resolve(data);
+              }
+            );
           }
 
           return deferred.promise;
@@ -75,7 +61,7 @@ angular.module('app.newspaperModule')
         this.deleteOne = function(id) {
           var deferred = $q.defer();
 
-          Restangular.one('newspapers', id).remove().then(
+          Restangular.one('partners', id).remove().then(
             function(data) {
               deferred.resolve(data);
             }

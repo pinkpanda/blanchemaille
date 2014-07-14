@@ -1,0 +1,26 @@
+form(enctype='multipart/form-data', name='newspaperForm', ng-show='newspaper', novalidate)
+  .form-group(ng-class='{ "has-error": newspaperForm.title.$dirty && newspaperForm.title.$invalid }')
+    label.control-label Titre
+    input.form-control(name='title', ng-model='newspaper.title', ng-required='true', placeholder='Titre', type='text')
+
+  .form-group(ng-class='{ "has-error": newspaperForm.link.$dirty && newspaperForm.link.$invalid }')
+    label.control-label Lien
+    input.form-control(name='link', ng-model='newspaper.link', placeholder='Lien', type='url')
+
+  .form-group(ng-class='{ "has-error": newspaperForm.newspaper_name.$dirty && newspaperForm.newspaper_name.$invalid }')
+    label.control-label Nom du journal
+    input.form-control(name='newspaper_name', ng-model='newspaper.newspaper_name', ng-required='true', placeholder='Nom du journal', type='text')
+
+  .form-group(ng-class='{ "has-error": newspaperForm.image.$dirty && newspaperForm.image.$invalid }')
+    label.control-label Image
+    button.btn.btn-xs.btn-success(ng-click='uploadFile()', ng-if='newspaper.image') Télécharger la photo
+    input.form-control(name='image', file-model='newspaper.image', type='file')
+
+  .form-group(ng-class='{ "has-error": newspaperForm.content.$invalid }')
+    label.control-label Contenu
+    textarea.form-control(name='content', ng-model='newspaper.content', placeholder='Contenu')
+
+  button.btn.btn-success(ng-click='save(newspaperForm)', ng-disabled='newspaperForm.$invalid') Valider
+
+  div(ng-if='newspaper.id')
+    button.btn.btn-danger(ng-click='delete()') Supprimer {{newspaper.title}}

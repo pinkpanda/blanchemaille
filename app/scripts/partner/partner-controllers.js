@@ -1,63 +1,63 @@
-angular.module('app.newspaperModule')
+angular.module('app.partnerModule')
   .controller(
-    'NewspaperIndexController',
+    'PartnerIndexController',
     [
       '$log',
       '$scope',
-      'newspapers',
+      'partners',
 
       function(
         $log,
         $scope,
-        newspapers
+        partners
       ) {
-        $scope.newspapers = newspapers;
+        $scope.partners = partners;
       }
     ]
   )
 
   .controller(
-    'NewspaperShowController',
+    'PartnerShowController',
 
     [
       '$log',
       '$scope',
-      'newspaperData',
-      'newspaper',
+      'partnerData',
+      'partner',
 
       function(
         $log,
         $scope,
-        newspaperData,
-        newspaper
+        partnerData,
+        partner
       ) {
-        $scope.newspaper = newspaper;
+        $scope.partner = partner;
       }
     ]
   )
 
   .controller(
-    'NewspaperNewController',
+    'PartnerNewController',
 
     [
       '$log',
       '$scope',
       '$state',
-      'newspaperData',
+      'partnerData',
 
       function(
         $log,
         $scope,
         $state,
-        newspaperData
+        partnerData
       ) {
-        $scope.newspaper = {};
+        $scope.partner = {};
 
         $scope.save = function(form) {
           if (form.$valid) {
-            newspaperData.saveOne($scope.newspaper).then(
+            partnerData.saveOne($scope.partner).then(
               function(data) {
-                $state.go('admin.newspapers.index');
+                $state.go('admin.partners.index');
               }
             );
           }
@@ -67,38 +67,38 @@ angular.module('app.newspaperModule')
   )
 
   .controller(
-    'NewspaperEditController',
+    'PartnerEditController',
 
     [
       '$log',
       '$scope',
       '$state',
-      'newspaperData',
-      'newspaper',
+      'partnerData',
+      'partner',
 
       function(
         $log,
         $scope,
         $state,
-        newspaperData,
-        newspaper
+        partnerData,
+        partner
       ) {
-        $scope.newspaper = newspaper;
+        $scope.partner = partner;
 
         $scope.save = function(form) {
           if (form.$valid) {
-            newspaperData.saveOne($scope.newspaper).then(
+            partnerData.saveOne($scope.partner).then(
               function(data) {
-                $state.go('admin.newspapers.index');
+                $state.go('admin.partners.index');
               }
             );
           }
         };
 
         $scope.delete = function() {
-          newspaperData.deleteOne($scope.newspaper.id).then(
+          partnerData.deleteOne($scope.partner.id).then(
             function(data) {
-              $state.go('admin.newspapers.index');
+              $state.go('admin.partners.index');
             }
           );
         };

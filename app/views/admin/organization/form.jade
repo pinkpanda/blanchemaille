@@ -1,0 +1,13 @@
+form(name='organizationForm', ng-show='organization', novalidate)
+  .form-group(ng-class='{ "has-error": organizationForm.name.$dirty && organizationForm.name.$invalid }')
+    label.control-label Nom
+    input.form-control(name='name', ng-model='organization.name', ng-required='true', placeholder='Nom', type='text')
+
+  .form-group(ng-class='{ "has-error": organizationForm.type.$dirty && organizationForm.type.$invalid }')
+    label.control-label Type
+    input.form-control(name='type', ng-model='organization.type', ng-required='true', placeholder='Type', type='text')
+
+  button.btn.btn-success(ng-click='save(organizationForm)', ng-disabled='organizationForm.$invalid') Valider
+
+  div(ng-if='organization.id')
+    button.btn.btn-danger(ng-click='delete()') Supprimer {{organization.name}}

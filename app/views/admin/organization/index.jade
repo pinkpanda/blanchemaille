@@ -1,0 +1,6 @@
+a.btn.btn-success(ui-sref='admin.organizations.new') Nouveau
+
+div(ng-repeat='organization in organizations')
+  p
+    | Editer
+    a(ui-sref='admin.organizations.edit({ id: organization.id })') {{organization.title}}

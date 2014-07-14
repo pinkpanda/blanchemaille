@@ -1,0 +1,133 @@
+$turquoise:     #1abc9c;
+$green-sea:     #16a085;
+
+$emerald:       #2ecc71;
+$nephritis:     #27ae60;
+
+$peter-river:   #3498db;
+$belize-hole:   #2980b9;
+
+$amethyst:      #9b59b6;
+$wisteria:      #8e44ad;
+
+$wet-asphalt:   #34495e;
+$midnight-blue: #2c3e50;
+
+$sun-flower:    #f1c40f;
+$orange:        #f39c12;
+
+$carrot:        #e67e22;
+$pumpkin:       #d35400;
+
+$alizarin:      #e74c3c;
+$pomegranate:   #c0392b;
+
+$clouds:        #ecf0f1;
+$silver:        #bdc3c7;
+
+$concrete:      #95a5a6;
+$asbestos:      #7f8c8d;
+
+$white:         #FEFEFE;
+$black:         #222222;
+$light-black:   lighten($black, 5%);
+$gray:          invert($black);
+$light-gray:    invert($light-black);
+
+$colors: turquoise $turquoise, green-sea $green-sea, emerald $emerald, nephritis $nephritis, peter-river $peter-river, belize-hole $belize-hole, amethyst $amethyst, wisteria $wisteria, wet-asphalt $wet-asphalt, midnight-blue $midnight-blue, sun-flower $sun-flower, orange $orange, carrot $carrot, pumpkin $pumpkin, alizarin $alizarin, pomegranate $pomegranate, clouds $clouds, silver $silver, concrete $concrete, asbestos $asbestos, white $white, black $black, light-black $light-black, gray $gray, light-gray $light-gray;
+
+$brand-primary:   $wet-asphalt;
+$brand-success:   $emerald;
+$brand-warning:   $sun-flower;
+$brand-danger:    $alizarin;
+$brand-info:      $peter-river;
+
+$border-radius-base:  2px;
+$border-radius-large: 2px;
+$border-radius-small: 2px;
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+$body-bg: #FEFEFE;
+
+// bower:scss
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+.btn-inverse {
+  background-color: transparent;
+
+  &.btn-primary {
+    color: darken($brand-primary, 5%);
+
+    &:hover {
+      color: $btn-primary-color;
+    }
+  }
+
+  &.btn-success {
+    color: darken($brand-success, 5%);
+
+    &:hover {
+      color: $btn-success-color;
+    }
+  }
+
+  &.btn-info {
+    color: darken($brand-info, 5%);
+
+    &:hover {
+      color: $btn-info-color;
+    }
+  }
+
+  &.btn-warning {
+    color: darken($brand-warning, 5%);
+
+    &:hover {
+      color: $btn-warning-color;
+    }
+  }
+
+  &.btn-danger {
+    color: darken($brand-danger, 5%);
+
+    &:hover {
+      color: $btn-danger-color;
+    }
+  }
+}
+
+.form-control {
+  border: none;
+  box-shadow: none;
+  color: $text-color;
+}
+
+@each $color in $colors {
+  .#{nth($color, 1)} {
+    background-color: nth($color, 2);
+
+    @if lightness(nth($color, 2)) > 80% {
+      color: #333;
+
+      .form-control {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    } @else {
+      color: #FEFEFE;
+
+      .form-control {
+        color: #FEFEFE;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &.transparent {
+      background-color: rgba(nth($color, 2), .8);
+    }
+  }
+
+  .text-#{nth($color, 1)} {
+    color: nth($color, 2);
+  }
+}
