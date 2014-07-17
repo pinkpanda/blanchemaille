@@ -28,6 +28,8 @@ angular.module('app', [
       ) {
         $urlRouterProvider.otherwise('/');
 
+        $locationProvider.html5Mode(true);
+
         RestangularProvider.setBaseUrl('http://api.blanchemaille.pinkpanda.io');
 
         $stateProvider

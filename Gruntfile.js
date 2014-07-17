@@ -1,5 +1,7 @@
 'use strict';
 
+var modRewrite = require('connect-modrewrite');
+
 module.exports = function (grunt) {
 
   require('load-grunt-tasks')(grunt);
@@ -61,6 +63,9 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
+              modRewrite([
+                '!\\.html|\\.js|\\.css|\\.png$ /index.html [L]'
+              ]),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
