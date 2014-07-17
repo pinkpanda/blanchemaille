@@ -42,7 +42,7 @@ angular.module('app.organizationModule')
           var deferred = $q.defer();
 
           if (typeof model.id === 'number') {
-            Restangular.one('organizations', model.id).put(model).then(
+            Restangular.one('organizations', model.id).customPUT(model).then(
               function(data) {
                 deferred.resolve(data);
               }

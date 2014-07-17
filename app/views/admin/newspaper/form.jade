@@ -13,7 +13,6 @@ form(enctype='multipart/form-data', name='newspaperForm', ng-show='newspaper', n
 
   .form-group(ng-class='{ "has-error": newspaperForm.image.$dirty && newspaperForm.image.$invalid }')
     label.control-label Image
-    button.btn.btn-xs.btn-success(ng-click='uploadFile()', ng-if='newspaper.image') Télécharger la photo
     input.form-control(name='image', file-model='newspaper.image', type='file')
 
   .form-group(ng-class='{ "has-error": newspaperForm.content.$invalid }')

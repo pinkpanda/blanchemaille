@@ -42,7 +42,7 @@ angular.module('app.partnerModule')
           var deferred = $q.defer();
 
           if (typeof model.id === 'number') {
-            Restangular.one('partners', model.id).put(model).then(
+            Restangular.one('partners', model.id).customPUT(model).then(
               function(data) {
                 deferred.resolve(data);
               }

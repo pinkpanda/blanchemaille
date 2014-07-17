@@ -244,12 +244,6 @@ module.exports = function (grunt) {
       }
     },
 
-    cdnify: {
-      dist: {
-        html: ['<%= app.dist %>/*.html']
-      }
-    },
-
     copy: {
       dist: {
         files: [{
@@ -345,7 +339,6 @@ module.exports = function (grunt) {
     'concat',
     'ngmin',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
     'filerev',

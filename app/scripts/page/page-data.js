@@ -42,7 +42,7 @@ angular.module('app.pageModule')
           var deferred = $q.defer();
 
           if (typeof model.id === 'number') {
-            Restangular.one('pages', model.id).put(model).then(
+            Restangular.one('pages', model.id).customPUT(model).then(
               function(data) {
                 deferred.resolve(data);
               }
