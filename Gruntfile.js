@@ -7,12 +7,15 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   var appConfig = {
-    dev: require('./bower.json').devPath || 'app',
+    dev: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
 
   grunt.initConfig({
     app: appConfig,
+
+    secret: grunt.file.readJSON('secret.json'),
+
     watch: {
       bower: {
         files: ['bower.json'],
@@ -26,7 +29,7 @@ module.exports = function (grunt) {
       },
       compass: {
         files: ['<%= app.dev %>/styles/**/*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
+        tasks: ['compass:dev', 'autoprefixer']
       },
       jade: {
         files: ['<%= app.dev %>/**/*.jade'],
@@ -77,6 +80,7 @@ module.exports = function (grunt) {
     },
 
     clean: {
+      dev: '.tmp',
       dist: {
         files: [{
           dot: true,
@@ -86,8 +90,7 @@ module.exports = function (grunt) {
             '!<%= app.dist %>/.git*'
           ]
         }]
-      },
-      server: '.tmp'
+      }
     },
 
     autoprefixer: {
@@ -134,14 +137,14 @@ module.exports = function (grunt) {
         assetCacheBuster: false,
         raw: 'Sass::Script::Number.precision = 10\n'
       },
+      dev: {
+        options: {
+          debugInfo: true
+        }
+      },
       dist: {
         options: {
           generatedImagesDir: '<%= app.dist %>/images/generated'
-        }
-      },
-      server: {
-        options: {
-          debugInfo: true
         }
       }
     },
@@ -281,9 +284,26 @@ module.exports = function (grunt) {
       }
     },
 
+    sftp: {
+      production: {
+        files: {
+          './': 'dist/**'
+        },
+        options: {
+          host: '<%= secret.host %>',
+          path: '<%= secret.path %>',
+          privateKey: '<%= grunt.file.read(secret.privateKey) %>',
+          showProgress: true,
+          createDirectories: true,
+          srcBasePath: 'dist/',
+          username: '<%= secret.username %>'
+        }
+      }
+    },
+
     concurrent: {
-      server: [
-        'compass:server',
+      dev: [
+        'compass:dev',
         'jade'
       ],
       dist: [
@@ -300,19 +320,14 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
+      'clean:dev',
       'jade',
       'wiredep',
-      'concurrent:server',
+      'concurrent:dev',
       'autoprefixer',
       'connect:livereload',
       'watch'
     ]);
-  });
-
-  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
   });
 
   grunt.registerTask('build', [
@@ -332,6 +347,10 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
+
+  grunt.registerTask('deploy', 'Deploy to server', function (target) {
+    grunt.task.run(['build', 'sftp:' + target]);
+  });
 
   grunt.registerTask('default', [
     'build'
