@@ -9,7 +9,7 @@ form(enctype='multipart/form-data', name='partnerForm', ng-show='partner', noval
 
   .form-group(ng-class='{ "has-error": partnerForm.image.$dirty && partnerForm.image.$invalid }')
     label.control-label Image
-    input.form-control(name='image', ng-model='partner.image', type='file')
+    input.form-control(name='image', file-model='partner.image', type='file')
 
   .form-group(ng-class='{ "has-error": partnerForm.description.$invalid }')
     label.control-label Description

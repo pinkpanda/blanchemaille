@@ -5,6 +5,7 @@ angular.module('app', [
   'ui.router',
   'ngProgressLite',
   'ui.bootstrap',
+  'google-maps',
 
   'app.module',
   'app.constants',

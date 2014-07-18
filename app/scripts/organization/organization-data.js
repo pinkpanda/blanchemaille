@@ -39,20 +39,33 @@ angular.module('app.organizationModule')
         };
 
         this.saveOne = function(model) {
-          var deferred = $q.defer();
+          var deferred  = $q.defer();
+          var fd        = new FormData();
+
+          _(['address', 'ceo_bio', 'ceo_name', 'city', 'email', 'image', 'lat', 'link', 'lon', 'name', 'nb_employees', 'phone', 'sector']).each(function(attr) {
+            if (model[attr]) {
+              fd.append(attr, model[attr]);
+            }
+          });
 
           if (typeof model.id === 'number') {
-            Restangular.one('organizations', model.id).customPUT(model).then(
-              function(data) {
-                deferred.resolve(data);
-              }
-            );
+            Restangular.one('organizations', model.id)
+              .withHttpConfig({ transformRequest: angular.identity })
+              .customPUT(fd, undefined, {}, { 'Content-Type': undefined }).then(
+                function(data) {
+                  deferred.resolve(data);
+                }
+              )
+            ;
           } else {
-            Restangular.all('organizations').post(model).then(
-              function(data) {
-                deferred.resolve(data);
-              }
-            );
+            Restangular.all('organizations')
+              .withHttpConfig({ transformRequest: angular.identity })
+              .post(fd, {}, { 'Content-Type': undefined }).then(
+                function(data) {
+                  deferred.resolve(data);
+                }
+              )
+            ;
           }
 
           return deferred.promise;

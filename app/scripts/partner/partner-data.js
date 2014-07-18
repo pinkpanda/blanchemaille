@@ -42,7 +42,7 @@ angular.module('app.partnerModule')
           var deferred  = $q.defer();
           var fd        = new FormData();
 
-          _(['image', 'link', 'name', 'description']).each(function(attr) {
+          _(['description', 'image', 'link', 'name']).each(function(attr) {
             if (model[attr]) {
               fd.append(attr, model[attr]);
             }

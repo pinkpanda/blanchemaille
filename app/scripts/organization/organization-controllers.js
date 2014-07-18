@@ -3,6 +3,7 @@ angular.module('app.organizationModule')
     'OrganizationIndexController',
     [
       '$log',
+      '$http',
       '$scope',
       '$state',
       'organizationData',
@@ -10,6 +11,7 @@ angular.module('app.organizationModule')
 
       function(
         $log,
+        $http,
         $scope,
         $state,
         organizationData,
@@ -31,6 +33,36 @@ angular.module('app.organizationModule')
             );
           }
         };
+
+        $scope.map = {
+          center: {
+            latitude: 50.7,
+            longitude: 3.1667
+          },
+          marker: {
+            latitude: null,
+            longitude: null
+          },
+          zoom: 11
+        };
+
+        $scope.getCoord = function(address) {
+          return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+              address: address,
+              sensor: false
+            }
+          });
+        };
+
+        $scope.$watchCollection('[organization.address, organization.city]', _.debounce(function(newV, oldV) {
+          if (newV[0] && newV[1]) {
+            $scope.getCoord(newV.join(', ')).success(function(data) {
+              $scope.organization.lat = $scope.map.marker.latitude = data.results[0].geometry.location.lat;
+              $scope.organization.lon = $scope.map.marker.longitude = data.results[0].geometry.location.lng;
+            });
+          }
+        }, 1000));
       }
     ]
   )
@@ -60,12 +92,14 @@ angular.module('app.organizationModule')
 
     [
       '$log',
+      '$http',
       '$scope',
       '$state',
       'organizationData',
 
       function(
         $log,
+        $http,
         $scope,
         $state,
         organizationData
@@ -81,6 +115,36 @@ angular.module('app.organizationModule')
             );
           }
         };
+
+        $scope.map = {
+          center: {
+            latitude: 50.7,
+            longitude: 3.1667
+          },
+          marker: {
+            latitude: null,
+            longitude: null
+          },
+          zoom: 11
+        };
+
+        $scope.getCoord = function(address) {
+          return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+              address: address,
+              sensor: false
+            }
+          });
+        };
+
+        $scope.$watchCollection('[organization.address, organization.city]', _.debounce(function(newV, oldV) {
+          if (newV[0] && newV[1]) {
+            $scope.getCoord(newV.join(', ')).success(function(data) {
+              $scope.organization.lat = $scope.map.marker.latitude = data.results[0].geometry.location.lat;
+              $scope.organization.lon = $scope.map.marker.longitude = data.results[0].geometry.location.lng;
+            });
+          }
+        }, 1000));
       }
     ]
   )
@@ -90,6 +154,7 @@ angular.module('app.organizationModule')
 
     [
       '$log',
+      '$http',
       '$scope',
       '$state',
       'organizationData',
@@ -97,6 +162,7 @@ angular.module('app.organizationModule')
 
       function(
         $log,
+        $http,
         $scope,
         $state,
         organizationData,
@@ -121,6 +187,36 @@ angular.module('app.organizationModule')
             }
           );
         };
+
+        $scope.map = {
+          center: {
+            latitude: $scope.organization.lat || 50.7,
+            longitude: $scope.organization.lon || 3.1667
+          },
+          marker: {
+            latitude: $scope.organization.lat,
+            longitude: $scope.organization.lon
+          },
+          zoom: 11
+        };
+
+        $scope.getCoord = function(address) {
+          return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+              address: address,
+              sensor: false
+            }
+          });
+        };
+
+        $scope.$watchCollection('[organization.address, organization.city]', _.debounce(function(newV, oldV) {
+          if (newV[0] && newV[1]) {
+            $scope.getCoord(newV.join(', ')).success(function(data) {
+              $scope.organization.lat = $scope.map.marker.latitude = data.results[0].geometry.location.lat;
+              $scope.organization.lon = $scope.map.marker.longitude = data.results[0].geometry.location.lng;
+            });
+          }
+        }, 1000));
       }
     ]
   )
