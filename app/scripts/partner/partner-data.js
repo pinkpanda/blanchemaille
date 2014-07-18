@@ -39,20 +39,33 @@ angular.module('app.partnerModule')
         };
 
         this.saveOne = function(model) {
-          var deferred = $q.defer();
+          var deferred  = $q.defer();
+          var fd        = new FormData();
+
+          _(['image', 'link', 'name', 'description']).each(function(attr) {
+            if (model[attr]) {
+              fd.append(attr, model[attr]);
+            }
+          });
 
           if (typeof model.id === 'number') {
-            Restangular.one('partners', model.id).customPUT(model).then(
-              function(data) {
-                deferred.resolve(data);
-              }
-            );
+            Restangular.one('partners', model.id)
+              .withHttpConfig({ transformRequest: angular.identity })
+              .customPUT(fd, undefined, {}, { 'Content-Type': undefined }).then(
+                function(data) {
+                  deferred.resolve(data);
+                }
+              )
+            ;
           } else {
-            Restangular.all('partners').post(model).then(
-              function(data) {
-                deferred.resolve(data);
-              }
-            );
+            Restangular.all('partners')
+              .withHttpConfig({ transformRequest: angular.identity })
+              .post(fd, {}, { 'Content-Type': undefined }).then(
+                function(data) {
+                  deferred.resolve(data);
+                }
+              )
+            ;
           }
 
           return deferred.promise;

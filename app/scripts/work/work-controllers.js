@@ -4,14 +4,33 @@ angular.module('app.workModule')
     [
       '$log',
       '$scope',
+      '$state',
+      'workData',
       'works',
 
       function(
         $log,
         $scope,
+        $state,
+        workData,
         works
       ) {
-        $scope.works = works;
+        $scope.works  = works;
+        $scope.work   = {};
+
+        $scope.save = function(form) {
+          if (form.$valid) {
+            workData.saveOne($scope.work).then(
+              function(data) {
+                $state.transitionTo($state.current, {}, {
+                  reload: true,
+                  inherit: false,
+                  notify: true
+                });
+              }
+            );
+          }
+        };
       }
     ]
   )

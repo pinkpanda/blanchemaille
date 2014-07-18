@@ -1,6 +1,16 @@
-a.btn.btn-success(ui-sref='admin.works.new') Nouveau
+.space
 
-div(ng-repeat='work in works')
-  p
-    | Editer
-    a(ui-sref='admin.works.edit({ id: work.id })') {{work.title}}
+.peter-river
+  .container
+    .row.mvl
+      .col-md-10.col-md-offset-1
+        div(ng-include="'views/admin/work/form.html'")
+
+.container
+  .row
+    .col-md-6.col-md-offset-3.mvxl
+      input.form-control(ng-model='search', type='text', placeholder='Rechercher')
+
+    div(ng-repeat='work in works | filter:search')
+      .col-md-4
+        a(ui-sref='admin.works.edit({ id: work.id })') {{work.title}}

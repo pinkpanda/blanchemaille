@@ -1,13 +1,13 @@
-form(name='organizationForm', ng-show='organization', novalidate)
+form(enctype='multipart/form-data', name='organizationForm', ng-show='organization', novalidate)
   .form-group(ng-class='{ "has-error": organizationForm.name.$dirty && organizationForm.name.$invalid }')
     label.control-label Nom
-    input.form-control(name='name', ng-model='organization.name', ng-required='true', placeholder='Nom', type='text')
+    input.form-control(name='name', ng-model='organization.name', ng-required='true', type='text')
 
   .form-group(ng-class='{ "has-error": organizationForm.sector.$dirty && organizationForm.sector.$invalid }')
     label.control-label Secteur d'activité
-    input.form-control(name='sector', ng-model='organization.sector', ng-required='true', placeholder='Secteur d\'activité', type='text')
+    input.form-control(name='sector', ng-model='organization.sector', ng-required='true', type='text')
 
-  button.btn.btn-success(ng-click='save(organizationForm)', ng-disabled='organizationForm.$invalid') Valider
+  button.btn.btn-success.pull-left(ng-click='save(organizationForm)', ng-disabled='organizationForm.$invalid') Valider
 
   div(ng-if='organization.id')
-    button.btn.btn-danger(ng-click='delete()') Supprimer {{organization.name}}
+    button.btn.btn-danger.pull-right(ng-click='delete()') Supprimer {{organization.name}}

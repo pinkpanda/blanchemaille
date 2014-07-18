@@ -6,6 +6,10 @@ angular.module('app', [
   'ngProgressLite',
   'ui.bootstrap',
 
+  'app.module',
+  'app.constants',
+  'app.directives',
+
   'app.adminModule',
   'app.newspaperModule',
   'app.organizationModule',
@@ -19,25 +23,20 @@ angular.module('app', [
       '$urlRouterProvider',
       '$locationProvider',
       'RestangularProvider',
+      'API_BASE_URL',
 
       function(
         $stateProvider,
         $urlRouterProvider,
         $locationProvider,
-        RestangularProvider
+        RestangularProvider,
+        API_BASE_URL
       ) {
         $urlRouterProvider.otherwise('/');
 
         $locationProvider.html5Mode(true);
 
-        RestangularProvider.setBaseUrl('http://api.blanchemaille.pinkpanda.io');
-
-        $stateProvider
-          .state('home', {
-            url: '/',
-            templateUrl: 'views/home.html'
-          })
-        ;
+        RestangularProvider.setBaseUrl(API_BASE_URL);
       }
     ]
   )
@@ -62,20 +61,16 @@ angular.module('app', [
         });
 
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-          var bodyClass, state, tmpState;
+          var bodyClass = '', state, tmpState;
 
-          if (!toState.bodyClass) {
-            state = toState.name.split('.');
+          state = toState.name.split('.');
 
-            for (var i = state.length; i > 0; i--) {
-              tmpState = state.slice(0, i).join('.');
+          for (var i = state.length; i > 0; i--) {
+            tmpState = state.slice(0, i).join('.');
 
-              if (!bodyClass && $state.get(tmpState) && $state.get(tmpState).bodyClass) {
-                bodyClass = $state.get(tmpState).bodyClass;
-              }
+            if ($state.get(tmpState) && $state.get(tmpState).bodyClass) {
+              bodyClass += ' ' + $state.get(tmpState).bodyClass;
             }
-          } else {
-            bodyClass = toState.bodyClass;
           }
 
           $rootScope.bodyClass = bodyClass;

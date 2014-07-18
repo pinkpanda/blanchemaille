@@ -1,6 +1,14 @@
-@import "bootstrap-sass", "admin", "home";
+@import "bootstrap-sass", "admin", "home", "newspaper";
 
 html, body {
   height: 100%;
   font-family: "Open Sans", $font-family-sans-serif;
+}
+
+.space {
+  height: 3px;
+}
+
+[ui-sref] {
+  cursor: pointer;
 }

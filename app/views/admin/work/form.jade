@@ -1,13 +1,13 @@
 form(name='workForm', ng-show='work', novalidate)
   .form-group(ng-class='{ "has-error": workForm.title.$dirty && workForm.title.$invalid }')
     label.control-label Titre
-    input.form-control(name='title', ng-model='work.title', ng-required='true', placeholder='Titre', type='text')
+    input.form-control(name='title', ng-model='work.title', ng-required='true', type='text')
 
   .form-group(ng-class='{ "has-error": workForm.content.$invalid }')
     label.control-label Contenu
-    textarea.form-control(name='content', ng-model='work.content', placeholder='Contenu')
+    textarea.form-control(name='content', ng-model='work.content')
 
-  button.btn.btn-success(ng-click='save(workForm)', ng-disabled='workForm.$invalid') Valider
+  button.btn.btn-success.pull-left(ng-click='save(workForm)', ng-disabled='workForm.$invalid') Valider
 
   div(ng-if='work.id')
-    button.btn.btn-danger(ng-click='delete()') Supprimer {{work.title}}
+    button.btn.btn-danger.pull-right(ng-click='delete()') Supprimer {{work.title}}

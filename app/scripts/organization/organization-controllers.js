@@ -4,14 +4,33 @@ angular.module('app.organizationModule')
     [
       '$log',
       '$scope',
+      '$state',
+      'organizationData',
       'organizations',
 
       function(
         $log,
         $scope,
+        $state,
+        organizationData,
         organizations
       ) {
-        $scope.organizations = organizations;
+        $scope.organizations  = organizations;
+        $scope.organization   = {};
+
+        $scope.save = function(form) {
+          if (form.$valid) {
+            organizationData.saveOne($scope.organization).then(
+              function(data) {
+                $state.transitionTo($state.current, {}, {
+                  reload: true,
+                  inherit: false,
+                  notify: true
+                });
+              }
+            );
+          }
+        };
       }
     ]
   )

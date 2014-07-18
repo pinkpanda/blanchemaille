@@ -1,7 +1,29 @@
-a.btn.btn-success(ui-sref='admin.newspapers.new') Nouveau
+.space
 
-div(ng-repeat='newspaper in newspapers')
-  img(ng-src='http://api.blanchemaille.pinkpanda.io{{newspaper.image.image.thumb.url}}')
-  p
-    | Editer
-    a(ui-sref='admin.newspapers.edit({ id: newspaper.id })') {{newspaper.title}}
+.peter-river
+  .container
+    .row.mvl
+      .col-md-10.col-md-offset-1
+        div(ng-include="'views/admin/newspaper/form.html'")
+
+.container
+  .row
+    .col-md-6.col-md-offset-3.mvxl
+      input.form-control(ng-model='search', type='text', placeholder='Rechercher')
+
+    div(ng-repeat='newspaper in newspapers | filter:search')
+      .col-md-4
+        .m-newspaper.light-gray
+          .m-newspaper--header.text-center(ui-sref='admin.newspapers.edit({ id: newspaper.id })')
+            .m-newspaper--image.max-width.pos-absolute
+              img.max-width(src='{{newspaper.image.image.thumb.url}}', api-img)
+
+            h2.text-white.pos-absolute-center {{newspaper.title}}
+
+          .m-newspaper--content.pvl.phl
+            p {{newspaper.content}}
+
+            .text-right
+              em.m-newspaper--name {{newspaper.newspaper_name}}
+
+            a.btn.btn-info.btn-inverse.btn-block.mtl(ui-sref='admin.newspapers.edit({ id: newspaper.id })') Editer

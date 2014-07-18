@@ -4,14 +4,33 @@ angular.module('app.partnerModule')
     [
       '$log',
       '$scope',
+      '$state',
+      'partnerData',
       'partners',
 
       function(
         $log,
         $scope,
+        $state,
+        partnerData,
         partners
       ) {
         $scope.partners = partners;
+        $scope.partner  = {};
+
+        $scope.save = function(form) {
+          if (form.$valid) {
+            partnerData.saveOne($scope.partner).then(
+              function(data) {
+                $state.transitionTo($state.current, {}, {
+                  reload: true,
+                  inherit: false,
+                  notify: true
+                });
+              }
+            );
+          }
+        };
       }
     ]
   )

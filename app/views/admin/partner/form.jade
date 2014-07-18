@@ -1,11 +1,11 @@
 form(enctype='multipart/form-data', name='partnerForm', ng-show='partner', novalidate)
   .form-group(ng-class='{ "has-error": partnerForm.name.$dirty && partnerForm.name.$invalid }')
     label.control-label Nom
-    input.form-control(name='name', ng-model='partner.name', ng-required='true', placeholder='Nom', type='text')
+    input.form-control(name='name', ng-model='partner.name', ng-required='true', type='text')
 
   .form-group(ng-class='{ "has-error": partnerForm.link.$dirty && partnerForm.link.$invalid }')
     label.control-label Lien
-    input.form-control(name='link', ng-model='partner.link', placeholder='Lien', type='url')
+    input.form-control(name='link', ng-model='partner.link', type='url')
 
   .form-group(ng-class='{ "has-error": partnerForm.image.$dirty && partnerForm.image.$invalid }')
     label.control-label Image
@@ -13,9 +13,9 @@ form(enctype='multipart/form-data', name='partnerForm', ng-show='partner', noval
 
   .form-group(ng-class='{ "has-error": partnerForm.description.$invalid }')
     label.control-label Description
-    textarea.form-control(name='description', ng-model='partner.description', placeholder='Description')
+    textarea.form-control(name='description', ng-model='partner.description')
 
-  button.btn.btn-success(ng-click='save(partnerForm)', ng-disabled='partnerForm.$invalid') Valider
+  button.btn.btn-success.pull-left(ng-click='save(partnerForm)', ng-disabled='partnerForm.$invalid') Valider
 
   div(ng-if='partner.id')
-    button.btn.btn-danger(ng-click='delete()') Supprimer {{partner.name}}
+    button.btn.btn-danger.pull-right(ng-click='delete()') Supprimer {{partner.name}}
