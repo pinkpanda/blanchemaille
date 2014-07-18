@@ -1,0 +1,6 @@
+a.btn.btn-success(ui-sref='admin.partners.new') Nouveau
+
+div(ng-repeat='partner in partners')
+  p
+    | Editer
+    a(ui-sref='admin.partners.edit({ id: partner.id })') {{partner.name}}

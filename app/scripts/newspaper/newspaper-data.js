@@ -4,11 +4,13 @@ angular.module('app.newspaperModule')
     [
       '$log',
       '$q',
+      '$http',
       'Restangular',
 
       function(
         $log,
         $q,
+        $http,
         Restangular
       ) {
         this.getIndex = function() {
@@ -39,20 +41,33 @@ angular.module('app.newspaperModule')
         };
 
         this.saveOne = function(model) {
-          var deferred = $q.defer();
+          var deferred  = $q.defer();
+          var fd        = new FormData();
+
+          _(['image', 'link', 'newspaper_name', 'title', 'content']).each(function(attr) {
+            if (model[attr]) {
+              fd.append(attr, model[attr]);
+            }
+          });
 
           if (typeof model.id === 'number') {
-            Restangular.one('newspapers', model.id).customPUT(model).then(
-              function(data) {
-                deferred.resolve(data);
-              }
-            );
+            Restangular.one('newspapers', model.id)
+              .withHttpConfig({ transformRequest: angular.identity })
+              .customPUT(fd, undefined, {}, { 'Content-Type': undefined }).then(
+                function(data) {
+                  deferred.resolve(data);
+                }
+              )
+            ;
           } else {
-            Restangular.all('newspapers').post(model).then(
-              function(data) {
-                deferred.resolve(data);
-              }
-            );
+            Restangular.all('newspapers')
+              .withHttpConfig({ transformRequest: angular.identity })
+              .post(fd, {}, { 'Content-Type': undefined }).then(
+                function(data) {
+                  deferred.resolve(data);
+                }
+              )
+            ;
           }
 
           return deferred.promise;

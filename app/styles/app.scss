@@ -1,7 +1,6 @@
-@import "bootstrap-sass", "home";
+@import "bootstrap-sass", "admin", "home";
 
 html, body {
   height: 100%;
   font-family: "Open Sans", $font-family-sans-serif;
-  color: #384047;
 }

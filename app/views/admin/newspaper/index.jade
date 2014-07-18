@@ -1,0 +1,7 @@
+a.btn.btn-success(ui-sref='admin.newspapers.new') Nouveau
+
+div(ng-repeat='newspaper in newspapers')
+  img(ng-src='http://api.blanchemaille.pinkpanda.io{{newspaper.image.image.thumb.url}}')
+  p
+    | Editer
+    a(ui-sref='admin.newspapers.edit({ id: newspaper.id })') {{newspaper.title}}
