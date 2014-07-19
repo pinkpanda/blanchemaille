@@ -1,6 +1,25 @@
-a.btn.btn-success(ui-sref='admin.pages.new') Nouveau
+.space
 
-div(ng-repeat='page in pages')
-  p
-    | Editer
-    a(ui-sref='admin.pages.edit({ id: page.id })') {{page.title}}
+.peter-river
+  .container
+    .row.mvl
+      .col-md-10.col-md-offset-1
+        div(ng-include="'views/admin/page/form.html'")
+
+.container
+  .row
+    .col-md-6.col-md-offset-3.mvxl
+      input.form-control(ng-model='search', type='text', placeholder='Rechercher')
+
+  .row
+    table.table.table-condensed.table-striped
+      tr
+        th Titre
+        th Contenu
+        th
+
+      tr(ng-repeat='page in pages | filter:search')
+        td {{page.title}}
+        td(ng-bind-html='page.content | characters:200')
+        td
+          a.btn.btn-info.btn-inverse(ui-sref='admin.pages.edit({ id: page.id })') Editer

@@ -1,15 +1,15 @@
 form(enctype='multipart/form-data', name='newspaperForm', ng-show='newspaper', novalidate)
   .form-group(ng-class='{ "has-error": newspaperForm.title.$dirty && newspaperForm.title.$invalid }')
     label.control-label Titre
-    input.form-control(name='title', ng-model='newspaper.title', ng-required='true', placeholder='Titre', type='text')
+    input.form-control(name='title', ng-model='newspaper.title', ng-required='true', type='text')
 
   .form-group(ng-class='{ "has-error": newspaperForm.link.$dirty && newspaperForm.link.$invalid }')
     label.control-label Lien
-    input.form-control(name='link', ng-model='newspaper.link', placeholder='Lien', type='url')
+    input.form-control(name='link', ng-model='newspaper.link', type='url')
 
   .form-group(ng-class='{ "has-error": newspaperForm.newspaper_name.$dirty && newspaperForm.newspaper_name.$invalid }')
     label.control-label Nom du journal
-    input.form-control(name='newspaper_name', ng-model='newspaper.newspaper_name', ng-required='true', placeholder='Nom du journal', type='text')
+    input.form-control(name='newspaper_name', ng-model='newspaper.newspaper_name', ng-required='true', type='text')
 
   .form-group(ng-class='{ "has-error": newspaperForm.image.$dirty && newspaperForm.image.$invalid }')
     label.control-label Image
@@ -17,9 +17,9 @@ form(enctype='multipart/form-data', name='newspaperForm', ng-show='newspaper', n
 
   .form-group(ng-class='{ "has-error": newspaperForm.content.$invalid }')
     label.control-label Contenu
-    textarea.form-control(name='content', ng-model='newspaper.content', placeholder='Contenu')
+    textarea.form-control(name='content', ng-model='newspaper.content', rows='5')
 
-  button.btn.btn-success(ng-click='save(newspaperForm)', ng-disabled='newspaperForm.$invalid') Valider
+  button.btn.btn-success.pull-left(ng-click='save(newspaperForm)', ng-disabled='newspaperForm.$invalid') Valider
 
   div(ng-if='newspaper.id')
-    button.btn.btn-danger(ng-click='delete()') Supprimer {{newspaper.title}}
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{newspaper.title}}

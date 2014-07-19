@@ -4,15 +4,32 @@
 
 .m-nav--admin {
   a, a:hover {
-    color: $text-color;
+    color: #FEFEFE;
+    text-decoration: none;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 200;
     font-size: 1.4em;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
+}
 
-  .hr {
-    border-top: 1px solid $text-color;
-    width: 30%;
-    margin: 30px auto;
+$navs: newspapers, organizations, pages, partners, works;
+
+@each $nav in $navs {
+  .#{$nav} {
+    .m-nav--admin .#{$nav}:after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid white;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
   }
 }

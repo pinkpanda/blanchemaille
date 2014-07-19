@@ -1,6 +1,18 @@
-a.btn.btn-success(ui-sref='admin.partners.new') Nouveau
+.space
 
-div(ng-repeat='partner in partners')
-  p
-    | Editer
-    a(ui-sref='admin.partners.edit({ id: partner.id })') {{partner.name}}
+.peter-river
+  .container
+    .row.mvl
+      .col-md-10.col-md-offset-1
+        div(ng-include="'views/admin/partner/form.html'")
+
+.container
+  .row
+    .col-md-6.col-md-offset-3.mvxl
+      input.form-control(ng-model='search', type='text', placeholder='Rechercher')
+
+  .row
+    div(ng-repeat='partner in partners | filter:search')
+      .col-md-3
+        .m-partner(ui-sref='admin.partners.edit({ id: partner.id })')
+          img.max-width(src='{{partner.image.image.thumb.url}}', api-img)

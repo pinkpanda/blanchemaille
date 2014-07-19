@@ -9,41 +9,57 @@ html.no-js(ng-app='app')
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600', rel='stylesheet')
     link(href='http://fonts.googleapis.com/css?family=Raleway:400,600', rel='stylesheet')
     link(href='http://fonts.googleapis.com/css?family=Lobster', rel='stylesheet')
-    link(href='http://weloveiconfonts.com/api/?family=entypo', rel='stylesheet')
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    link(href='bower_components/ngprogress-lite/ngprogress-lite.css', rel='stylesheet')
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css({.tmp,app}) styles/styles.css -->
+    link(href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', rel='stylesheet')
+
+    // build:css(.) styles/vendor.css
+    // bower:css
+    link(rel='stylesheet', href='bower_components/ngprogress-lite/ngprogress-lite.css')
+    // endbower
+    // endbuild
+
+    // build:css({app,.tmp}) styles/stylesheets.css
     link(href='styles/app.css', rel='stylesheet')
     link(href='styles/main.css', rel='stylesheet')
-    <!-- endbuild -->
+    // endbuild
 
   body(ng-controller='AppController', class='{{bodyClass}}')
-    .ui-view
+    .sticky-footer
+      .ui-view
+      .sticky-footer-trick
+
+    div(ng-include="'views/partials/footer.html'")
 
     <!--[if lt IE 9]>
     script(src='bower_components/es5-shim/es5-shim.js')
     script(src='bower_components/json3/lib/json3.min.js')
     <![endif]-->
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
+    script(src='http://maps.googleapis.com/maps/api/js?sensor=false')
+
+    // build:js(.) scripts/vendor.js
+    // bower:js
     script(src='bower_components/jquery/dist/jquery.js')
     script(src='bower_components/angular/angular.js')
     script(src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+    script(src='bower_components/lodash/dist/lodash.compat.js')
+    script(src='bower_components/angular-google-maps/dist/angular-google-maps.js')
+    script(src='bower_components/angular-sanitize/angular-sanitize.js')
+    script(src='bower_components/angular-truncate/src/truncate.js')
     script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
     script(src='bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js')
     script(src='bower_components/ngprogress-lite/ngprogress-lite.js')
-    script(src='bower_components/lodash/dist/lodash.compat.js')
     script(src='bower_components/restangular/dist/restangular.js')
-    <!-- endbower -->
-    <!-- endbuild -->
+    script(src='bower_components/textAngular/dist/textAngular.min.js')
+    // endbower
+    // endbuild
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    // build:js({.tmp,app}) scripts/scripts.js
     script(src='scripts/app.js')
     script(src='scripts/app-controller.js')
+
+    script(src='scripts/global/global-module.js')
+    script(src='scripts/global/global-constants.js')
+    script(src='scripts/global/global-directives.js')
 
     script(src='scripts/admin/admin-module.js')
     script(src='scripts/admin/admin-directives.js')
@@ -67,4 +83,4 @@ html.no-js(ng-app='app')
     script(src='scripts/work/work-module.js')
     script(src='scripts/work/work-controllers.js')
     script(src='scripts/work/work-data.js')
-    <!-- endbuild -->
+    // endbuild

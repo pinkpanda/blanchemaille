@@ -44,7 +44,7 @@ angular.module('app.newspaperModule')
           var deferred  = $q.defer();
           var fd        = new FormData();
 
-          _(['image', 'link', 'newspaper_name', 'title', 'content']).each(function(attr) {
+          _(['content', 'image', 'link', 'newspaper_name', 'title']).each(function(attr) {
             if (model[attr]) {
               fd.append(attr, model[attr]);
             }

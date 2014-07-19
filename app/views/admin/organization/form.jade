@@ -1,13 +1,62 @@
-form(name='organizationForm', ng-show='organization', novalidate)
-  .form-group(ng-class='{ "has-error": organizationForm.name.$dirty && organizationForm.name.$invalid }')
-    label.control-label Nom
-    input.form-control(name='name', ng-model='organization.name', ng-required='true', placeholder='Nom', type='text')
+form(enctype='multipart/form-data', name='organizationForm', ng-show='organization', novalidate)
+  .row
+    .col-md-6
+      google-map.m-organization--map(center='map.center', draggable='true', events='map.events', zoom='map.zoom')
+        marker(coords='map.marker')
 
-  .form-group(ng-class='{ "has-error": organizationForm.sector.$dirty && organizationForm.sector.$invalid }')
-    label.control-label Secteur d'activité
-    input.form-control(name='sector', ng-model='organization.sector', ng-required='true', placeholder='Secteur d\'activité', type='text')
+    .col-md-6
+      .form-group(ng-class='{ "has-error": organizationForm.name.$dirty && organizationForm.name.$invalid }')
+        label.control-label Nom
+        input.form-control(name='name', ng-model='organization.name', ng-required='true', type='text')
 
-  button.btn.btn-success(ng-click='save(organizationForm)', ng-disabled='organizationForm.$invalid') Valider
+      .row
+        .col-md-7
+          .form-group(ng-class='{ "has-error": organizationForm.email.$dirty && organizationForm.email.$invalid }')
+            label.control-label Email
+            input.form-control(name='email', ng-model='organization.email', type='email')
+
+        .col-md-5
+          .form-group(ng-class='{ "has-error": organizationForm.phone.$dirty && organizationForm.phone.$invalid }')
+            label.control-label Téléphone
+            input.form-control(name='phone', ng-model='organization.phone', type='tel')
+
+      .row
+        .col-md-7
+          .form-group(ng-class='{ "has-error": organizationForm.address.$dirty && organizationForm.address.$invalid }')
+            label.control-label Adresse
+            input.form-control(name='address', ng-model='organization.address', type='text')
+
+        .col-md-5
+          .form-group(ng-class='{ "has-error": organizationForm.city.$dirty && organizationForm.city.$invalid }')
+            label.control-label Ville
+            input.form-control(name='city', ng-model='organization.city', type='text')
+
+      .row
+        .col-md-8
+          .form-group(ng-class='{ "has-error": organizationForm.sector.$dirty && organizationForm.sector.$invalid }')
+            label.control-label Secteur d'activité
+            input.form-control(name='sector', ng-model='organization.sector', type='text')
+
+        .col-md-4
+          .form-group(ng-class='{ "has-error": organizationForm.nb_employees.$dirty && organizationForm.nb_employees.$invalid }')
+            label.control-label Nom d'employés
+            input.form-control(name='nb_employees', ng-model='organization.nb_employees', type='number')
+
+  .row.mtl
+    .col-md-12
+      .form-group(ng-class='{ "has-error": organizationForm.image.$dirty && organizationForm.image.$invalid }')
+        label.control-label Logo
+        input.form-control(name='image', file-model='organization.image', type='file')
+
+      .form-group(ng-class='{ "has-error": organizationForm.ceo_name.$dirty && organizationForm.ceo_name.$invalid }')
+        label.control-label Nom du dirigeant
+        input.form-control(name='ceo_name', ng-model='organization.ceo_name', type='text')
+
+      .form-group(ng-class='{ "has-error": organizationForm.ceo_bio.$invalid }')
+        label.control-label Biographie du dirigeant
+        textarea.form-control(name='ceo_bio', ng-model='organization.ceo_bio', rows='5')
+
+  button.btn.btn-success.pull-left(ng-click='save(organizationForm)', ng-disabled='organizationForm.$invalid') Valider
 
   div(ng-if='organization.id')
-    button.btn.btn-danger(ng-click='delete()') Supprimer {{organization.name}}
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{organization.name}}

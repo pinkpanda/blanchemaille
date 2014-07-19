@@ -1,13 +1,13 @@
 form(name='pageForm', ng-show='page', novalidate)
   .form-group(ng-class='{ "has-error": pageForm.title.$dirty && pageForm.title.$invalid }')
     label.control-label Titre
-    input.form-control(name='title', ng-model='page.title', ng-required='true', placeholder='Titre', type='text')
+    input.form-control(name='title', ng-model='page.title', ng-required='true', type='text')
 
   .form-group(ng-class='{ "has-error": pageForm.content.$invalid }')
     label.control-label Contenu
-    textarea.form-control(name='content', ng-model='page.content', placeholder='Contenu')
+    div(name='content', ng-model='page.content', text-angular, ta-toolbar-group-class='btn-group mrl', ta-toolbar-button-class='btn btn-info', ta-toolbar="[['p','h1','h2','h3','insertLink','insertImage','insertVideo'],['bold','italics','underline'],['justifyLeft','justifyCenter','justifyRight'],['quote','ul','ol'],['undo','redo','clear']]")
 
-  button.btn.btn-success(ng-click='save(pageForm)', ng-disabled='pageForm.$invalid') Valider
+  button.btn.btn-success.pull-left(ng-click='save(pageForm)', ng-disabled='pageForm.$invalid') Valider
 
   div(ng-if='page.id')
-    button.btn.btn-danger(ng-click='delete()') Supprimer {{page.title}}
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{page.title}}

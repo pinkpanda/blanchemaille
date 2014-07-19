@@ -11,7 +11,8 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.newspapers', {
         abstract: true,
         url: '/newspapers',
-        template: '<div ui-view></div>'
+        template: '<div ui-view></div>',
+        bodyClass: 'newspapers'
       })
 
       .state('admin.newspapers.index', {
@@ -27,13 +28,13 @@ angular.module('app.adminModule', ['ui.router'])
 
       .state('admin.newspapers.new', {
         url: '/new',
-        templateUrl: 'views/admin/newspaper/form.html',
+        templateUrl: 'views/admin/newspaper/edit.html',
         controller: 'NewspaperNewController'
       })
 
       .state('admin.newspapers.edit', {
         url: '/:id/edit',
-        templateUrl: 'views/admin/newspaper/form.html',
+        templateUrl: 'views/admin/newspaper/edit.html',
         controller: 'NewspaperEditController',
         resolve: {
           newspaper: ['$stateParams', 'newspaperData', function($stateParams, newspaperData) {
@@ -46,7 +47,8 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.organizations', {
         abstract: true,
         url: '/organizations',
-        template: '<div ui-view></div>'
+        template: '<div ui-view></div>',
+        bodyClass: 'organizations'
       })
 
       .state('admin.organizations.index', {
@@ -62,13 +64,13 @@ angular.module('app.adminModule', ['ui.router'])
 
       .state('admin.organizations.new', {
         url: '/new',
-        templateUrl: 'views/admin/organization/form.html',
+        templateUrl: 'views/admin/organization/edit.html',
         controller: 'OrganizationNewController'
       })
 
       .state('admin.organizations.edit', {
         url: '/:id/edit',
-        templateUrl: 'views/admin/organization/form.html',
+        templateUrl: 'views/admin/organization/edit.html',
         controller: 'OrganizationEditController',
         resolve: {
           organization: ['$stateParams', 'organizationData', function($stateParams, organizationData) {
@@ -81,7 +83,8 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.pages', {
         abstract: true,
         url: '/pages',
-        template: '<div ui-view></div>'
+        template: '<div ui-view></div>',
+        bodyClass: 'pages'
       })
 
       .state('admin.pages.index', {
@@ -97,13 +100,13 @@ angular.module('app.adminModule', ['ui.router'])
 
       .state('admin.pages.new', {
         url: '/new',
-        templateUrl: 'views/admin/page/form.html',
+        templateUrl: 'views/admin/page/edit.html',
         controller: 'PageNewController'
       })
 
       .state('admin.pages.edit', {
         url: '/:id/edit',
-        templateUrl: 'views/admin/page/form.html',
+        templateUrl: 'views/admin/page/edit.html',
         controller: 'PageEditController',
         resolve: {
           page: ['$stateParams', 'pageData', function($stateParams, pageData) {
@@ -116,7 +119,8 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.partners', {
         abstract: true,
         url: '/partners',
-        template: '<div ui-view></div>'
+        template: '<div ui-view></div>',
+        bodyClass: 'partners'
       })
 
       .state('admin.partners.index', {
@@ -132,13 +136,13 @@ angular.module('app.adminModule', ['ui.router'])
 
       .state('admin.partners.new', {
         url: '/new',
-        templateUrl: 'views/admin/partner/form.html',
+        templateUrl: 'views/admin/partner/edit.html',
         controller: 'PartnerNewController'
       })
 
       .state('admin.partners.edit', {
         url: '/:id/edit',
-        templateUrl: 'views/admin/partner/form.html',
+        templateUrl: 'views/admin/partner/edit.html',
         controller: 'PartnerEditController',
         resolve: {
           partner: ['$stateParams', 'partnerData', function($stateParams, partnerData) {
@@ -151,7 +155,8 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.works', {
         abstract: true,
         url: '/works',
-        template: '<div ui-view></div>'
+        template: '<div ui-view></div>',
+        bodyClass: 'works'
       })
 
       .state('admin.works.index', {
@@ -167,13 +172,13 @@ angular.module('app.adminModule', ['ui.router'])
 
       .state('admin.works.new', {
         url: '/new',
-        templateUrl: 'views/admin/work/form.html',
+        templateUrl: 'views/admin/work/edit.html',
         controller: 'WorkNewController'
       })
 
       .state('admin.works.edit', {
         url: '/:id/edit',
-        templateUrl: 'views/admin/work/form.html',
+        templateUrl: 'views/admin/work/edit.html',
         controller: 'WorkEditController',
         resolve: {
           work: ['$stateParams', 'workData', function($stateParams, workData) {

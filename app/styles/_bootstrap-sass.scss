@@ -30,9 +30,9 @@ $asbestos:      #7f8c8d;
 
 $white:         #FEFEFE;
 $black:         #222222;
-$light-black:   lighten($black, 5%);
+$light-black:   lighten($black, 10%);
 $gray:          invert($black);
-$light-gray:    invert($light-black);
+$light-gray:    lighten(invert($light-black), 20%);
 
 $colors: turquoise $turquoise, green-sea $green-sea, emerald $emerald, nephritis $nephritis, peter-river $peter-river, belize-hole $belize-hole, amethyst $amethyst, wisteria $wisteria, wet-asphalt $wet-asphalt, midnight-blue $midnight-blue, sun-flower $sun-flower, orange $orange, carrot $carrot, pumpkin $pumpkin, alizarin $alizarin, pomegranate $pomegranate, clouds $clouds, silver $silver, concrete $concrete, asbestos $asbestos, white $white, black $black, light-black $light-black, gray $gray, light-gray $light-gray;
 

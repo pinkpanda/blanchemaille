@@ -1,6 +1,31 @@
-@import "bootstrap-sass", "admin", "home";
+@import "bootstrap-sass", "admin", "home", "newspaper", "organization";
 
 html, body {
   height: 100%;
   font-family: "Open Sans", $font-family-sans-serif;
+}
+
+.space {
+  height: 3px;
+}
+
+[ui-sref] {
+  cursor: pointer;
+}
+
+.sticky-footer {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -111px;
+}
+
+.sticky-footer-trick {
+  height: 111px;
+}
+
+.m-footer {
+  .pinkpanda {
+    width: 20px;
+  }
 }
