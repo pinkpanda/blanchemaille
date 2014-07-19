@@ -1,3 +1,7 @@
+.block {
+    display: block;
+}
+
 .visible {
     display: inherit !important;
 }

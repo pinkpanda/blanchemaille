@@ -5,9 +5,9 @@ form(name='workForm', ng-show='work', novalidate)
 
   .form-group(ng-class='{ "has-error": workForm.content.$invalid }')
     label.control-label Contenu
-    textarea.form-control(name='content', ng-model='work.content')
+    textarea.form-control(name='content', ng-model='work.content', rows='5')
 
   button.btn.btn-success.pull-left(ng-click='save(workForm)', ng-disabled='workForm.$invalid') Valider
 
   div(ng-if='work.id')
-    button.btn.btn-danger.pull-right(ng-click='delete()') Supprimer {{work.title}}
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{work.title}}

@@ -54,9 +54,9 @@ form(enctype='multipart/form-data', name='organizationForm', ng-show='organizati
 
       .form-group(ng-class='{ "has-error": organizationForm.ceo_bio.$invalid }')
         label.control-label Biographie du dirigeant
-        textarea.form-control(name='ceo_bio', ng-model='organization.ceo_bio')
+        textarea.form-control(name='ceo_bio', ng-model='organization.ceo_bio', rows='5')
 
   button.btn.btn-success.pull-left(ng-click='save(organizationForm)', ng-disabled='organizationForm.$invalid') Valider
 
   div(ng-if='organization.id')
-    button.btn.btn-danger.pull-right(ng-click='delete()') Supprimer {{organization.name}}
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{organization.name}}

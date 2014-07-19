@@ -13,9 +13,9 @@ form(enctype='multipart/form-data', name='partnerForm', ng-show='partner', noval
 
   .form-group(ng-class='{ "has-error": partnerForm.description.$invalid }')
     label.control-label Description
-    textarea.form-control(name='description', ng-model='partner.description')
+    textarea.form-control(name='description', ng-model='partner.description', rows='5')
 
   button.btn.btn-success.pull-left(ng-click='save(partnerForm)', ng-disabled='partnerForm.$invalid') Valider
 
   div(ng-if='partner.id')
-    button.btn.btn-danger.pull-right(ng-click='delete()') Supprimer {{partner.name}}
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{partner.name}}

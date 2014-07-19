@@ -6,6 +6,8 @@ angular.module('app', [
   'ngProgressLite',
   'ui.bootstrap',
   'google-maps',
+  'truncate',
+  'textAngular',
 
   'app.module',
   'app.constants',

@@ -17,9 +17,9 @@ form(enctype='multipart/form-data', name='newspaperForm', ng-show='newspaper', n
 
   .form-group(ng-class='{ "has-error": newspaperForm.content.$invalid }')
     label.control-label Contenu
-    textarea.form-control(name='content', ng-model='newspaper.content')
+    textarea.form-control(name='content', ng-model='newspaper.content', rows='5')
 
   button.btn.btn-success.pull-left(ng-click='save(newspaperForm)', ng-disabled='newspaperForm.$invalid') Valider
 
   div(ng-if='newspaper.id')
-    button.btn.btn-danger.pull-right(ng-click='delete()') Supprimer {{newspaper.title}}
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{newspaper.title}}

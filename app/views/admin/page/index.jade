@@ -11,6 +11,15 @@
     .col-md-6.col-md-offset-3.mvxl
       input.form-control(ng-model='search', type='text', placeholder='Rechercher')
 
-    div(ng-repeat='page in pages | filter:search')
-      .col-md-4
-        a(ui-sref='admin.pages.edit({ id: page.id })') {{page.title}}
+  .row
+    table.table.table-condensed.table-striped
+      tr
+        th Titre
+        th Contenu
+        th
+
+      tr(ng-repeat='page in pages | filter:search')
+        td {{page.title}}
+        td(ng-bind-html='page.content | characters:200')
+        td
+          a.btn.btn-info.btn-inverse(ui-sref='admin.pages.edit({ id: page.id })') Editer
