@@ -11,6 +11,7 @@ angular.module('app', [
 
   'app.module',
   'app.constants',
+  'app.filters',
   'app.directives',
 
   'app.adminModule',

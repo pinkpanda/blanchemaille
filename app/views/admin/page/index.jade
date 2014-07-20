@@ -12,7 +12,7 @@
       input.form-control(ng-model='search', type='text', placeholder='Rechercher')
 
   .row
-    table.table.table-condensed.table-striped
+    table.table.table-striped
       tr
         th Titre
         th Contenu
@@ -20,6 +20,6 @@
 
       tr(ng-repeat='page in pages | filter:search')
         td {{page.title}}
-        td(ng-bind-html='page.content | characters:200')
+        td {{page.content | stripHtml | characters:130}}
         td
           a.btn.btn-info.btn-inverse(ui-sref='admin.pages.edit({ id: page.id })') Editer

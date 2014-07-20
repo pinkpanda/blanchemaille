@@ -41,7 +41,13 @@ angular.module('app.organizationModule')
           },
           marker: {
             latitude: null,
-            longitude: null
+            longitude: null,
+            events: {
+              position_changed: function() {
+                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.longitude = $scope.map.marker.longitude;
+              }
+            }
           },
           zoom: 11
         };
@@ -123,7 +129,13 @@ angular.module('app.organizationModule')
           },
           marker: {
             latitude: null,
-            longitude: null
+            longitude: null,
+            events: {
+              position_changed: function() {
+                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.longitude = $scope.map.marker.longitude;
+              }
+            }
           },
           zoom: 11
         };
@@ -195,7 +207,13 @@ angular.module('app.organizationModule')
           },
           marker: {
             latitude: $scope.organization.lat,
-            longitude: $scope.organization.lon
+            longitude: $scope.organization.lon,
+            events: {
+              position_changed: function() {
+                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.longitude = $scope.map.marker.longitude;
+              }
+            }
           },
           zoom: 11
         };

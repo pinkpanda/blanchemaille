@@ -2,7 +2,7 @@ form(enctype='multipart/form-data', name='organizationForm', ng-show='organizati
   .row
     .col-md-6
       google-map.m-organization--map(center='map.center', draggable='true', events='map.events', zoom='map.zoom')
-        marker(coords='map.marker')
+        marker(coords='map.marker', events='map.marker.events')
 
     .col-md-6
       .form-group(ng-class='{ "has-error": organizationForm.name.$dirty && organizationForm.name.$invalid }')
@@ -39,7 +39,7 @@ form(enctype='multipart/form-data', name='organizationForm', ng-show='organizati
 
         .col-md-4
           .form-group(ng-class='{ "has-error": organizationForm.nb_employees.$dirty && organizationForm.nb_employees.$invalid }')
-            label.control-label Nom d'employés
+            label.control-label Nb d'employés
             input.form-control(name='nb_employees', ng-model='organization.nb_employees', type='number')
 
   .row.mtl

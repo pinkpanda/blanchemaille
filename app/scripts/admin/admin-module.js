@@ -4,7 +4,18 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin', {
         url: '/admin',
         templateUrl: 'views/admin/home.html',
-        bodyClass: 'l-admin white'
+        bodyClass: 'l-admin white',
+        controller: [
+          '$log',
+          '$state',
+
+          function(
+            $log,
+            $state
+          ) {
+            $state.go('admin.newspapers.index');
+          }
+        ]
       })
 
 
