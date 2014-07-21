@@ -1,0 +1,36 @@
+.m-header--title {
+  color: #fff;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.m-home {
+  background-image: url("/images/blanchemaille.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.m-home--statistics {
+  border-right: 1px solid #eeeeee;
+}
+
+.m-home--statistics:last-child {
+  border-right: 0px;
+}
+
+.m-home--statistics--big {
+  color: #4A5157;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.m-home--statistics--small {
+  color: #C7CDD5;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 0.4em;
+  text-transform: uppercase;
+}

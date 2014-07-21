@@ -1,1 +1,124 @@
-a(ui-sref='admin') Admin
+.height-100
+  .container.pos-absolute-center
+    .row.text-center
+      .col-md-12
+        h1.em.m-header--title
+          | In&nbsp;
+          span.text-turquoise Roubaix
+          | ,
+          br
+          | we&nbsp;
+          span.text-turquoise ♡
+          | &nbsp;Startups !
+      .col-md-12.mtxl
+        a.btn.btn-turquoise.btn-lg.btn-inverse(du-smooth-scroll, href='#hello') Découvrir Bl@nchemaille
+
+#hello.white.pvxl
+  .container
+    .row.text-center
+      .col-md-12
+        h2.em
+          | A propos de&nbsp;
+          span.blanchemaille Bl@nchemaille
+
+        .hr.turquoise
+
+        p.text-justify
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis augue dolor, a mattis lectus consectetur at. In mattis ac nulla sed pulvinar. Nam tincidunt egestas dui eu scelerisque. Phasellus nec justo ut ante sollicitudin interdum. Praesent nisl augue, ornare eu justo mattis, laoreet rhoncus sapien. Duis scelerisque quis velit sit amet lobortis. Donec sodales elit at nibh placerat, vitae hendrerit diam imperdiet. Praesent ornare vehicula arcu, id accumsan augue iaculis ut. Nunc id fermentum turpis, quis feugiat purus. Vivamus vulputate odio sed diam aliquet, sit amet porta nisl porttitor. Nunc enim nunc, mollis quis elit vel, vehicula congue dui. Nam tempor justo sit amet commodo varius.
+
+.turquoise.pos-relative.arrow.pvl
+  .container
+    .row.text-center
+      .col-md-12.mvl
+        h2.em.mtm
+          span.blanchemaille Bl@nchemaille
+          | &nbsp;en chiffres
+
+.white
+  .container
+    .row.text-center.mvxl
+      .col-md-4.col-sm-4.m-home--statistics
+        .m-home--statistics--big(count-to='{{organizations.length}}', duration='5', value='0')
+        .m-home--statistics--small.em
+          ng-pluralize(count='organizations.length', when=' \
+            { \
+              "one": "Membre", \
+              "other": "Membres" \
+            } \
+          ')
+
+      .col-md-4.col-sm-4.m-home--statistics
+        .m-home--statistics--big(count-to='{{partners.length}}', duration='5', value='0')
+        .m-home--statistics--small.em
+          ng-pluralize(count='partners.length', when=' \
+            { \
+              "one": "Partenaire", \
+              "other": "Partenaires" \
+            } \
+          ')
+
+      .col-md-4.col-sm-4.m-home--statistics
+        .m-home--statistics--big(count-to='8000000', duration='5', value='0')
+        .m-home--statistics--small.em d'investissements
+
+.light-gray.pvxl
+  .container.text-center
+    .row
+      .col-md-12
+        h2.em
+          | Les&nbsp;
+          span.blanchemaille partenaires
+
+        .hr.turquoise
+
+    .row
+      div(ng-repeat='partner in partners | limitTo:3')
+        .col-md-4
+          .m-partner
+            img(src='{{partner.image.image.thumb.url}}', api-img)
+
+
+.pvxl.text-white
+  .container
+    .row.text-center.ptxl
+      .col-md-12
+        h2.em
+          span.blanchemaille Contactez&nbsp;
+          | nous !
+
+        .hr.turquoise
+
+  .container
+    .row
+      .col-md-4
+        .ptl.prl.pbl.pll
+          h3.em.text-turquoise.mbl.upper A propos
+          p.text-justify
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis augue dolor, a mattis lectus consectetur at. In mattis ac nulla sed pulvinar. Nam tincidunt egestas dui eu scelerisque. Phasellus nec justo ut ante sollicitudin interdum. Praesent nisl augue, ornare eu justo mattis, laoreet rhoncus sapien.
+
+      .col-md-4
+        .ptl.prl.pbl.pll
+          h3.em.text-turquoise.mbl.upper Contact
+          p
+            i.glyphicon.glyphicon-map-marker.text-turquoise.mrm
+            | 17 Grand Place
+          p
+            i.glyphicon.glyphicon-tower.text-turquoise.mrm
+            | 59100 Roubaix
+          p
+            i.glyphicon.glyphicon-earphone.text-turquoise.mrm
+            | 03 21 12 34 56
+          p
+            i.glyphicon.glyphicon-envelope.text-turquoise.mrm
+            | contact@blanchemaille.com
+
+      .col-md-4
+        .ptl.prl.pbl.pll
+          h3.em.text-turquoise.mbl.upper Social
+          p Facebook
+          p Twitter
+          p Linked-in
+          p Viadeo
+
+script.
+  maxHeight();

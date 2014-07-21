@@ -1,5 +1,11 @@
 footer.m-footer.black.mtxl
   .container
-    .row.text-center.pvxl
-      a(ng-href='http://pinkpanda.io')
-        img.pinkpanda(src='images/pinkpanda.png')
+    .row
+      .col-md-12.text-center.pvxl
+        p.mbn
+          | Créé avec&nbsp;
+          span.fa.fa-heart-o.text-turquoise
+          | &nbsp;par&nbsp;
+          a(ui-sref='admin')
+            | PinkPanda
+            img(src='/images/pinkpanda.png', width='30px')

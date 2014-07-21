@@ -8,6 +8,8 @@ angular.module('app', [
   'google-maps',
   'truncate',
   'textAngular',
+  'countTo',
+  'duScroll',
 
   'app.module',
   'app.constants',

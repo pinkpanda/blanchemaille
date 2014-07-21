@@ -1,8 +1,28 @@
+@mixin background-size($size) {
+  background-size: $size;
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -o-background-size: $size;
+}
+
 @import "bootstrap-sass", "admin", "home", "newspaper", "organization";
 
 html, body {
   height: 100%;
   font-family: "Open Sans", $font-family-sans-serif;
+}
+
+a, a:hover {
+  color: $turquoise;
+  text-decoration: none;
+}
+
+.cover {
+  @include background-size(cover);
+}
+
+.contain {
+  @include background-size(contain);
 }
 
 .space {
@@ -13,15 +33,46 @@ html, body {
   cursor: pointer;
 }
 
+.blanchemaille {
+  font-family: "Lobster", Arial, sans-serif;
+}
+
+.em {
+  font-family: "Raleway", Arial, sans-serif;
+}
+
+.hr {
+  height: 1px;
+  margin: 35px auto;
+  width: 140px;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.arrow:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid $turquoise;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  margin-left: -15px;
+}
+
 .sticky-footer {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -111px;
+  margin: 0 auto -210px;
 }
 
 .sticky-footer-trick {
-  height: 111px;
+  height: 210px;
 }
 
 .m-footer {
