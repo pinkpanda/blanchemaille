@@ -1,0 +1,24 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h2.em(blanchemaille) {{page.title}}
+
+      .hr.turquoise
+
+      p.text-justify(ng-bind-html='page.content')
+
+.turquoise.pos-relative.arrow.pvl
+  .container
+    .row.text-center
+      .col-md-12.mvl
+        h2.em.mtm Ils conseillent nos startups
+
+.light-gray
+  .container.pvxl
+    .row
+      div(ng-repeat='organization in organizations | orderBy:"name"')
+        .col-md-4.col-sm-4
+          a.m-organization.mbl(ui-sref='organizations.show({ id: organization.id })')
+            img.max-width(src='{{organization.image.image.thumb.url}}', api-img)

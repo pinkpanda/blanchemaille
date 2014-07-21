@@ -6,15 +6,15 @@
       .col-md-10.col-md-offset-1
         div(ng-include="'views/admin/newspaper/form.html'")
 
-.container
+.container.mvxl
   .row
-    .col-md-6.col-md-offset-3.mvxl
+    .col-md-6.col-md-offset-3.mbxl
       input.form-control(ng-model='search', type='text', placeholder='Rechercher')
 
   .row
     div(ng-repeat='newspaper in newspapers | filter:search | orderBy:"-created_at"')
       .col-md-4
-        .m-newspaper.light-gray
+        .m-newspaper.mbl.light-gray
           .m-newspaper--header.text-center(ui-sref='admin.newspapers.edit({ id: newspaper.id })')
             .m-newspaper--image.max-width.pos-absolute
               img.max-width(src='{{newspaper.image.image.thumb.url}}', api-img)

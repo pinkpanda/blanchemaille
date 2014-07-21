@@ -5,7 +5,7 @@
   -o-background-size: $size;
 }
 
-@import "bootstrap-sass", "admin", "home", "newspaper", "organization";
+@import "bootstrap-sass", "admin", "home", "newspaper", "organization", "responsive";
 
 html, body {
   height: 100%;
@@ -51,6 +51,10 @@ a, a:hover {
   text-transform: uppercase;
 }
 
+.ball {
+  border-radius: 50%;
+}
+
 .arrow:after {
   content: "";
   width: 0;
@@ -64,15 +68,28 @@ a, a:hover {
   margin-left: -15px;
 }
 
+#nav {
+  top: 0;
+  z-index: 10;
+
+  .navbar-brand {
+    color: $turquoise;
+  }
+
+  &.affix + .prevent-affix {
+    margin-top: 50px;
+  }
+}
+
 .sticky-footer {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -210px;
+  margin: 0 auto -150px;
 }
 
 .sticky-footer-trick {
-  height: 210px;
+  height: 150px;
 }
 
 .m-footer {

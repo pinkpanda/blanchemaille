@@ -1,4 +1,6 @@
-.container.pvxl
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
   .row.text-center
     .col-md-12
       h2.em(blanchemaille) {{page.title}}
@@ -10,7 +12,7 @@
   .row
     div(ng-repeat='newspaper in newspapers | orderBy:"-created_at"')
       .col-md-4
-        .m-newspaper.light-gray
+        .m-newspaper.mbl.light-gray
           .m-newspaper--header.text-center(ui-sref='newspapers.show({ id: newspaper.id })')
             .m-newspaper--image.max-width.pos-absolute
               img.max-width(src='{{newspaper.image.image.thumb.url}}', api-img)

@@ -8,6 +8,7 @@ angular.module('app.organizationModule')
       '$state',
       'organizationData',
       'organizations',
+      'page',
 
       function(
         $log,
@@ -15,9 +16,11 @@ angular.module('app.organizationModule')
         $scope,
         $state,
         organizationData,
-        organizations
+        organizations,
+        page
       ) {
         $scope.organizations  = organizations;
+        $scope.page           = page;
         $scope.organization   = {};
 
         $scope.save = function(form) {

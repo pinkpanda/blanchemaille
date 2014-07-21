@@ -14,6 +14,22 @@ angular.module('app.organizationModule', ['ui.router'])
         resolve: {
           organizations: ['organizationData', function(organizationData) {
             return organizationData.getIndex();
+          }],
+
+          page: ['pageData', function(pageData) {
+            return pageData.getOne('organizations');
+          }]
+        }
+      })
+
+      .state('organizations.show', {
+        url: '/:id',
+        templateUrl: 'views/organization/show.html',
+        controller: 'OrganizationShowController',
+        bodyClass: 'light-gray',
+        resolve: {
+          organization: ['$stateParams', 'organizationData', function($stateParams, organizationData) {
+            return organizationData.getOne($stateParams.id);
           }]
         }
       })

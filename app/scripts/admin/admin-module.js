@@ -60,7 +60,9 @@ angular.module('app.adminModule', ['ui.router'])
         resolve: {
           organizations: ['organizationData', function(organizationData) {
             return organizationData.getIndex();
-          }]
+          }],
+
+          page: function() {}
         }
       })
 

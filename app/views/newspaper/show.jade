@@ -1,4 +1,6 @@
-.container.pvxl
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
   .row.text-center
     .col-md-12
       h1.em(blanchemaille) {{newspaper.title}}
@@ -11,7 +13,9 @@
     .col-md-12
       .m-newspaper
         .m-newspaper--content.pvl.phl
-          img.img-rounded.mrl.mbl.pull-left(src='{{newspaper.image.image.thumb.url}}', api-img)
+          .col-md-4.mbl
+            img.max-width.img-rounded(src='{{newspaper.image.image.thumb.url}}', api-img)
+
           p {{newspaper.content}}
 
           .text-right
