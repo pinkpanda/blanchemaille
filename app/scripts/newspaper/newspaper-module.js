@@ -14,6 +14,21 @@ angular.module('app.newspaperModule', ['ui.router'])
         resolve: {
           newspapers: ['newspaperData', function(newspaperData) {
             return newspaperData.getIndex();
+          }],
+
+          page: ['pageData', function(pageData) {
+            return pageData.getOne('newspapers');
+          }]
+        }
+      })
+
+      .state('newspapers.show', {
+        url: '/:id',
+        templateUrl: 'views/newspaper/show.html',
+        controller: 'NewspaperShowController',
+        resolve: {
+          newspaper: ['$stateParams', 'newspaperData', function($stateParams, newspaperData) {
+            return newspaperData.getOne($stateParams.id);
           }]
         }
       })

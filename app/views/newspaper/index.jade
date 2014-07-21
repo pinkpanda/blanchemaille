@@ -1,0 +1,24 @@
+.container.pvxl
+  .row.text-center
+    .col-md-12
+      h2.em(blanchemaille) {{page.title}}
+
+      .hr.turquoise
+
+      p.text-justify(ng-bind-html='page.content')
+
+  .row
+    div(ng-repeat='newspaper in newspapers | orderBy:"-created_at"')
+      .col-md-4
+        .m-newspaper.light-gray
+          .m-newspaper--header.text-center(ui-sref='newspapers.show({ id: newspaper.id })')
+            .m-newspaper--image.max-width.pos-absolute
+              img.max-width(src='{{newspaper.image.image.thumb.url}}', api-img)
+
+            h2.text-white.pos-absolute-center {{newspaper.title}}
+
+          .m-newspaper--content.pvl.phl
+            p {{newspaper.content | characters:200}}
+
+            .text-right
+              em.m-newspaper--name {{newspaper.newspaper_name}}

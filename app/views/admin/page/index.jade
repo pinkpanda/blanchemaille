@@ -18,8 +18,9 @@
         th Contenu
         th
 
-      tr(ng-repeat='page in pages | filter:search')
+      tr(ng-repeat='page in pages | filter:search | orderBy:"title"')
         td {{page.title}}
-        td {{page.content | stripHtml | characters:130}}
+        td
+          span(ng-if='page.content') {{page.content | stripHtml | characters:130}}
         td
           a.btn.btn-info.btn-inverse(ui-sref='admin.pages.edit({ id: page.id })') Editer

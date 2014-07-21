@@ -8,8 +8,9 @@
           | ,
           br
           | we&nbsp;
-          span.text-turquoise ♡
+          span.fa.fa-heart-o.text-turquoise
           | &nbsp;Startups !
+
       .col-md-12.mtxl
         a.btn.btn-turquoise.btn-lg.btn-inverse(du-smooth-scroll, href='#hello') Découvrir Bl@nchemaille
 
@@ -17,14 +18,11 @@
   .container
     .row.text-center
       .col-md-12
-        h2.em
-          | A propos de&nbsp;
-          span.blanchemaille Bl@nchemaille
+        h2.em(blanchemaille) {{page.title}}
 
         .hr.turquoise
 
-        p.text-justify
-          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis augue dolor, a mattis lectus consectetur at. In mattis ac nulla sed pulvinar. Nam tincidunt egestas dui eu scelerisque. Phasellus nec justo ut ante sollicitudin interdum. Praesent nisl augue, ornare eu justo mattis, laoreet rhoncus sapien. Duis scelerisque quis velit sit amet lobortis. Donec sodales elit at nibh placerat, vitae hendrerit diam imperdiet. Praesent ornare vehicula arcu, id accumsan augue iaculis ut. Nunc id fermentum turpis, quis feugiat purus. Vivamus vulputate odio sed diam aliquet, sit amet porta nisl porttitor. Nunc enim nunc, mollis quis elit vel, vehicula congue dui. Nam tempor justo sit amet commodo varius.
+        p.text-justify(ng-bind-html='page.content')
 
 .turquoise.pos-relative.arrow.pvl
   .container
@@ -77,7 +75,6 @@
           .m-partner
             img(src='{{partner.image.image.thumb.url}}', api-img)
 
-
 .pvxl.text-white
   .container
     .row.text-center.ptxl
@@ -92,9 +89,8 @@
     .row
       .col-md-4
         .ptl.prl.pbl.pll
-          h3.em.text-turquoise.mbl.upper A propos
-          p.text-justify
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis augue dolor, a mattis lectus consectetur at. In mattis ac nulla sed pulvinar. Nam tincidunt egestas dui eu scelerisque. Phasellus nec justo ut ante sollicitudin interdum. Praesent nisl augue, ornare eu justo mattis, laoreet rhoncus sapien.
+          h3.em.text-turquoise.mbl.upper {{about.title}}
+          p.text-justify(ng-bind-html='about.content')
 
       .col-md-4
         .ptl.prl.pbl.pll

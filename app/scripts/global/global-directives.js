@@ -24,6 +24,29 @@ angular.module('app.directives', [])
   )
 
   .directive(
+    'blanchemaille',
+    [
+      '$log',
+      '$timeout',
+
+      function(
+        $log,
+        $timeout
+      ) {
+        return {
+          restrict: 'A',
+          link: function(scope, element, attrs) {
+            $timeout(function() {
+              var rgxp = new RegExp('bl@nchemaille|blanchemaille', 'i');
+              element.html(element.html().replace(rgxp, '<span class="blanchemaille">Bl@nchemaille</span>'));
+            });
+          }
+        }
+      }
+    ]
+  )
+
+  .directive(
     'ngReallyClick',
     [
       '$log',

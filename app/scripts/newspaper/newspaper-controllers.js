@@ -7,15 +7,18 @@ angular.module('app.newspaperModule')
       '$state',
       'newspaperData',
       'newspapers',
+      'page',
 
       function(
         $log,
         $scope,
         $state,
         newspaperData,
-        newspapers
+        newspapers,
+        page
       ) {
         $scope.newspapers = newspapers;
+        $scope.page       = page;
         $scope.newspaper  = {};
 
         $scope.save = function(form) {

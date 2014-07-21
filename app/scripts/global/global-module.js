@@ -8,22 +8,36 @@ angular.module('app.module', ['ui.router'])
         controller: [
           '$log',
           '$scope',
+          'about',
           'organizations',
+          'page',
           'partners',
 
           function(
             $log,
             $scope,
+            about,
             organizations,
+            page,
             partners
           ) {
+            $scope.about          = about;
             $scope.organizations  = organizations;
+            $scope.page           = page;
             $scope.partners       = partners;
           }
         ],
         resolve: {
+          about: ['pageData', function(pageData) {
+            return pageData.getOne('about');
+          }],
+
           organizations: ['organizationData', function(organizationData) {
             return organizationData.getIndex();
+          }],
+
+          page: ['pageData', function(pageData) {
+            return pageData.getOne('home');
           }],
 
           partners: ['partnerData', function(partnerData) {

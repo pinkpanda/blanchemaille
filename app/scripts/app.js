@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('app', [
+  'ngAnimate',
   'restangular',
   'ui.router',
   'ngProgressLite',

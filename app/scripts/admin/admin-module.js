@@ -4,18 +4,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin', {
         url: '/admin',
         templateUrl: 'views/admin/home.html',
-        bodyClass: 'white',
-        controller: [
-          '$log',
-          '$state',
-
-          function(
-            $log,
-            $state
-          ) {
-            $state.go('admin.newspapers.index');
-          }
-        ]
+        bodyClass: 'white'
       })
 
 
@@ -33,7 +22,9 @@ angular.module('app.adminModule', ['ui.router'])
         resolve: {
           newspapers: ['newspaperData', function(newspaperData) {
             return newspaperData.getIndex();
-          }]
+          }],
+
+          page: function() {}
         }
       })
 
