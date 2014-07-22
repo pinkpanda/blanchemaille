@@ -1,0 +1,27 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h2.em(blanchemaille) Contactez-nous
+
+      .hr.turquoise
+
+  .row
+    .col-md-8.col-md-offset-2
+      form(name='contactForm', novalidate)
+        .form-group(ng-class='{ "has-error": contactForm.from.$dirty && contactForm.from.$invalid }')
+          label.control-label Email
+          input.form-control(name='from', ng-model='contact.from', ng-required='true', type='email')
+
+        .form-group(ng-class='{ "has-error": contactForm.subject.$dirty && contactForm.subject.$invalid }')
+          label.control-label Sujet
+          input.form-control(name='subject', ng-model='contact.subject', ng-required='true', type='text')
+
+        .form-group(ng-class='{ "has-error": contactForm.body.$invalid }')
+          label.control-label Message
+          textarea.form-control(name='body', ng-model='contact.body', rows='5')
+
+      .row.mtxl
+        .col-md-6.col-md-offset-3
+          button.btn.btn-success.btn-block.btn-lg(ng-click='send(contactForm)', ng-disabled='contactForm.$invalid') Envoyer

@@ -48,7 +48,7 @@ angular.module('app.module', ['ui.router'])
       .state('calendar', {
         url: '/calendar',
         templateUrl: 'views/calendar.html',
-        bodyClass: 'light-gray',
+        bodyClass: 'white',
         controller: [
           '$log',
           '$scope',
@@ -80,6 +80,35 @@ angular.module('app.module', ['ui.router'])
             return pageData.getOne('calendar');
           }]
         }
+      })
+
+      .state('contact', {
+        url: '/contact',
+        templateUrl: 'views/contact.html',
+        bodyClass: 'white',
+        controller: [
+          '$log',
+          'Restangular',
+          '$scope',
+
+          function(
+            $log,
+            Restangular,
+            $scope
+          ) {
+            $scope.contact = {};
+
+            $scope.send = function(form) {
+              if (form.$valid) {
+                Restangular.all('contact').post(_.merge($scope.contact, { to: 'contact@pinkpanda.io' })).then(
+                  function(data) {
+                    $scope.contact = {};
+                  }
+                );
+              }
+            }
+          }
+        ]
       })
 
       .state('faq', {
