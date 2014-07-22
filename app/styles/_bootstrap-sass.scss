@@ -1,4 +1,4 @@
-$turquoise:     #1abc9c;
+$turquoise:     #27ccc0; // custom for blanchemaille
 $green-sea:     #16a085;
 
 $emerald:       #2ecc71;
@@ -53,6 +53,10 @@ $body-bg: #FEFEFE;
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+.btn-turquoise {
+  @include button-variant(#333, $turquoise, darken($turquoise, 5%));
+}
+
 .btn-inverse {
   background-color: transparent;
 
@@ -93,6 +97,14 @@ $body-bg: #FEFEFE;
 
     &:hover {
       color: $btn-danger-color;
+    }
+  }
+
+  &.btn-turquoise {
+    color: darken($turquoise, 5%);
+
+    &:hover {
+      color: #FFF;
     }
   }
 }

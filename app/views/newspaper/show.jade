@@ -1,0 +1,22 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h1.em(blanchemaille) {{newspaper.title}}
+
+      a.btn.btn-turquoise.btn-inverse(ng-href='{{newspaper.link}}') Voir l'article
+
+      .hr.turquoise
+
+  .row
+    .col-md-12
+      .m-newspaper
+        .m-newspaper--content.pvl.phl
+          .col-md-4.mbl
+            img.max-width.img-rounded(src='{{newspaper.image.image.thumb.url}}', api-img)
+
+          p {{newspaper.content}}
+
+          .text-right
+            em.m-newspaper--name {{newspaper.newspaper_name}}

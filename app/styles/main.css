@@ -84,13 +84,13 @@
 }
 
 .huge-margin {
-    margin-top: 70px !important;
-    margin-bottom: 70px !important;
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
 }
 
 .huge-padding {
-    padding-top: 70px !important;
-    padding-bottom: 70px !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
 }
 
 .pvn {
@@ -119,8 +119,8 @@
 }
 
 .pvxl {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
 }
 
 .phn {
@@ -149,8 +149,8 @@
 }
 
 .phxl {
-    padding-right: 30px !important;
-    padding-left: 30px !important;
+    padding-right: 60px !important;
+    padding-left: 60px !important;
 }
 
 .ptn {
@@ -174,7 +174,7 @@
 }
 
 .ptxl {
-    padding-top: 30px !important;
+    padding-top: 60px !important;
 }
 
 .prn {
@@ -198,7 +198,7 @@
 }
 
 .prxl {
-    padding-right: 30px !important;
+    padding-right: 60px !important;
 }
 
 .pbn {
@@ -222,7 +222,7 @@
 }
 
 .pbxl {
-    padding-bottom: 30px !important;
+    padding-bottom: 60px !important;
 }
 
 .pln {
@@ -246,7 +246,7 @@
 }
 
 .plxl {
-    padding-left: 30px !important;
+    padding-left: 60px !important;
 }
 
 .mvn {
@@ -275,8 +275,8 @@
 }
 
 .mvxl {
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
 }
 
 .mhn {
@@ -305,8 +305,8 @@
 }
 
 .mhxl {
-    margin-right: 30px !important;
-    margin-left: 30px !important;
+    margin-right: 60px !important;
+    margin-left: 60px !important;
 }
 
 .mtn {
@@ -330,7 +330,7 @@
 }
 
 .mtxl {
-    margin-top: 30px !important;
+    margin-top: 60px !important;
 }
 
 .mrn {
@@ -354,7 +354,7 @@
 }
 
 .mrxl {
-    margin-right: 30px !important;
+    margin-right: 60px !important;
 }
 
 .mbn {
@@ -378,7 +378,7 @@
 }
 
 .mbxl {
-    margin-bottom: 30px !important;
+    margin-bottom: 60px !important;
 }
 
 .mln {
@@ -402,5 +402,5 @@
 }
 
 .mlxl {
-    margin-left: 30px !important;
+    margin-left: 60px !important;
 }

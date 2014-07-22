@@ -8,6 +8,7 @@ angular.module('app.organizationModule')
       '$state',
       'organizationData',
       'organizations',
+      'page',
 
       function(
         $log,
@@ -15,9 +16,11 @@ angular.module('app.organizationModule')
         $scope,
         $state,
         organizationData,
-        organizations
+        organizations,
+        page
       ) {
         $scope.organizations  = organizations;
+        $scope.page           = page;
         $scope.organization   = {};
 
         $scope.save = function(form) {
@@ -89,6 +92,18 @@ angular.module('app.organizationModule')
         organization
       ) {
         $scope.organization = organization;
+
+        $scope.map = {
+          center: {
+            latitude: $scope.organization.lat || 50.7,
+            longitude: $scope.organization.lon || 3.1667
+          },
+          marker: {
+            latitude: $scope.organization.lat,
+            longitude: $scope.organization.lon
+          },
+          zoom: 11
+        };
       }
     ]
   )

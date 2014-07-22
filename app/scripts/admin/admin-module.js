@@ -4,18 +4,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin', {
         url: '/admin',
         templateUrl: 'views/admin/home.html',
-        bodyClass: 'l-admin white',
-        controller: [
-          '$log',
-          '$state',
-
-          function(
-            $log,
-            $state
-          ) {
-            $state.go('admin.newspapers.index');
-          }
-        ]
+        bodyClass: 'white'
       })
 
 
@@ -33,7 +22,9 @@ angular.module('app.adminModule', ['ui.router'])
         resolve: {
           newspapers: ['newspaperData', function(newspaperData) {
             return newspaperData.getIndex();
-          }]
+          }],
+
+          page: function() {}
         }
       })
 
@@ -69,7 +60,9 @@ angular.module('app.adminModule', ['ui.router'])
         resolve: {
           organizations: ['organizationData', function(organizationData) {
             return organizationData.getIndex();
-          }]
+          }],
+
+          page: function() {}
         }
       })
 
@@ -141,7 +134,9 @@ angular.module('app.adminModule', ['ui.router'])
         resolve: {
           partners: ['partnerData', function(partnerData) {
             return partnerData.getIndex();
-          }]
+          }],
+
+          page: function() {}
         }
       })
 

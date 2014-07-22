@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('app', [
+  'ngAnimate',
   'restangular',
   'ui.router',
   'ngProgressLite',
-  'ui.bootstrap',
+  'ui.calendar',
   'google-maps',
   'truncate',
   'textAngular',
+  'countTo',
+  'duScroll',
 
   'app.module',
   'app.constants',

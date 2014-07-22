@@ -1,0 +1,44 @@
+nav.navbar.navbar-default.mbn(role='navigation')
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='#m-nav--items')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand.blanchemaille(ui-sref='home') Bl@nchemaille
+
+    #m-nav--items.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right.em.upper
+        li
+          a(ui-sref='home') Accueil
+
+        li
+          a(ui-sref='organizations.index') La communauté
+
+        li
+          a(ui-sref='home') Work in progress
+
+        li
+          a(ui-sref='partners.index') Nos partenaires
+
+        li
+          a(ui-sref='newspapers.index') On en parle
+
+        li
+          a(ui-sref='calendar') Calendrier
+
+        li
+          a(ui-sref='faq') FAQ
+
+        li
+          a(ui-sref='home') Contact
+
+script.
+  $(function() {
+    $('#nav').affix({
+      offset: {
+        top: $('#nav').position().top
+      }
+    });
+  });

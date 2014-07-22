@@ -1,8 +1,28 @@
-@import "bootstrap-sass", "admin", "home", "newspaper", "organization";
+@mixin background-size($size) {
+  background-size: $size;
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -o-background-size: $size;
+}
+
+@import "bootstrap-sass", "admin", "faq", "home", "newspaper", "organization", "responsive";
 
 html, body {
   height: 100%;
   font-family: "Open Sans", $font-family-sans-serif;
+}
+
+a, a:hover {
+  color: $turquoise;
+  text-decoration: none;
+}
+
+.cover {
+  @include background-size(cover);
+}
+
+.contain {
+  @include background-size(contain);
 }
 
 .space {
@@ -13,19 +33,127 @@ html, body {
   cursor: pointer;
 }
 
+.blanchemaille {
+  font-family: "Lobster", Arial, sans-serif;
+}
+
+.em {
+  font-family: "Raleway", Arial, sans-serif;
+}
+
+.hr {
+  height: 1px;
+  margin: 35px auto;
+  width: 140px;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.ball {
+  border-radius: 50%;
+}
+
+.arrow:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid $turquoise;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  margin-left: -15px;
+}
+
+#nav {
+  top: 0;
+  z-index: 10;
+
+  .navbar-brand {
+    color: $turquoise;
+  }
+
+  &.affix + .prevent-affix {
+    margin-top: 50px;
+  }
+}
+
 .sticky-footer {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -111px;
+  margin: 0 auto -150px;
 }
 
 .sticky-footer-trick {
-  height: 111px;
+  height: 150px;
 }
 
 .m-footer {
   .pinkpanda {
     width: 20px;
   }
+}
+
+
+// Transition
+
+.at-view-slide-in-bottom.ng-enter {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transform: translate(0px, 100%);
+  -moz-transform: translate(0px, 100%);
+  -ms-transform: translate(0px, 100%);
+  -o-transform: translate(0px, 100%);
+  transform: translate(0px, 100%);
+  opacity: 0;
+  z-index: 1;
+  position: absolute;
+}
+
+.at-view-slide-in-bottom.ng-enter-active {
+  -webkit-transform: translate(0px, 0px);
+  -moz-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  -o-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+  opacity: 1;
+  position: absolute;
+}
+
+.at-view-slide-out-bottom.ng-leave {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transform: translate(0px, 0px);
+  -moz-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  -o-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+  opacity: 1;
+  z-index: 3;
+  position: absolute;
+}
+
+.at-view-slide-out-bottom.ng-leave-active {
+  -webkit-transform: translate(0px, 100%);
+  -moz-transform: translate(0px, 100%);
+  -ms-transform: translate(0px, 100%);
+  -o-transform: translate(0px, 100%);
+  transform: translate(0px, 100%);
+  opacity: 0;
 }

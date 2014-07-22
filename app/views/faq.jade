@@ -1,0 +1,12 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h2.em(blanchemaille) {{page.title}}
+
+      .hr.turquoise
+
+  .row
+    .col-md-8.col-md-offset-2
+      .text-justify.m-faq(ng-bind-html='page.content')

@@ -14,6 +14,22 @@ angular.module('app.partnerModule', ['ui.router'])
         resolve: {
           partners: ['partnerData', function(partnerData) {
             return partnerData.getIndex();
+          }],
+
+          page: ['pageData', function(pageData) {
+            return pageData.getOne('partners');
+          }]
+        }
+      })
+
+      .state('partners.show', {
+        url: '/:id',
+        templateUrl: 'views/partner/show.html',
+        controller: 'PartnerShowController',
+        bodyClass: 'light-gray',
+        resolve: {
+          partner: ['$stateParams', 'partnerData', function($stateParams, partnerData) {
+            return partnerData.getOne($stateParams.id);
           }]
         }
       })

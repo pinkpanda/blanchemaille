@@ -1,0 +1,23 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row
+    .col-md-12.white.phl.pvxl.mbl
+      .row
+        .col-md-6.col-md-offset-3
+          img.max-width(src='{{partner.image.image.thumb.url}}', api-img)
+
+      .row
+        .col-md-12.text-center
+          h2.em
+            | A propos de&nbsp;
+            span.blanchemaille {{partner.name}}
+
+          .hr.turquoise
+
+      .row
+        .col-md-12
+          p.text-justify {{partner.description}}
+
+          .text-center.mtxl
+            a.btn.btn-turquoise.btn-inverse(ng-href='{{partner.link}}') Accèder au site
