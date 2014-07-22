@@ -7,7 +7,7 @@
 
       .hr.turquoise
 
-      p.text-justify(ng-bind-html='page.content')
+      .text-justify(ng-bind-html='page.content')
 
   .row
     div(ng-repeat='newspaper in newspapers | orderBy:"-created_at"')

@@ -45,5 +45,29 @@ angular.module('app.module', ['ui.router'])
           }]
         }
       })
+
+      .state('faq', {
+        url: '/faq',
+        templateUrl: 'views/faq.html',
+        bodyClass: 'light-gray',
+        controller: [
+          '$log',
+          '$scope',
+          'page',
+
+          function(
+            $log,
+            $scope,
+            page
+          ) {
+            $scope.page = page;
+          }
+        ],
+        resolve: {
+          page: ['pageData', function(pageData) {
+            return pageData.getOne('faq');
+          }]
+        }
+      })
   }])
 ;
