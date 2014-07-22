@@ -1,52 +1,59 @@
 #nav.max-width(ng-include="'views/partials/header.html'")
 
 .container.pvxl.prevent-affix
-  .col-md-8.white.phl.pvxl.mbl
-    .row
-      .col-md-6.col-md-offset-3
-        img.max-width(src='{{organization.image.image.thumb.url}}', api-img)
+  .row
+    .col-md-8.white.phl.pvxl.mbl
+      .row
+        .col-md-6.col-md-offset-3
+          img.max-width(src='{{organization.image.image.thumb.url}}', api-img)
 
-    .row
-      .col-md-12.text-center
-        h2.em
-          | A propos de&nbsp;
-          span.blanchemaille {{organization.name}}
+      .row
+        .col-md-12.text-center
+          h2.em
+            | A propos de&nbsp;
+            span.blanchemaille {{organization.name}}
 
-        .hr.turquoise
+          .hr.turquoise
 
-    .row
-      .col-md-12
-        p.text-justify A venir
+      .row
+        .col-md-12
+          p.text-justify A venir
 
-        blockquote.small
-          {{organization.ceo_bio}}
+          blockquote.small
+            {{organization.ceo_bio}}
 
-          footer {{organization.ceo_name}}
+            footer {{organization.ceo_name}}
 
-        .text-center
-          a.btn.btn-turquoise.btn-inverse(ng-href='mailto:{{organization.email}}') Les contacter
+          .text-center.mtxl
+            a.btn.btn-turquoise.btn-inverse(ng-href='mailto:{{organization.email}}') Les contacter
 
-  .col-md-3.col-md-offset-1.white.phl.pvl.text-center
-    .row.mbm
-      .col-xs-2
-        .fa.fa-user.ball.turquoise.m-organization--info.mtm.mbl
+    .col-md-3.col-md-offset-1.white.text-center
+      .row
+        .col-md-12.ptm
+          google-map.m-organization--map(center='map.center', zoom='map.zoom')
+            marker(coords='map.marker')
 
-      .col-xs-10
-        p.h4.mtx Président
-        p {{organization.ceo_name}}
+        .col-md-12.phl.pvl
+          .row.mbm
+            .col-xs-2
+              .fa.fa-user.ball.turquoise.m-organization--info.mtm.mbl
 
-    .row.mbm
-      .col-xs-2
-        .fa.fa-globe.ball.turquoise.m-organization--info.mtm.mbl
+            .col-xs-10
+              p.h4.mtx Président
+              p {{organization.ceo_name}}
 
-      .col-xs-10
-        p.h4.mtx Effectif
-        p(count-to='{{organization.nb_employees}}', duration='3', value='0')
+          .row.mbm
+            .col-xs-2
+              .fa.fa-globe.ball.turquoise.m-organization--info.mtm.mbl
 
-    .row
-      .col-xs-2
-        .fa.fa-dot-circle-o.ball.turquoise.m-organization--info.mtm.mbl
+            .col-xs-10
+              p.h4.mtx Effectif
+              p(count-to='{{organization.nb_employees}}', duration='3', value='0')
 
-      .col-xs-10
-        p.h4.mtx Secteur
-        p {{organization.sector}}
+          .row
+            .col-xs-2
+              .fa.fa-dot-circle-o.ball.turquoise.m-organization--info.mtm.mbl
+
+            .col-xs-10
+              p.h4.mtx Secteur
+              p {{organization.sector}}

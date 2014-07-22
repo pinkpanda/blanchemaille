@@ -4,7 +4,6 @@ angular.module('app.module', ['ui.router'])
       .state('home', {
         url: '/',
         templateUrl: 'views/home.html',
-        bodyClass: 'm-home cover',
         controller: [
           '$log',
           '$scope',

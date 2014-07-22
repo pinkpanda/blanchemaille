@@ -13,12 +13,12 @@
   .container
     .row.text-center
       .col-md-12.mvl
-        h2.em.mtm Ils sont la réussite
+        h2.em.mtm Ils conseillent nos membres
 
 .light-gray
   .container.pvxl
     .row
-      div(ng-repeat='organization in organizations | orderBy:"name"')
+      div(ng-repeat='partner in partners | orderBy:"name"')
         .col-md-4.col-sm-4
-          a.m-organization.mbl(ui-sref='organizations.show({ id: organization.id })')
-            img.max-width(src='{{organization.image.image.thumb.url}}', api-img)
+          a.m-partner.block.mbl(ui-sref='partners.show({ id: partner.id })')
+            img.max-width(src='{{partner.image.image.thumb.url}}', api-img)

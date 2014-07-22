@@ -1,4 +1,5 @@
 .height-100
+  .m-home--background.cover
   .container.pos-absolute-center
     .row.text-center
       .col-md-12
@@ -74,7 +75,7 @@
     .row
       div(ng-repeat='partner in partners | limitTo:3')
         .col-md-4.col-sm-4
-          .m-partner.mbl
+          a.m-partner.block.mbl(ui-sref='partners.show({ id: partner.id })')
             img.max-width(src='{{partner.image.image.thumb.url}}', api-img)
 
 .pvxl.text-white

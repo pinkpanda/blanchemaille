@@ -7,15 +7,18 @@ angular.module('app.partnerModule')
       '$state',
       'partnerData',
       'partners',
+      'page',
 
       function(
         $log,
         $scope,
         $state,
         partnerData,
-        partners
+        partners,
+        page
       ) {
         $scope.partners = partners;
+        $scope.page     = page;
         $scope.partner  = {};
 
         $scope.save = function(form) {

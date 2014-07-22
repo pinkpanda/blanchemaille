@@ -134,7 +134,9 @@ angular.module('app.adminModule', ['ui.router'])
         resolve: {
           partners: ['partnerData', function(partnerData) {
             return partnerData.getIndex();
-          }]
+          }],
+
+          page: function() {}
         }
       })
 

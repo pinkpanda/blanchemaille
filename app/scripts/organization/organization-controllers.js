@@ -92,6 +92,18 @@ angular.module('app.organizationModule')
         organization
       ) {
         $scope.organization = organization;
+
+        $scope.map = {
+          center: {
+            latitude: $scope.organization.lat || 50.7,
+            longitude: $scope.organization.lon || 3.1667
+          },
+          marker: {
+            latitude: $scope.organization.lat,
+            longitude: $scope.organization.lon
+          },
+          zoom: 11
+        };
       }
     ]
   )
