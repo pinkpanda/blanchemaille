@@ -5,7 +5,7 @@ angular.module('app', [
   'restangular',
   'ui.router',
   'ngProgressLite',
-  'ui.bootstrap',
+  'ui.calendar',
   'google-maps',
   'truncate',
   'textAngular',

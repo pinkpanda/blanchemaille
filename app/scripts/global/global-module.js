@@ -45,6 +45,43 @@ angular.module('app.module', ['ui.router'])
         }
       })
 
+      .state('calendar', {
+        url: '/calendar',
+        templateUrl: 'views/calendar.html',
+        bodyClass: 'light-gray',
+        controller: [
+          '$log',
+          '$scope',
+          '$filter',
+          'page',
+
+          function(
+            $log,
+            $scope,
+            $filter,
+            page
+          ) {
+            $scope.page = page;
+
+            $scope.calendar = {
+              config: {
+                height: 600,
+                header: {
+                  left: 'month agendaWeek agendaDay',
+                  right: 'today prev,next'
+                }
+              },
+              source: [{ url: $filter('stripHtml')($scope.page.content) }]
+            }
+          }
+        ],
+        resolve: {
+          page: ['pageData', function(pageData) {
+            return pageData.getOne('calendar');
+          }]
+        }
+      })
+
       .state('faq', {
         url: '/faq',
         templateUrl: 'views/faq.html',

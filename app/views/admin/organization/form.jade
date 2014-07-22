@@ -43,11 +43,18 @@ form(enctype='multipart/form-data', name='organizationForm', ng-show='organizati
             input.form-control(name='nb_employees', ng-model='organization.nb_employees', type='number')
 
   .row.mtl
-    .col-md-12
+    .col-md-6
+      .form-group(ng-class='{ "has-error": organizationForm.link.$dirty && organizationForm.link.$invalid }')
+        label.control-label Lien
+        input.form-control(name='link', ng-model='organization.link', type='url')
+
+    .col-md-6
       .form-group(ng-class='{ "has-error": organizationForm.image.$dirty && organizationForm.image.$invalid }')
         label.control-label Logo
         input.form-control(name='image', file-model='organization.image', type='file')
 
+  .row
+    .col-md-12
       .form-group(ng-class='{ "has-error": organizationForm.ceo_name.$dirty && organizationForm.ceo_name.$invalid }')
         label.control-label Nom du dirigeant
         input.form-control(name='ceo_name', ng-model='organization.ceo_name', type='text')
