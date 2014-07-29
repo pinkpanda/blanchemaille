@@ -50,7 +50,7 @@ angular.module('app.newspaperModule')
             }
           });
 
-          if (typeof model.id === 'number') {
+          if (typeof model.id !== 'undefined') {
             Restangular.one('newspapers', model.id)
               .withHttpConfig({ transformRequest: angular.identity })
               .customPUT(fd, undefined, {}, { 'Content-Type': undefined }).then(

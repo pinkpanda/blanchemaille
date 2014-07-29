@@ -48,7 +48,7 @@ angular.module('app.organizationModule')
             }
           });
 
-          if (typeof model.id === 'number') {
+          if (typeof model.id !== 'undefined') {
             Restangular.one('organizations', model.id)
               .withHttpConfig({ transformRequest: angular.identity })
               .customPUT(fd, undefined, {}, { 'Content-Type': undefined }).then(

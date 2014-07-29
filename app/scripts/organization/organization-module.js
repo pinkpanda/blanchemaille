@@ -3,7 +3,7 @@ angular.module('app.organizationModule', ['ui.router'])
     $stateProvider
       .state('organizations', {
         abstract: true,
-        url: '/organizations',
+        url: '/la-communaute',
         template: '<div ui-view></div>'
       })
 

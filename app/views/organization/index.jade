@@ -20,5 +20,5 @@
     .row
       div(ng-repeat='organization in organizations | orderBy:"name"')
         .col-md-4.col-sm-4
-          a.m-organization.mbl(ui-sref='organizations.show({ id: organization.id })')
+          a.m-organization.mbl(ui-sref='organizations.show({ id: organization.slug })')
             img.max-width(src='{{organization.image.image.thumb.url}}', api-img)

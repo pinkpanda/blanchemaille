@@ -41,7 +41,7 @@ angular.module('app.workModule')
         this.saveOne = function(model) {
           var deferred = $q.defer();
 
-          if (typeof model.id === 'number') {
+          if (typeof model.id !== 'undefined') {
             Restangular.one('works', model.id).customPUT(model).then(
               function(data) {
                 deferred.resolve(data);

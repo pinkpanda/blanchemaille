@@ -46,7 +46,7 @@ angular.module('app.module', ['ui.router'])
       })
 
       .state('calendar', {
-        url: '/calendar',
+        url: '/evenements',
         templateUrl: 'views/calendar.html',
         bodyClass: 'white',
         controller: [
@@ -112,7 +112,7 @@ angular.module('app.module', ['ui.router'])
       })
 
       .state('faq', {
-        url: '/faq',
+        url: '/foire-aux-questions',
         templateUrl: 'views/faq.html',
         bodyClass: 'light-gray',
         controller: [

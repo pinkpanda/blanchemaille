@@ -48,7 +48,7 @@ angular.module('app.partnerModule')
             }
           });
 
-          if (typeof model.id === 'number') {
+          if (typeof model.id !== 'undefined') {
             Restangular.one('partners', model.id)
               .withHttpConfig({ transformRequest: angular.identity })
               .customPUT(fd, undefined, {}, { 'Content-Type': undefined }).then(

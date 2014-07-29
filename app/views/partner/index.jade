@@ -20,5 +20,5 @@
     .row
       div(ng-repeat='partner in partners | orderBy:"name"')
         .col-md-4.col-sm-4
-          a.m-partner.block.mbl(ui-sref='partners.show({ id: partner.id })')
+          a.m-partner.block.mbl(ui-sref='partners.show({ id: partner.slug })')
             img.max-width(src='{{partner.image.image.thumb.url}}', api-img)

@@ -3,7 +3,7 @@ angular.module('app.workModule', ['ui.router'])
     $stateProvider
       .state('works', {
         abstract: true,
-        url: '/works',
+        url: '/works-in-progress',
         template: '<div ui-view></div>'
       })
 
