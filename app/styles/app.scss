@@ -79,6 +79,13 @@ a, a:hover {
   &.affix + .prevent-affix {
     margin-top: 50px;
   }
+
+  .active {
+    padding: 10px;
+    margin-top: 4px;
+    color: $turquoise;
+    border: 1px solid $turquoise;
+  }
 }
 
 .sticky-footer {

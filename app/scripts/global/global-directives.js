@@ -41,7 +41,7 @@ angular.module('app.directives', [])
               element.html(element.html().replace(rgxp, '<span class="blanchemaille">Bl@nchemaille</span>'));
             });
           }
-        }
+        };
       }
     ]
   )
@@ -64,7 +64,7 @@ angular.module('app.directives', [])
               }
             });
           }
-        }
+        };
       }
     ]
   )

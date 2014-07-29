@@ -75,8 +75,16 @@ angular.module('app', [
           for (var i = state.length; i > 0; i--) {
             tmpState = state.slice(0, i).join('.');
 
-            if ($state.get(tmpState) && $state.get(tmpState).bodyClass) {
-              bodyClass += ' ' + $state.get(tmpState).bodyClass;
+            if ($state.get(tmpState)) {
+              $log.info($('#nav .' + tmpState), $('#nav .' + tmpState).length);
+              if ($('#nav .' + tmpState).length > 0) {
+                $timeout(function() {
+                  $('#nav .' + tmpState).addClass('active');
+                });
+              }
+
+              if ($state.get(tmpState).bodyClass)
+                bodyClass += ' ' + $state.get(tmpState).bodyClass;
             }
           }
 
