@@ -55,6 +55,10 @@ a, a:hover {
   border-radius: 50%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .arrow:after {
   content: "";
   width: 0;

@@ -62,14 +62,39 @@ angular.module('app.adminModule', ['ui.router'])
             return organizationData.getIndex();
           }],
 
-          page: function() {}
+          page: function() {},
+
+          sectors: ['$q', 'Restangular', function($q, Restangular) {
+            var deferred = $q.defer();
+
+            Restangular.all('sectors').getList().then(
+              function(data) {
+                deferred.resolve(data);
+              }
+            );
+
+            return deferred.promise;
+          }]
         }
       })
 
       .state('admin.organizations.new', {
         url: '/new',
         templateUrl: 'views/admin/organization/edit.html',
-        controller: 'OrganizationNewController'
+        controller: 'OrganizationNewController',
+        resolve: {
+          sectors: ['$q', 'Restangular', function($q, Restangular) {
+            var deferred = $q.defer();
+
+            Restangular.all('sectors').getList().then(
+              function(data) {
+                deferred.resolve(data);
+              }
+            );
+
+            return deferred.promise;
+          }]
+        }
       })
 
       .state('admin.organizations.edit', {
@@ -79,6 +104,18 @@ angular.module('app.adminModule', ['ui.router'])
         resolve: {
           organization: ['$stateParams', 'organizationData', function($stateParams, organizationData) {
             return organizationData.getOne($stateParams.id);
+          }],
+
+          sectors: ['$q', 'Restangular', function($q, Restangular) {
+            var deferred = $q.defer();
+
+            Restangular.all('sectors').getList().then(
+              function(data) {
+                deferred.resolve(data);
+              }
+            );
+
+            return deferred.promise;
           }]
         }
       })

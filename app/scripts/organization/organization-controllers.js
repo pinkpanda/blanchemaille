@@ -9,6 +9,7 @@ angular.module('app.organizationModule')
       'organizationData',
       'organizations',
       'page',
+      'sectors',
 
       function(
         $log,
@@ -17,11 +18,13 @@ angular.module('app.organizationModule')
         $state,
         organizationData,
         organizations,
-        page
+        page,
+        sectors
       ) {
         $scope.organizations  = organizations;
         $scope.page           = page;
         $scope.organization   = {};
+        $scope.sectors        = sectors;
 
         $scope.save = function(form) {
           if (form.$valid) {
@@ -47,7 +50,7 @@ angular.module('app.organizationModule')
             longitude: null,
             events: {
               position_changed: function() {
-                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.latitude  = $scope.map.marker.latitude;
                 $scope.map.center.longitude = $scope.map.marker.longitude;
               }
             }
@@ -117,15 +120,18 @@ angular.module('app.organizationModule')
       '$scope',
       '$state',
       'organizationData',
+      'sectors',
 
       function(
         $log,
         $http,
         $scope,
         $state,
-        organizationData
+        organizationData,
+        sectors
       ) {
         $scope.organization = {};
+        $scope.sectors      = sectors;
 
         $scope.save = function(form) {
           if (form.$valid) {
@@ -147,7 +153,7 @@ angular.module('app.organizationModule')
             longitude: null,
             events: {
               position_changed: function() {
-                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.latitude  = $scope.map.marker.latitude;
                 $scope.map.center.longitude = $scope.map.marker.longitude;
               }
             }
@@ -186,6 +192,7 @@ angular.module('app.organizationModule')
       '$state',
       'organizationData',
       'organization',
+      'sectors',
 
       function(
         $log,
@@ -193,9 +200,11 @@ angular.module('app.organizationModule')
         $scope,
         $state,
         organizationData,
-        organization
+        organization,
+        sectors
       ) {
         $scope.organization = organization;
+        $scope.sectors      = sectors;
 
         $scope.save = function(form) {
           if (form.$valid) {
@@ -225,7 +234,7 @@ angular.module('app.organizationModule')
             longitude: $scope.organization.lon,
             events: {
               position_changed: function() {
-                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.latitude  = $scope.map.marker.latitude;
                 $scope.map.center.longitude = $scope.map.marker.longitude;
               }
             }
