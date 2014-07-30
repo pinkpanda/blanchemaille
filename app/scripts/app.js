@@ -53,6 +53,7 @@ angular.module('app', [
       '$log',
       '$rootScope',
       '$state',
+      '$window',
       '$timeout',
       'ngProgressLite',
 
@@ -60,6 +61,7 @@ angular.module('app', [
         $log,
         $rootScope,
         $state,
+        $window,
         $timeout,
         ngProgressLite
       ) {
@@ -76,12 +78,11 @@ angular.module('app', [
             tmpState = state.slice(0, i).join('.');
 
             if ($state.get(tmpState)) {
-              $log.info($('#nav .' + tmpState), $('#nav .' + tmpState).length);
-              if ($('#nav .' + tmpState).length > 0) {
-                $timeout(function() {
+              $timeout(function() {
+                if ($('#nav .' + tmpState).length > 0) {
                   $('#nav .' + tmpState).addClass('active');
-                });
-              }
+                }
+              }, 100);
 
               if ($state.get(tmpState).bodyClass)
                 bodyClass += ' ' + $state.get(tmpState).bodyClass;
@@ -89,6 +90,8 @@ angular.module('app', [
           }
 
           $rootScope.bodyClass = bodyClass;
+
+          $window.scrollTo(0, 0);
 
           ngProgressLite.set(0.7);
           $timeout(function () {

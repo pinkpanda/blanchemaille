@@ -66,6 +66,7 @@ angular.module('app.module', ['ui.router'])
             $scope.calendar = {
               config: {
                 height: 600,
+                lang: 'fr',
                 header: {
                   left: 'month agendaWeek agendaDay',
                   right: 'today prev,next'
