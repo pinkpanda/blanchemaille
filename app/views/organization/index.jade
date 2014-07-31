@@ -13,7 +13,11 @@
   .container
     .row.text-center
       .col-md-12.mvl
-        h2.em.mtm Ils sont la réussite
+        google-map.m-organization--map(center='map.center', zoom='map.zoom')
+          markers(click="'onClicked'", coords="'self'", fit='true', icon="'icon'", models='markers | filter:selectedSector')
+
+        select.form-control(name='sector', ng-model='selectedSector', ng-options='sector for sector in sectors')
+          option(value='') Sélectionnez un secteur
 
 .light-gray
   .container.pvxl
@@ -22,3 +26,8 @@
         .col-md-4.col-sm-4
           a.m-organization.block.mbl(ui-sref='organizations.show({ id: organization.slug })')
             img.max-width(src='{{organization.image.image.thumb.url}}', api-img)
+
+style.
+  .m-organization--map .angular-google-map-container {
+    height: 500px;
+  }

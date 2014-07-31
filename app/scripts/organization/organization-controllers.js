@@ -10,6 +10,7 @@ angular.module('app.organizationModule')
       'organizations',
       'page',
       'sectors',
+      'API_BASE_URL',
 
       function(
         $log,
@@ -19,7 +20,8 @@ angular.module('app.organizationModule')
         organizationData,
         organizations,
         page,
-        sectors
+        sectors,
+        API_BASE_URL
       ) {
         $scope.organizations  = organizations;
         $scope.page           = page;
@@ -39,6 +41,19 @@ angular.module('app.organizationModule')
             );
           }
         };
+
+        $scope.markers = _.map($scope.organizations, function(organization, i) {
+          return {
+            icon: API_BASE_URL + organization.image.image.tiny.url,
+            id: i,
+            latitude: organization.lat,
+            longitude: organization.lon,
+            onClicked: function () {
+              $state.go('organizations.show', { id: organization.slug })
+            },
+            sector: organization.sector
+          };
+        });
 
         $scope.map = {
           center: {
