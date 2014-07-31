@@ -9,7 +9,7 @@ form(enctype='multipart/form-data', name='newspaperForm', ng-show='newspaper', n
 
   .form-group(ng-class='{ "has-error": newspaperForm.newspaper_name.$dirty && newspaperForm.newspaper_name.$invalid }')
     label.control-label Nom du journal
-    input.form-control(name='newspaper_name', ng-model='newspaper.newspaper_name', ng-required='true', type='text')
+    input.form-control(name='newspaper_name', ng-model='newspaper.newspaper_name', type='text')
 
   .form-group(ng-class='{ "has-error": newspaperForm.image.$dirty && newspaperForm.image.$invalid }')
     label.control-label Image

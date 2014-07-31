@@ -207,6 +207,8 @@ angular.module('app.adminModule', ['ui.router'])
         templateUrl: 'views/admin/work/index.html',
         controller: 'WorkIndexController',
         resolve: {
+          page: function() {},
+
           works: ['workData', function(workData) {
             return workData.getIndex();
           }]
