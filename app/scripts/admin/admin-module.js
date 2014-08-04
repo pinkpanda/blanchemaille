@@ -4,7 +4,8 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin', {
         url: '/admin',
         templateUrl: 'views/admin/home.html',
-        bodyClass: 'white'
+        bodyClass: 'white',
+        logged: true
       })
 
 
@@ -70,6 +71,9 @@ angular.module('app.adminModule', ['ui.router'])
             Restangular.all('sectors').getList().then(
               function(data) {
                 deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
               }
             );
 
@@ -89,6 +93,9 @@ angular.module('app.adminModule', ['ui.router'])
             Restangular.all('sectors').getList().then(
               function(data) {
                 deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
               }
             );
 
@@ -112,6 +119,9 @@ angular.module('app.adminModule', ['ui.router'])
             Restangular.all('sectors').getList().then(
               function(data) {
                 deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
               }
             );
 

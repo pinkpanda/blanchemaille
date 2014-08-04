@@ -135,5 +135,36 @@ angular.module('app.module', ['ui.router'])
           }]
         }
       })
+
+      .state('login', {
+        url: '/connexion',
+        templateUrl: 'views/login.html',
+        bodyClass: 'white',
+        controller: [
+          '$log',
+          '$scope',
+          '$state',
+          'localStorageService',
+          'AuthService',
+
+          function(
+            $log,
+            $scope,
+            $state,
+            localStorageService,
+            AuthService
+          ) {
+            localStorageService.clearAll();
+
+            $scope.send = function(form) {
+              if (form.$valid) {
+                AuthService.login($scope.login).then(function() {
+                  $state.go('admin');
+                });
+              }
+            }
+          }
+        ]
+      })
   }])
 ;

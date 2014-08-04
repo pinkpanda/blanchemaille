@@ -5,11 +5,13 @@ angular.module('app.pageModule')
       '$log',
       '$q',
       'Restangular',
+      'AuthRestangular',
 
       function(
         $log,
         $q,
-        Restangular
+        Restangular,
+        AuthRestangular
       ) {
         this.getIndex = function() {
           var deferred = $q.defer();
@@ -17,6 +19,9 @@ angular.module('app.pageModule')
           Restangular.all('pages').getList().then(
             function(data) {
               deferred.resolve(data);
+            },
+            function () {
+              deferred.reject();
             }
           );
 
@@ -42,15 +47,21 @@ angular.module('app.pageModule')
           var deferred = $q.defer();
 
           if (typeof model.id === 'number') {
-            Restangular.one('pages', model.id).customPUT(model).then(
+            AuthRestangular.one('pages', model.id).customPUT(model).then(
               function(data) {
                 deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
               }
             );
           } else {
-            Restangular.all('pages').post(model).then(
+            AuthRestangular.all('pages').post(model).then(
               function(data) {
                 deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
               }
             );
           }
@@ -61,9 +72,12 @@ angular.module('app.pageModule')
         this.deleteOne = function(id) {
           var deferred = $q.defer();
 
-          Restangular.one('pages', id).remove().then(
+          AuthRestangular.one('pages', id).remove().then(
             function(data) {
               deferred.resolve(data);
+            },
+            function () {
+              deferred.reject();
             }
           );
 

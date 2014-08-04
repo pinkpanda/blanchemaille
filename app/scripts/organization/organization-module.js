@@ -26,6 +26,9 @@ angular.module('app.organizationModule', ['ui.router'])
             Restangular.all('sectors').getList().then(
               function(data) {
                 deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
               }
             );
 
