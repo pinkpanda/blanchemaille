@@ -11,6 +11,7 @@ angular.module('app.module', ['ui.router'])
           'organizations',
           'page',
           'partners',
+          'networks',
 
           function(
             $log,
@@ -18,12 +19,14 @@ angular.module('app.module', ['ui.router'])
             about,
             organizations,
             page,
-            partners
+            partners,
+            networks
           ) {
             $scope.about          = about;
             $scope.organizations  = organizations;
             $scope.page           = page;
             $scope.partners       = partners;
+            $scope.networks       = networks;
           }
         ],
         resolve: {
@@ -41,6 +44,10 @@ angular.module('app.module', ['ui.router'])
 
           partners: ['partnerData', function(partnerData) {
             return partnerData.getIndex();
+          }],
+
+          networks: ['pageData', function(pageData) {
+            return pageData.getOne('networks');
           }]
         }
       })

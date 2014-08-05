@@ -115,11 +115,8 @@
 
       .col-md-4
         .ptl.prl.pbl.pll
-          h3.em.text-turquoise.mbl.upper Social
-          p Facebook
-          p Twitter
-          p Linked-in
-          p Viadeo
+          h3.em.text-turquoise.mbl.upper {{networks.title}}
+          .text-justify(ng-bind-html='networks.content')
 
 script.
   maxHeight();

@@ -9,6 +9,10 @@ form(name='pageForm', ng-show='page', novalidate)
     small(ng-if='page.slug == "faq"') Utilisez les H2, H3 pour styliser les questions/réponses
     small(ng-if='page.slug == "calendar"') Veuillez n'y placer qu'un seul lien
 
+  .form-group(ng-class='{ "has-error": pageForm.info.$dirty && pageForm.info.$invalid }')
+    label.control-label Plus d'informations
+    input.form-control(name='info', ng-model='page.info', ng-required='true', type='text')
+
   .form-group(ng-class='{ "has-error": pageForm.slug.$dirty && pageForm.slug.$invalid }')
     label.control-label Slug
     input.form-control(name='slug', ng-model='page.slug', ng-required='true', type='text')

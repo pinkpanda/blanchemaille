@@ -14,12 +14,12 @@
   .row
     table.table.table-striped
       tr
-        th Titre
+        th Position
         th Contenu
         th
 
-      tr(ng-repeat='page in pages | filter:search | orderBy:"title"')
-        td {{page.title}}
+      tr(ng-repeat='page in pages | filter:search | orderBy:"-updated_at"')
+        td {{page.info}}
         td
           span(ng-if='page.content') {{page.content | stripHtml | characters:130}}
         td

@@ -3,21 +3,31 @@ angular.module('app.services', [])
     'AuthRestangular',
     [
       '$log',
+      '$state',
       'Restangular',
       'AuthService',
       'API_BASE_URL',
 
       function(
         $log,
+        $state,
         Restangular,
         AuthService,
         API_BASE_URL
       ) {
         return Restangular.withConfig(function(RestangularConfigurer) {
           RestangularConfigurer.setBaseUrl(API_BASE_URL);
-          RestangularConfigurer.setDefaultRequestParams({
-            authentication_token: AuthService.currentUser().authentication_token
-          });
+
+          AuthService.currentUser().then(
+            function(data) {
+              RestangularConfigurer.setDefaultRequestParams({
+                authentication_token: data.authentication_token
+              });
+            },
+            function() {
+              $state.go('login');
+            }
+          );
         });
       }
     ]
