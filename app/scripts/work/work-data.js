@@ -5,11 +5,13 @@ angular.module('app.workModule')
       '$log',
       '$q',
       'Restangular',
+      'AuthRestangular',
 
       function(
         $log,
         $q,
-        Restangular
+        Restangular,
+        AuthRestangular
       ) {
         this.getIndex = function() {
           var deferred = $q.defer();
@@ -17,6 +19,9 @@ angular.module('app.workModule')
           Restangular.all('works').getList().then(
             function(data) {
               deferred.resolve(data);
+            },
+            function () {
+              deferred.reject();
             }
           );
 
@@ -42,15 +47,21 @@ angular.module('app.workModule')
           var deferred = $q.defer();
 
           if (typeof model.id !== 'undefined') {
-            Restangular.one('works', model.id).customPUT(model).then(
+            AuthRestangular.one('works', model.id).customPUT(model).then(
               function(data) {
                 deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
               }
             );
           } else {
-            Restangular.all('works').post(model).then(
+            AuthRestangular.all('works').post(model).then(
               function(data) {
                 deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
               }
             );
           }
@@ -61,9 +72,12 @@ angular.module('app.workModule')
         this.deleteOne = function(id) {
           var deferred = $q.defer();
 
-          Restangular.one('works', id).remove().then(
+          AuthRestangular.one('works', id).remove().then(
             function(data) {
               deferred.resolve(data);
+            },
+            function () {
+              deferred.reject();
             }
           );
 

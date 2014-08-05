@@ -1,0 +1,23 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h2.em(blanchemaille) Se connecter
+
+      .hr.turquoise
+
+  .row
+    .col-md-8.col-md-offset-2
+      form(name='loginForm', novalidate)
+        .form-group(ng-class='{ "has-error": loginForm.email.$dirty && loginForm.email.$invalid }')
+          label.control-label Email
+          input.form-control(name='email', ng-model='login.email', ng-required='true', type='email')
+
+        .form-group(ng-class='{ "has-error": loginForm.password.$dirty && loginForm.password.$invalid }')
+          label.control-label Mot de passe
+          input.form-control(name='password', ng-model='login.password', ng-required='true', type='password')
+
+      .row.mtxl
+        .col-md-6.col-md-offset-3
+          button.btn.btn-success.btn-block.btn-lg(ng-click='send(loginForm)', ng-disabled='loginForm.$invalid') Envoyer

@@ -18,6 +18,21 @@ angular.module('app.organizationModule', ['ui.router'])
 
           page: ['pageData', function(pageData) {
             return pageData.getOne('organizations');
+          }],
+
+          sectors: ['$q', 'Restangular', function($q, Restangular) {
+            var deferred = $q.defer();
+
+            Restangular.all('sectors').getList().then(
+              function(data) {
+                deferred.resolve(data);
+              },
+              function () {
+                deferred.reject();
+              }
+            );
+
+            return deferred.promise;
           }]
         }
       })

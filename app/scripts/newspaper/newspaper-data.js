@@ -6,12 +6,14 @@ angular.module('app.newspaperModule')
       '$q',
       '$http',
       'Restangular',
+      'AuthRestangular',
 
       function(
         $log,
         $q,
         $http,
-        Restangular
+        Restangular,
+        AuthRestangular
       ) {
         this.getIndex = function() {
           var deferred = $q.defer();
@@ -19,6 +21,9 @@ angular.module('app.newspaperModule')
           Restangular.all('newspapers').getList().then(
             function(data) {
               deferred.resolve(data);
+            },
+            function () {
+              deferred.reject();
             }
           );
 
@@ -51,20 +56,26 @@ angular.module('app.newspaperModule')
           });
 
           if (typeof model.id !== 'undefined') {
-            Restangular.one('newspapers', model.id)
+            AuthRestangular.one('newspapers', model.id)
               .withHttpConfig({ transformRequest: angular.identity })
               .customPUT(fd, undefined, {}, { 'Content-Type': undefined }).then(
                 function(data) {
                   deferred.resolve(data);
+                },
+                function () {
+                  deferred.reject();
                 }
               )
             ;
           } else {
-            Restangular.all('newspapers')
+            AuthRestangular.all('newspapers')
               .withHttpConfig({ transformRequest: angular.identity })
               .post(fd, {}, { 'Content-Type': undefined }).then(
                 function(data) {
                   deferred.resolve(data);
+                },
+                function () {
+                  deferred.reject();
                 }
               )
             ;
@@ -76,9 +87,12 @@ angular.module('app.newspaperModule')
         this.deleteOne = function(id) {
           var deferred = $q.defer();
 
-          Restangular.one('newspapers', id).remove().then(
+          AuthRestangular.one('newspapers', id).remove().then(
             function(data) {
               deferred.resolve(data);
+            },
+            function () {
+              deferred.reject();
             }
           );
 

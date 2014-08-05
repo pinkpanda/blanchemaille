@@ -1,0 +1,48 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h2.em(blanchemaille) {{page.title}}
+
+      .hr.turquoise
+
+      .text-justify(ng-bind-html='page.content')
+
+  .row.pos-relative
+    .m-work--timeline--container.light-gray.pos-absolute
+    .m-work--timeline.turquoise.pos-absolute
+
+    div(ng-repeat='work in works | orderBy:"worked_at"', style='margin-top: 100px;')
+      .col-md-12
+        .m-work--point.ball.turquoise.pos-absolute
+          .m-work--background.ball.light-gray.pos-absolute
+
+        .row
+          .col-sm-5.m-work.mvl.light-gray(ng-class-even="'col-sm-offset-7'")
+            h3.em {{work.title}}
+
+            .text-justify(ng-bind-html='work.content')
+
+script.
+  var timeline = function() {
+    var computedHeight  = $(window).height() / 2 + $(window).scrollTop() - $('.m-work--timeline').offset().top;
+    var minimum         = $(window).height() / 2 + $(window).scrollTop() - $('.m-work--point').first().offset().top;
+    var newHeight       = (minimum < 0) ? $('.m-work--point').first().offset().top - $('.m-work--timeline').offset().top + 15 : computedHeight;
+
+    $('.m-work--timeline').height(newHeight);
+
+    $('.m-work--point').each(function() {
+      if ($(this).offset().top < $('.m-work--timeline').offset().top + newHeight) {
+        $(this).parent().addClass('active');
+      } else {
+        $(this).parent().removeClass('active');
+      }
+    });
+  };
+
+  setTimeout(function() {
+    timeline();
+  }, 10);
+
+  $(window).scroll(_.debounce(timeline, 50));

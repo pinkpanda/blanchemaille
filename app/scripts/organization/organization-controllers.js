@@ -9,6 +9,8 @@ angular.module('app.organizationModule')
       'organizationData',
       'organizations',
       'page',
+      'sectors',
+      'API_BASE_URL',
 
       function(
         $log,
@@ -17,11 +19,14 @@ angular.module('app.organizationModule')
         $state,
         organizationData,
         organizations,
-        page
+        page,
+        sectors,
+        API_BASE_URL
       ) {
         $scope.organizations  = organizations;
         $scope.page           = page;
         $scope.organization   = {};
+        $scope.sectors        = sectors;
 
         $scope.save = function(form) {
           if (form.$valid) {
@@ -37,6 +42,19 @@ angular.module('app.organizationModule')
           }
         };
 
+        $scope.markers = _.map($scope.organizations, function(organization, i) {
+          return {
+            icon: API_BASE_URL + organization.image.image.tiny.url,
+            id: i,
+            latitude: organization.lat,
+            longitude: organization.lon,
+            onClicked: function () {
+              $state.go('organizations.show', { id: organization.slug })
+            },
+            sector: organization.sector
+          };
+        });
+
         $scope.map = {
           center: {
             latitude: 50.7,
@@ -47,7 +65,7 @@ angular.module('app.organizationModule')
             longitude: null,
             events: {
               position_changed: function() {
-                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.latitude  = $scope.map.marker.latitude;
                 $scope.map.center.longitude = $scope.map.marker.longitude;
               }
             }
@@ -117,15 +135,18 @@ angular.module('app.organizationModule')
       '$scope',
       '$state',
       'organizationData',
+      'sectors',
 
       function(
         $log,
         $http,
         $scope,
         $state,
-        organizationData
+        organizationData,
+        sectors
       ) {
         $scope.organization = {};
+        $scope.sectors      = sectors;
 
         $scope.save = function(form) {
           if (form.$valid) {
@@ -147,7 +168,7 @@ angular.module('app.organizationModule')
             longitude: null,
             events: {
               position_changed: function() {
-                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.latitude  = $scope.map.marker.latitude;
                 $scope.map.center.longitude = $scope.map.marker.longitude;
               }
             }
@@ -186,6 +207,7 @@ angular.module('app.organizationModule')
       '$state',
       'organizationData',
       'organization',
+      'sectors',
 
       function(
         $log,
@@ -193,9 +215,11 @@ angular.module('app.organizationModule')
         $scope,
         $state,
         organizationData,
-        organization
+        organization,
+        sectors
       ) {
         $scope.organization = organization;
+        $scope.sectors      = sectors;
 
         $scope.save = function(form) {
           if (form.$valid) {
@@ -225,7 +249,7 @@ angular.module('app.organizationModule')
             longitude: $scope.organization.lon,
             events: {
               position_changed: function() {
-                $scope.map.center.latitude = $scope.map.marker.latitude;
+                $scope.map.center.latitude  = $scope.map.marker.latitude;
                 $scope.map.center.longitude = $scope.map.marker.longitude;
               }
             }

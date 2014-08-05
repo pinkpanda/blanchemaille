@@ -3,7 +3,7 @@ angular.module('app.workModule', ['ui.router'])
     $stateProvider
       .state('works', {
         abstract: true,
-        url: '/works-in-progress',
+        url: '/work-in-progress',
         template: '<div ui-view></div>'
       })
 
@@ -12,6 +12,10 @@ angular.module('app.workModule', ['ui.router'])
         templateUrl: 'views/work/index.html',
         controller: 'WorkIndexController',
         resolve: {
+          page: ['pageData', function(pageData) {
+            return pageData.getOne('works');
+          }],
+
           works: ['workData', function(workData) {
             return workData.getIndex();
           }]

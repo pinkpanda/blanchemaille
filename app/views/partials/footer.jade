@@ -2,10 +2,13 @@ footer.m-footer.black
   .container
     .row
       .col-md-12.text-center.pvxl
-        p.mbn
+        p
           | Créé avec&nbsp;
           span.fa.fa-heart-o.text-turquoise
           | &nbsp;par&nbsp;
-          a(ui-sref='admin')
+          a(ng-href='http://pinkpanda.io')
             | PinkPanda
             img(src='/images/pinkpanda.png', width='30px')
+
+        small
+          a.mbn(ui-sref='login') Admin

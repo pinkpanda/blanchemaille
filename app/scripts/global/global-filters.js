@@ -1,5 +1,6 @@
 angular.module('app.filters', [])
-  .filter('stripHtml',
+  .filter(
+    'stripHtml',
     [
       '$log',
 

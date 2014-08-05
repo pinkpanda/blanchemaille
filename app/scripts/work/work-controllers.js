@@ -7,15 +7,18 @@ angular.module('app.workModule')
       '$state',
       'workData',
       'works',
+      'page',
 
       function(
         $log,
         $scope,
         $state,
         workData,
-        works
+        works,
+        page
       ) {
         $scope.works  = works;
+        $scope.page   = page;
         $scope.work   = {};
 
         $scope.save = function(form) {
@@ -31,26 +34,6 @@ angular.module('app.workModule')
             );
           }
         };
-      }
-    ]
-  )
-
-  .controller(
-    'WorkShowController',
-
-    [
-      '$log',
-      '$scope',
-      'workData',
-      'work',
-
-      function(
-        $log,
-        $scope,
-        workData,
-        work
-      ) {
-        $scope.work = work;
       }
     ]
   )
@@ -102,7 +85,8 @@ angular.module('app.workModule')
         workData,
         work
       ) {
-        $scope.work = work;
+        $scope.work           = work;
+        $scope.work.worked_at = $scope.work.worked_at.substr(0, 10);
 
         $scope.save = function(form) {
           if (form.$valid) {

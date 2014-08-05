@@ -12,6 +12,6 @@
       input.form-control(ng-model='search', type='text', placeholder='Rechercher')
 
   .row
-    div(ng-repeat='work in works | filter:search')
-      .col-md-3.text-center
-        a.h2.block.light-gray.pvxl.phxl(ui-sref='admin.works.edit({ id: work.id })') {{work.title}}
+    div(ng-repeat='work in works | filter:search | orderBy:"worked_at"')
+      .col-md-4.text-center
+        a.h3.block.light-gray.pvxl.phxl(ui-sref='admin.works.edit({ id: work.id })') {{work.title}}

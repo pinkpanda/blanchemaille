@@ -5,7 +5,15 @@
   -o-background-size: $size;
 }
 
-@import "bootstrap-sass", "admin", "faq", "home", "newspaper", "organization", "responsive";
+@mixin prefix($name, $args) {
+  -webkit-#{$name}: #{$args};
+  -ms-#{$name}: #{$args};
+  -moz-#{$name}: #{$args};
+  -o-#{$name}: #{$args};
+  #{$name}: #{$args};
+}
+
+@import "bootstrap-sass", "admin", "faq", "home", "newspaper", "organization", "work", "responsive";
 
 html, body {
   height: 100%;
@@ -55,6 +63,10 @@ a, a:hover {
   border-radius: 50%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .arrow:after {
   content: "";
   width: 0;
@@ -81,8 +93,8 @@ a, a:hover {
   }
 
   .active {
-    padding: 10px;
-    margin-top: 4px;
+    padding: 7px;
+    margin-top: 7px;
     color: $turquoise;
     border: 1px solid $turquoise;
   }
