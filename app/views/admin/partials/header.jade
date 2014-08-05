@@ -1,17 +1,61 @@
-.m-nav--admin.light-black
-  .container.text-center
-    .row.upper
-      .col-md-2
-        a.newspapers(ui-sref='admin.newspapers.index') Articles
+.m-nav--admin.height-100.light-black
+  .container-fluid
+    .row.pts.pls
+      p.small
+        | Bonjour&nbsp;
+        a.text-white(ui-sref='login')
+          b {{currentUser.firstname}} {{currentUser.lastname}}
 
-      .col-md-3
-        a.organizations(ui-sref='admin.organizations.index') Membres
+    .row.m-nav--admin--list.upper.text-center
+      .col-md-12.phn
+        .newspapers.pvl
+          a.mbm(ui-sref='admin.newspapers.index') On en parle
 
-      .col-md-2
-        a.pages(ui-sref='admin.pages.index') Pages
+          a.m-nav--admin--options.mrm(ui-sref='admin.newspapers.index')
+            i.fa.fa-list
 
-      .col-md-3
-        a.partners(ui-sref='admin.partners.index') Partenaires
+          a.m-nav--admin--options(ui-sref='admin.newspapers.new')
+            i.fa.fa-plus-circle
 
-      .col-md-2
-        a.works(ui-sref='admin.works.index') Travaux
+      .col-md-12.phn
+        .organizations.pvl
+          a.mbm(ui-sref='admin.organizations.index') La communauté
+
+          a.m-nav--admin--options.mrm(ui-sref='admin.organizations.index')
+            i.fa.fa-list
+
+          a.m-nav--admin--options(ui-sref='admin.organizations.new')
+            i.fa.fa-plus-circle
+
+      .col-md-12.phn
+        .pages.pvl
+          a.mbm(ui-sref='admin.pages.index') Pages
+
+          a.m-nav--admin--options.mrm(ui-sref='admin.pages.index')
+            i.fa.fa-list
+
+          a.m-nav--admin--options(ui-sref='admin.pages.new')
+            i.fa.fa-plus-circle
+
+      .col-md-12.phn
+        .partners.pvl
+          a.mbm(ui-sref='admin.partners.index') Nos partenaires
+
+          a.m-nav--admin--options.mrm(ui-sref='admin.partners.index')
+            i.fa.fa-list
+
+          a.m-nav--admin--options(ui-sref='admin.partners.new')
+            i.fa.fa-plus-circle
+
+      .col-md-12.phn
+        .works.pvl
+          a.mbm(ui-sref='admin.works.index') Work in progress
+
+          a.m-nav--admin--options.mrm(ui-sref='admin.works.index')
+            i.fa.fa-list
+
+          a.m-nav--admin--options(ui-sref='admin.works.new')
+            i.fa.fa-plus-circle
+
+script.
+  maxHeight();

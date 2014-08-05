@@ -1,12 +1,21 @@
-.m-nav--admin {
+.l-admin {
+  .m-footer {
+    display: none;
+  }
+}
+
+.m-nav--admin--list {
   a, a:hover {
     color: #FEFEFE;
     text-decoration: none;
     font-weight: 200;
     font-size: 1.4em;
     display: block;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  }
+
+  .m-nav--admin--options, .m-nav--admin--options:hover {
+    font-size: 1em;
+    display: inline-block;
   }
 }
 
@@ -14,17 +23,22 @@ $navs: newspapers, organizations, pages, partners, works;
 
 @each $nav in $navs {
   .#{$nav} {
-    .m-nav--admin .#{$nav}:after {
-      content: "";
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 5px solid white;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
+    .m-nav--admin .#{$nav} {
+      background-color: $black;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 5px solid white;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        margin-top: -6px;
+        margin-left: -5px;
+      }
     }
   }
 }

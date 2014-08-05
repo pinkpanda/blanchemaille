@@ -4,7 +4,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin', {
         url: '/admin',
         templateUrl: 'views/admin/home.html',
-        bodyClass: 'white',
+        bodyClass: 'white l-admin',
         logged: true
       })
 

@@ -33,10 +33,6 @@ a, a:hover {
   @include background-size(contain);
 }
 
-.space {
-  height: 3px;
-}
-
 [ui-sref] {
   cursor: pointer;
 }

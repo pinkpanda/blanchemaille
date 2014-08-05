@@ -23,9 +23,6 @@ angular.module('app.services', [])
               RestangularConfigurer.setDefaultRequestParams({
                 authentication_token: data.authentication_token
               });
-            },
-            function() {
-              $state.go('login');
             }
           );
         });
@@ -93,15 +90,17 @@ angular.module('app.services', [])
   )
 
   .factory(
-    'httpInterceptor',
+    'errorHttpInterceptor',
 
     [
       '$log',
       '$q',
+      '$rootScope',
 
       function(
         $log,
-        $q
+        $q,
+        $rootScope
       ) {
         return function(promise) {
           var success = function (response) {
@@ -109,9 +108,14 @@ angular.module('app.services', [])
           };
 
           var error = function (response) {
-            if (response.status === 401) {
-              $state.go('login');
+            var message = '';
+
+            // NEED TO BE FIXED
+            if (response.status === 0) {
+              message = 'not_authorized';
             }
+
+            $rootScope.$broadcast(message);
 
             return $q.reject(response);
           };

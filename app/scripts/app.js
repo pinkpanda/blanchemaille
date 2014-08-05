@@ -46,7 +46,7 @@ angular.module('app', [
         API_BASE_URL
       ) {
         $urlRouterProvider.otherwise('/');
-        $httpProvider.responseInterceptors.push('httpInterceptor');
+        $httpProvider.responseInterceptors.push('errorHttpInterceptor');
 
         $locationProvider.html5Mode(true);
 
@@ -76,6 +76,10 @@ angular.module('app', [
         AuthService,
         ngProgressLite
       ) {
+        $rootScope.$on('not_authorized', function() {
+          $state.go('login');
+        });
+
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
           var state, tmpState;
 

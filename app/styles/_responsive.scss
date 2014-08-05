@@ -2,4 +2,15 @@
   .m-header--title {
     font-size: 24px;
   }
+
+  .l-admin {
+    .col-sm-2.pos-fixed {
+      position: static !important;
+      height: auto !important;
+
+      + .col-sm-10 {
+        padding-left: 0 !important;
+      }
+    }
+  }
 }
