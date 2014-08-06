@@ -47,6 +47,44 @@ angular.module('app.adminModule', ['ui.router'])
       })
 
 
+      .state('admin.images', {
+        abstract: true,
+        url: '/images',
+        template: '<div ui-view></div>',
+        bodyClass: 'images'
+      })
+
+      .state('admin.images.index', {
+        url: '',
+        templateUrl: 'views/admin/image/index.html',
+        controller: 'ImageIndexController',
+        resolve: {
+          images: ['imageData', function(imageData) {
+            return imageData.getIndex();
+          }],
+
+          page: function() {}
+        }
+      })
+
+      .state('admin.images.new', {
+        url: '/new',
+        templateUrl: 'views/admin/image/edit.html',
+        controller: 'ImageNewController'
+      })
+
+      .state('admin.images.edit', {
+        url: '/:id/edit',
+        templateUrl: 'views/admin/image/edit.html',
+        controller: 'ImageEditController',
+        resolve: {
+          image: ['$stateParams', 'imageData', function($stateParams, imageData) {
+            return imageData.getOne($stateParams.id);
+          }]
+        }
+      })
+
+
       .state('admin.newspapers', {
         abstract: true,
         url: '/newspapers',

@@ -59,6 +59,7 @@ form(enctype='multipart/form-data', name='organizationForm', ng-show='organizati
       .form-group(ng-class='{ "has-error": organizationForm.image.$dirty && organizationForm.image.$invalid }')
         label.control-label Logo
         input.form-control(name='image', file-model='organization.image', type='file')
+        small Redimensionnée en 300x200 et 64x64
 
   .row
     .col-md-12

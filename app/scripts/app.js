@@ -21,6 +21,7 @@ angular.module('app', [
 
   'app.adminModule',
   'app.eventModule',
+  'app.imageModule',
   'app.newspaperModule',
   'app.organizationModule',
   'app.pageModule',

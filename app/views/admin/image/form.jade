@@ -1,0 +1,14 @@
+form(enctype='multipart/form-data', name='imageForm', ng-show='image', novalidate)
+  .form-group(ng-class='{ "has-error": imageForm.name.$dirty && imageForm.name.$invalid }')
+    label.control-label Nom
+    input.form-control(name='name', ng-model='image.name', ng-required='true', type='text')
+
+  .form-group(ng-class='{ "has-error": imageForm.attachment.$dirty && imageForm.attachment.$invalid }')
+    label.control-label Image
+    input.form-control(name='attachment', file-model='image.attachment', type='file')
+    small Redimensionnée en 300x200 et 64x64
+
+  button.btn.btn-success.pull-left(ng-click='save(imageForm)', ng-disabled='imageForm.$invalid') Valider
+
+  div(ng-if='image.id')
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{image.name}}

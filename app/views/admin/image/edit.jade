@@ -1,0 +1,11 @@
+.peter-river
+  .container
+    .row.mvl
+      .col-md-10.col-md-offset-1
+        h2(ng-show='image.id').mtm Modération d'une image
+        h2(ng-hide='image.id').mtm Ajout d'une image
+
+.container
+  .row.mvxl
+    .col-md-10.col-md-offset-1
+      div(ng-include="'views/admin/image/form.html'")

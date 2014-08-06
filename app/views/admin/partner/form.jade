@@ -10,6 +10,7 @@ form(enctype='multipart/form-data', name='partnerForm', ng-show='partner', noval
   .form-group(ng-class='{ "has-error": partnerForm.image.$dirty && partnerForm.image.$invalid }')
     label.control-label Image
     input.form-control(name='image', file-model='partner.image', type='file')
+    small Redimensionnée en 300x200 et 64x64
 
   .form-group(ng-class='{ "has-error": partnerForm.description.$invalid }')
     label.control-label Description

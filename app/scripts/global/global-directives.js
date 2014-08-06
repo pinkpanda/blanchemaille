@@ -15,7 +15,11 @@ angular.module('app.directives', [])
           restrict: 'A',
           link: function(scope, element, attr) {
             $timeout(function() {
-              element.attr('src', API_BASE_URL + element.attr('src'));
+              if (element.attr('src')) {
+                element.attr('src', API_BASE_URL + element.attr('src'));
+              } else {
+                element.attr('value', API_BASE_URL + element.attr('value'));
+              }
             });
           }
         };

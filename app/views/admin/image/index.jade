@@ -1,0 +1,31 @@
+.peter-river
+  .container
+    .row.mvl
+      .col-md-10.col-md-offset-1
+        div(ng-include="'views/admin/image/form.html'")
+
+.container.mvxl
+  .row
+    .col-md-6.col-md-offset-3.mbxl
+      input.form-control(ng-model='search', type='text', placeholder='Rechercher')
+
+  .row
+    div(ng-repeat='image in images | filter:search | orderBy:"-created_at"')
+      .col-md-3
+        a.m-image.mbl(ui-sref='admin.images.edit({ id: image.id })')
+          img.max-width(src='{{image.attachment.attachment.thumb.url}}', api-img)
+
+        .text-center
+          small {{image.name}}
+
+        .mtm
+          label.control-label Petite (64x64)
+          input.form-control(type='text', value='{{image.attachment.attachment.tiny.url}}', api-img)
+
+        .mtm
+          label.control-label Moyenne (300x200)
+          input.form-control(type='text', value='{{image.attachment.attachment.thumb.url}}', api-img)
+
+        .mtm
+          label.control-label Normale
+          input.form-control(type='text', value='{{image.attachment.attachment.url}}', api-img)
