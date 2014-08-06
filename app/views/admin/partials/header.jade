@@ -8,6 +8,16 @@
 
     .row.m-nav--admin--list.upper.text-center
       .col-md-12.phn
+        .events.pvl
+          a.mbm(ui-sref='admin.events.index') Evenements
+
+          a.m-nav--admin--options.mrm(ui-sref='admin.events.index')
+            i.fa.fa-list
+
+          a.m-nav--admin--options(ui-sref='admin.events.new')
+            i.fa.fa-plus-circle
+
+      .col-md-12.phn
         .newspapers.pvl
           a.mbm(ui-sref='admin.newspapers.index') On en parle
 

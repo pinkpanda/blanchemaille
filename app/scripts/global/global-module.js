@@ -52,44 +52,6 @@ angular.module('app.module', ['ui.router'])
         }
       })
 
-      .state('calendar', {
-        url: '/evenements',
-        templateUrl: 'views/calendar.html',
-        bodyClass: 'white',
-        controller: [
-          '$log',
-          '$scope',
-          '$filter',
-          'page',
-
-          function(
-            $log,
-            $scope,
-            $filter,
-            page
-          ) {
-            $scope.page = page;
-
-            $scope.calendar = {
-              config: {
-                height: 600,
-                lang: 'fr',
-                header: {
-                  left: 'month agendaWeek agendaDay',
-                  right: 'today prev,next'
-                }
-              },
-              source: [{ url: $filter('stripHtml')($scope.page.content) }]
-            }
-          }
-        ],
-        resolve: {
-          page: ['pageData', function(pageData) {
-            return pageData.getOne('calendar');
-          }]
-        }
-      })
-
       .state('contact', {
         url: '/contact',
         templateUrl: 'views/contact.html',
@@ -166,7 +128,7 @@ angular.module('app.module', ['ui.router'])
             $scope.send = function(form) {
               if (form.$valid) {
                 AuthService.login($scope.login).then(function() {
-                  $state.go('admin');
+                  window.location.href = '/admin';
                 });
               }
             }

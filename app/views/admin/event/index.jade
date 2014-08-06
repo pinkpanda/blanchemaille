@@ -1,0 +1,24 @@
+.peter-river
+  .container
+    .row.mvl
+      .col-md-10.col-md-offset-1
+        div(ng-include="'views/admin/event/form.html'")
+
+.container.mvxl
+  .row
+    .col-md-6.col-md-offset-3.mbxl
+      input.form-control(ng-model='search', type='text', placeholder='Rechercher')
+
+  .row
+    table.table.table-striped
+      tr
+        th Titre
+        th Chemin
+        th
+
+      tr(ng-repeat='event in events | filter:search | orderBy:"scheduled_at"')
+        td {{event.title}}
+        td
+          input.form-control(ng-model='event.path', type='text')
+        td
+          a.btn.btn-info.btn-inverse(ui-sref='admin.events.edit({ id: event.id })') Editer

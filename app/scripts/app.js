@@ -20,6 +20,7 @@ angular.module('app', [
   'app.services',
 
   'app.adminModule',
+  'app.eventModule',
   'app.newspaperModule',
   'app.organizationModule',
   'app.pageModule',

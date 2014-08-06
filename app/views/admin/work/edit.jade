@@ -2,7 +2,8 @@
   .container
     .row.mvl
       .col-md-10.col-md-offset-1
-        h2.mtm Modération d'un travail
+        h2(ng-show='work.id').mtm Modération d'un travail
+        h2(ng-hide='work.id').mtm Ajout d'un travail
 
 .container
   .row.mvxl

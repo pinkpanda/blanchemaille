@@ -9,6 +9,44 @@ angular.module('app.adminModule', ['ui.router'])
       })
 
 
+      .state('admin.events', {
+        abstract: true,
+        url: '/events',
+        template: '<div ui-view></div>',
+        bodyClass: 'events'
+      })
+
+      .state('admin.events.index', {
+        url: '',
+        templateUrl: 'views/admin/event/index.html',
+        controller: 'EventIndexController',
+        resolve: {
+          events: ['eventData', function(eventData) {
+            return eventData.getIndex();
+          }],
+
+          page: function() {}
+        }
+      })
+
+      .state('admin.events.new', {
+        url: '/new',
+        templateUrl: 'views/admin/event/edit.html',
+        controller: 'EventNewController'
+      })
+
+      .state('admin.events.edit', {
+        url: '/:id/edit',
+        templateUrl: 'views/admin/event/edit.html',
+        controller: 'EventEditController',
+        resolve: {
+          eventItem: ['$stateParams', 'eventData', function($stateParams, eventData) {
+            return eventData.getOne($stateParams.id);
+          }]
+        }
+      })
+
+
       .state('admin.newspapers', {
         abstract: true,
         url: '/newspapers',

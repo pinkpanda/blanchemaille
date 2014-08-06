@@ -19,7 +19,7 @@
   }
 }
 
-$navs: newspapers, organizations, pages, partners, works;
+$navs: events, newspapers, organizations, pages, partners, works;
 
 @each $nav in $navs {
   .#{$nav} {

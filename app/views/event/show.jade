@@ -1,0 +1,14 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h1.em(blanchemaille) {{eventItem.title}}
+
+      small {{eventItem.place}}
+
+      .hr.turquoise
+
+  .row
+    .col-md-12
+      .text-justify(ng-bind-html='eventItem.content')

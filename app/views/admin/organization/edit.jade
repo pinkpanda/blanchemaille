@@ -2,7 +2,8 @@
   .container
     .row.mvl
       .col-md-10.col-md-offset-1
-        h2.mtm Modération d'un membre
+        h2(ng-show='organization.id').mtm Modération d'un membre
+        h2(ng-hide='organization.id').mtm Ajout d'un membre
 
 .container
   .row.mvxl

@@ -10,7 +10,7 @@
       input.form-control(ng-model='search', type='text', placeholder='Rechercher')
 
   .row
-    div(ng-repeat='partner in partners | filter:search')
+    div(ng-repeat='partner in partners | filter:search | orderBy:"name"')
       .col-md-3
         a.m-partner.mbl(ui-sref='admin.partners.edit({ id: partner.id })')
           img.max-width(src='{{partner.image.image.thumb.url}}', api-img)

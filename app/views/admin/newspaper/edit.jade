@@ -2,7 +2,8 @@
   .container
     .row.mvl
       .col-md-10.col-md-offset-1
-        h2.mtm Modération d'un article
+        h2(ng-show='newspaper.id').mtm Modération d'un article
+        h2(ng-hide='newspaper.id').mtm Ajout d'un article
 
 .container
   .row.mvxl

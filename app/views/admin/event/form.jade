@@ -1,0 +1,21 @@
+form(name='eventForm', ng-show='eventItem', novalidate)
+  .form-group(ng-class='{ "has-error": eventForm.title.$dirty && eventForm.title.$invalid }')
+    label.control-label Titre
+    input.form-control(name='title', ng-model='eventItem.title', ng-required='true', type='text')
+
+  .form-group(ng-class='{ "has-error": eventForm.scheduled_at.$dirty && eventForm.scheduled_at.$invalid }')
+    label.control-label Date
+    input.form-control(name='scheduled_at', ng-model='eventItem.scheduled_at', ng-required='true', type='date')
+
+  .form-group(ng-class='{ "has-error": eventForm.place.$dirty && eventForm.place.$invalid }')
+    label.control-label Localisation
+    input.form-control(name='place', ng-model='eventItem.place', type='text')
+
+  .form-group(ng-class='{ "has-error": eventForm.content.$invalid }')
+    label.control-label Contenu
+    div(name='content', ng-model='eventItem.content', text-angular, ta-toolbar-group-class='btn-group mrl', ta-toolbar-button-class='btn btn-info', ta-toolbar="[['p','h1','h2','h3','h4','h5','insertLink','insertImage','insertVideo'],['bold','italics','underline'],['justifyLeft','justifyCenter','justifyRight'],['quote','ul','ol'],['undo','redo','clear']]")
+
+  button.btn.btn-success.pull-left(ng-click='save(eventForm)', ng-disabled='eventForm.$invalid') Valider
+
+  div(ng-if='eventItem.id')
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{eventItem.title}}

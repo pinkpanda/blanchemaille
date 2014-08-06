@@ -2,7 +2,8 @@
   .container
     .row.mvl
       .col-md-10.col-md-offset-1
-        h2.mtm Modération d'un partenaire
+        h2(ng-show='partner.id').mtm Modération d'un partenaire
+        h2(ng-hide='partner.id').mtm Ajout d'un partenaire
 
 .container
   .row.mvxl
