@@ -2,43 +2,90 @@
   .m-footer {
     display: none;
   }
+
+  .collapsable {
+    max-height: 300px;
+    overflow: hidden;
+    @include transition(max-height .4s ease-in-out);
+
+    &:hover {
+      max-height: 800px;
+    }
+  }
 }
 
-.m-nav--admin--list {
+.m-nav--admin {
+  overflow: scroll;
+
+  .title {
+    background-color: $black;
+  }
+
+  .dashboard a:first-child {
+    font-size: 1.4em;
+  }
+
   a, a:hover {
     color: #FEFEFE;
     text-decoration: none;
     font-weight: 200;
-    font-size: 1.4em;
     display: block;
-  }
-
-  .m-nav--admin--options, .m-nav--admin--options:hover {
-    font-size: 1em;
-    display: inline-block;
   }
 }
 
 $navs: events, images, newspapers, organizations, pages, partners, works;
 
 @each $nav in $navs {
-  .#{$nav} {
-    .m-nav--admin .#{$nav} {
-      background-color: $black;
+  .#{$nav}:not(.new) {
+    .m-nav--admin .#{$nav} .title {
+      position: relative;
+      background-color: $turquoise;
 
       &:after {
         content: "";
         width: 0;
         height: 0;
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-right: 5px solid white;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid white;
         position: absolute;
         top: 50%;
         left: 100%;
-        margin-top: -6px;
-        margin-left: -5px;
+        margin-top: -10px;
+        margin-left: -10px;
       }
     }
+  }
+
+  .#{$nav}.new {
+    .m-nav--admin .#{$nav} .new {
+      position: relative;
+      background-color: $turquoise;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid white;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        margin-top: -10px;
+        margin-left: -10px;
+      }
+    }
+  }
+}
+
+.dashboard .m-nav--admin .dashboard a:first-child {
+  font-weight: bold;
+}
+
+.m-dashboard {
+  .table-container {
+    height: 300px;
+    overflow: scroll;
   }
 }

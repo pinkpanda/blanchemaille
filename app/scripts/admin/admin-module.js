@@ -2,10 +2,80 @@ angular.module('app.adminModule', ['ui.router'])
   .config(['$stateProvider', function($stateProvider) {
     $stateProvider
       .state('admin', {
+        abstract: true,
         url: '/admin',
         templateUrl: 'views/admin/home.html',
         bodyClass: 'white l-admin',
         logged: true
+      })
+
+      .state('admin.index', {
+        url: '',
+        templateUrl: 'views/admin/dashboard.html',
+        bodyClass: 'dashboard',
+        controller: [
+          '$log',
+          '$scope',
+          '$state',
+          'events',
+          'newspapers',
+          'organizations',
+          'pages',
+          'partners',
+          'works',
+
+          function(
+            $log,
+            $scope,
+            $state,
+            events,
+            newspapers,
+            organizations,
+            pages,
+            partners,
+            works
+          ) {
+            $scope.events         = events;
+            $scope.newspapers     = newspapers;
+            $scope.organizations  = organizations;
+            $scope.pages          = pages;
+            $scope.partners       = partners;
+            $scope.works          = works;
+
+            angular.forEach($scope.events, function(eventItem) {
+              eventItem.path = $state.href('events.show', { id: eventItem.slug }, { absolute: true });
+            });
+          }
+        ],
+        resolve: {
+          events: ['eventData', function(eventData) {
+            return eventData.getIndex();
+          }],
+
+          images: ['imageData', function(imageData) {
+            return imageData.getIndex();
+          }],
+
+          newspapers: ['newspaperData', function(newspaperData) {
+            return newspaperData.getIndex();
+          }],
+
+          organizations: ['organizationData', function(organizationData) {
+            return organizationData.getIndex();
+          }],
+
+          pages: ['pageData', function(pageData) {
+            return pageData.getIndex();
+          }],
+
+          partners: ['partnerData', function(partnerData) {
+            return partnerData.getIndex();
+          }],
+
+          works: ['workData', function(workData) {
+            return workData.getIndex();
+          }]
+        }
       })
 
 
@@ -32,6 +102,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.events.new', {
         url: '/new',
         templateUrl: 'views/admin/event/edit.html',
+        bodyClass: 'new',
         controller: 'EventNewController'
       })
 
@@ -70,6 +141,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.images.new', {
         url: '/new',
         templateUrl: 'views/admin/image/edit.html',
+        bodyClass: 'new',
         controller: 'ImageNewController'
       })
 
@@ -108,6 +180,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.newspapers.new', {
         url: '/new',
         templateUrl: 'views/admin/newspaper/edit.html',
+        bodyClass: 'new',
         controller: 'NewspaperNewController'
       })
 
@@ -161,6 +234,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.organizations.new', {
         url: '/new',
         templateUrl: 'views/admin/organization/edit.html',
+        bodyClass: 'new',
         controller: 'OrganizationNewController',
         resolve: {
           sectors: ['$q', 'Restangular', function($q, Restangular) {
@@ -228,6 +302,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.pages.new', {
         url: '/new',
         templateUrl: 'views/admin/page/edit.html',
+        bodyClass: 'new',
         controller: 'PageNewController'
       })
 
@@ -266,6 +341,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.partners.new', {
         url: '/new',
         templateUrl: 'views/admin/partner/edit.html',
+        bodyClass: 'new',
         controller: 'PartnerNewController'
       })
 
@@ -304,6 +380,7 @@ angular.module('app.adminModule', ['ui.router'])
       .state('admin.works.new', {
         url: '/new',
         templateUrl: 'views/admin/work/edit.html',
+        bodyClass: 'new',
         controller: 'WorkNewController'
       })
 

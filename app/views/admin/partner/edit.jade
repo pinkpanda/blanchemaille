@@ -1,11 +1,11 @@
 .peter-river
-  .container
+  .container-fluid
     .row.mvl
       .col-md-10.col-md-offset-1
         h2(ng-show='partner.id').mtm Modération d'un partenaire
         h2(ng-hide='partner.id').mtm Ajout d'un partenaire
 
-.container
+.container-fluid
   .row.mvxl
     .col-md-10.col-md-offset-1
       div(ng-include="'views/admin/partner/form.html'")

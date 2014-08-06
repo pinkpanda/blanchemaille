@@ -1,81 +1,69 @@
 .m-nav--admin.height-100.light-black
   .container-fluid
-    .row.pts.pls
-      p.small
-        | Bonjour&nbsp;
-        a.text-white(ui-sref='login')
-          b {{currentUser.firstname}} {{currentUser.lastname}}
-
-    .row.m-nav--admin--list.upper.text-center
-      .col-md-12.phn
-        .events.pvl
-          a.mbm(ui-sref='admin.events.index') Evenements
-
-          a.m-nav--admin--options.mrm(ui-sref='admin.events.index')
-            i.fa.fa-list
-
-          a.m-nav--admin--options(ui-sref='admin.events.new')
-            i.fa.fa-plus-circle
+    .row
+      .col-md-12.phn.upper.text-center
+        .dashboard.pvl.pbn.text-white
+          a(ui-sref='admin.index')
+            small {{currentUser.firstname}} {{currentUser.lastname}}
 
       .col-md-12.phn
-        .images.pvl
-          a.mbm(ui-sref='admin.images.index') Images
-
-          a.m-nav--admin--options.mrm(ui-sref='admin.images.index')
-            i.fa.fa-list
-
-          a.m-nav--admin--options(ui-sref='admin.images.new')
-            i.fa.fa-plus-circle
+        .hr.turquoise.mtm.mbm
 
       .col-md-12.phn
-        .newspapers.pvl
-          a.mbm(ui-sref='admin.newspapers.index') On en parle
+        .events.pvm
+          a.title.phm.pvm.mbm(ui-sref='admin.events.index') Evenements
 
-          a.m-nav--admin--options.mrm(ui-sref='admin.newspapers.index')
-            i.fa.fa-list
+          a.mbs.phl(ui-sref='admin.events.index') Voir tous
 
-          a.m-nav--admin--options(ui-sref='admin.newspapers.new')
-            i.fa.fa-plus-circle
+          a.new.phl(ui-sref='admin.events.new') Ajouter
 
       .col-md-12.phn
-        .organizations.pvl
-          a.mbm(ui-sref='admin.organizations.index') La communauté
+        .images.pvm
+          a.title.phm.pvm.mbm(ui-sref='admin.images.index') Images
 
-          a.m-nav--admin--options.mrm(ui-sref='admin.organizations.index')
-            i.fa.fa-list
+          a.mbs.phl(ui-sref='admin.images.index') Voir tous
 
-          a.m-nav--admin--options(ui-sref='admin.organizations.new')
-            i.fa.fa-plus-circle
+          a.new.phl(ui-sref='admin.images.new') Ajouter
 
       .col-md-12.phn
-        .pages.pvl
-          a.mbm(ui-sref='admin.pages.index') Pages
+        .newspapers.pvm
+          a.title.phm.pvm.mbm(ui-sref='admin.newspapers.index') On en parle
 
-          a.m-nav--admin--options.mrm(ui-sref='admin.pages.index')
-            i.fa.fa-list
+          a.mbs.phl(ui-sref='admin.newspapers.index') Voir tous
 
-          a.m-nav--admin--options(ui-sref='admin.pages.new')
-            i.fa.fa-plus-circle
+          a.new.phl(ui-sref='admin.newspapers.new') Ajouter
 
       .col-md-12.phn
-        .partners.pvl
-          a.mbm(ui-sref='admin.partners.index') Nos partenaires
+        .organizations.pvm
+          a.title.phm.pvm.mbm(ui-sref='admin.organizations.index') La communauté
 
-          a.m-nav--admin--options.mrm(ui-sref='admin.partners.index')
-            i.fa.fa-list
+          a.mbs.phl(ui-sref='admin.organizations.index') Voir tous
 
-          a.m-nav--admin--options(ui-sref='admin.partners.new')
-            i.fa.fa-plus-circle
+          a.new.phl(ui-sref='admin.organizations.new') Ajouter
 
       .col-md-12.phn
-        .works.pvl
-          a.mbm(ui-sref='admin.works.index') Work in progress
+        .pages.pvm
+          a.title.phm.pvm.mbm(ui-sref='admin.pages.index') Pages
 
-          a.m-nav--admin--options.mrm(ui-sref='admin.works.index')
-            i.fa.fa-list
+          a.mbs.phl(ui-sref='admin.pages.index') Voir tous
 
-          a.m-nav--admin--options(ui-sref='admin.works.new')
-            i.fa.fa-plus-circle
+          a.new.phl(ui-sref='admin.pages.new') Ajouter
+
+      .col-md-12.phn
+        .partners.pvm
+          a.title.phm.pvm.mbm(ui-sref='admin.partners.index') Nos partenaires
+
+          a.mbs.phl(ui-sref='admin.partners.index') Voir tous
+
+          a.new.phl(ui-sref='admin.partners.new') Ajouter
+
+      .col-md-12.phn
+        .works.pvm
+          a.title.phm.pvm.mbm(ui-sref='admin.works.index') Work in progress
+
+          a.mbs.phl(ui-sref='admin.works.index') Voir tous
+
+          a.new.phl(ui-sref='admin.works.new') Ajouter
 
 script.
   maxHeight();
