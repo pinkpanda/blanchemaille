@@ -8,6 +8,7 @@ angular.module('app.module', ['ui.router'])
           '$log',
           '$scope',
           'about',
+          'investment',
           'organizations',
           'page',
           'partners',
@@ -17,12 +18,14 @@ angular.module('app.module', ['ui.router'])
             $log,
             $scope,
             about,
+            investment,
             organizations,
             page,
             partners,
             networks
           ) {
             $scope.about          = about;
+            $scope.investment     = investment;
             $scope.organizations  = organizations;
             $scope.page           = page;
             $scope.partners       = partners;
@@ -32,6 +35,10 @@ angular.module('app.module', ['ui.router'])
         resolve: {
           about: ['pageData', function(pageData) {
             return pageData.getOne('about');
+          }],
+
+          investment: ['pageData', function(pageData) {
+            return pageData.getOne('investment');
           }],
 
           organizations: ['organizationData', function(organizationData) {

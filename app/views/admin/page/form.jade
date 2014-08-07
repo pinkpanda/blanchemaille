@@ -8,6 +8,7 @@ form(name='pageForm', ng-show='page', novalidate)
     div(name='content', ng-model='page.content', text-angular, ta-toolbar-group-class='btn-group mrl', ta-toolbar-button-class='btn btn-info', ta-toolbar="[['p','h1','h2','h3','h4','h5','insertLink','insertImage','insertVideo'],['bold','italics','underline'],['justifyLeft','justifyCenter','justifyRight'],['quote','ul','ol'],['undo','redo','clear']]")
     small(ng-if='page.slug == "faq"') Utilisez les H2, H3 pour styliser les questions/réponses
     small(ng-if='page.slug == "calendar"') Veuillez n'y placer qu'un seul lien
+    small(ng-if='page.slug == "investment"') Veuillez n'y placer qu'un seul chiffre
 
   .form-group(ng-class='{ "has-error": pageForm.info.$dirty && pageForm.info.$invalid }')
     label.control-label Plus d'informations
