@@ -36,7 +36,10 @@ form(enctype='multipart/form-data', name='organizationForm', ng-show='organizati
           .form-group(ng-class='{ "has-error": organizationForm.sector.$dirty && organizationForm.sector.$invalid }')
             label.control-label
               | Secteur d'activité
-              span.pointer.label.label-success.mlm(ng-click='newSector = !newSector') +
+              span.pointer.label.label-success.mlm(ng-click='newSector = !newSector')
+                span(ng-hide='newSector') nouveau
+                span(ng-show='newSector') sélectionner
+
             div(ng-hide='newSector')
               select.form-control(name='sector', ng-model='organization.sector', ng-required='true', ng-options='sector for sector in sectors')
                 option(value='') Sélectionnez un secteur

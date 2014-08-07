@@ -6,7 +6,6 @@ angular.module('app.eventModule')
       '$scope',
       '$state',
       '$filter',
-      'eventData',
       'events',
       'page',
 
@@ -15,13 +14,11 @@ angular.module('app.eventModule')
         $scope,
         $state,
         $filter,
-        eventData,
         events,
         page
       ) {
-        $scope.events     = events;
-        $scope.page       = page;
-        $scope.eventItem  = {};
+        $scope.events = events;
+        $scope.page   = page;
 
         angular.forEach($scope.events, function(eventItem) {
           eventItem.path = $state.href('events.show', { id: eventItem.slug }, { absolute: true });
@@ -40,20 +37,6 @@ angular.module('app.eventModule')
             source: [{ url: $filter('stripHtml')($scope.page.content) }]
           };
         }
-
-        $scope.save = function(form) {
-          if (form.$valid) {
-            eventData.saveOne($scope.eventItem).then(
-              function(data) {
-                $state.transitionTo($state.current, {}, {
-                  reload: true,
-                  inherit: false,
-                  notify: true
-                });
-              }
-            );
-          }
-        };
       }
     ]
   )

@@ -6,7 +6,7 @@ angular.module('app.organizationModule')
       '$http',
       '$scope',
       '$state',
-      'organizationData',
+      '$filter',
       'organizations',
       'page',
       'sectors',
@@ -17,7 +17,7 @@ angular.module('app.organizationModule')
         $http,
         $scope,
         $state,
-        organizationData,
+        $filter,
         organizations,
         page,
         sectors,
@@ -25,26 +25,23 @@ angular.module('app.organizationModule')
       ) {
         $scope.organizations  = organizations;
         $scope.page           = page;
-        $scope.organization   = {};
-        $scope.sectors        = sectors;
+        $scope.sectors        = angular.copy(sectors);
+        $scope.selection      = angular.copy(sectors);
 
-        $scope.save = function(form) {
-          if (form.$valid) {
-            organizationData.saveOne($scope.organization).then(
-              function(data) {
-                $state.transitionTo($state.current, {}, {
-                  reload: true,
-                  inherit: false,
-                  notify: true
-                });
-              }
-            );
+        $scope.toggleSelection = function(sector) {
+          var idx = $scope.selection.indexOf(sector);
+
+          if (idx > -1) {
+            $scope.selection.splice(idx, 1);
+          } else {
+            $scope.selection.push(sector);
           }
+
+          $scope.filteredMarkers = $filter('filterSelectedMarker')($scope.markers, $scope.selection);
         };
 
         $scope.markers = _.map($scope.organizations, function(organization, i) {
           return {
-            icon: API_BASE_URL + organization.image.image.tiny.url,
             id: i,
             latitude: organization.lat,
             longitude: organization.lon,
@@ -54,6 +51,8 @@ angular.module('app.organizationModule')
             sector: organization.sector
           };
         });
+
+        $scope.filteredMarkers = $filter('filterSelectedMarker')($scope.markers, $scope.selection);
 
         $scope.map = {
           center: {
@@ -70,26 +69,11 @@ angular.module('app.organizationModule')
               }
             }
           },
+          options: {
+            scrollwheel: false
+          },
           zoom: 11
         };
-
-        $scope.getCoord = function(address) {
-          return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
-            params: {
-              address: address,
-              sensor: false
-            }
-          });
-        };
-
-        $scope.$watchCollection('[organization.address, organization.city]', _.debounce(function(newV, oldV) {
-          if (newV[0] && newV[1]) {
-            $scope.getCoord(newV.join(', ')).success(function(data) {
-              $scope.organization.lat = $scope.map.marker.latitude = data.results[0].geometry.location.lat;
-              $scope.organization.lon = $scope.map.marker.longitude = data.results[0].geometry.location.lng;
-            });
-          }
-        }, 1000));
       }
     ]
   )
@@ -119,6 +103,9 @@ angular.module('app.organizationModule')
           marker: {
             latitude: $scope.organization.lat,
             longitude: $scope.organization.lon
+          },
+          options: {
+            scrollwheel: false
           },
           zoom: 11
         };

@@ -9,20 +9,26 @@
 
       .text-justify(ng-bind-html='page.content')
 
-.turquoise.pos-relative.arrow.pvl
-  .container
+.turquoise.pos-relative.arrow.pbl
+  .container-fluid
     .row.text-center
       .col-md-12.mvl
-        google-map.m-organization--map(center='map.center', zoom='map.zoom')
-          markers(click="'onClicked'", coords="'self'", fit='true', icon="'icon'", models='markers | filter:selectedSector')
+        google-map.m-organization--map(center='map.center', options='map.options', zoom='map.zoom')
+          markers(click="'onClicked'", coords="'self'", fit='true', models='filteredMarkers')
 
-        select.form-control(name='sector', ng-model='selectedSector', ng-options='sector for sector in sectors')
-          option(value='') Sélectionnez un secteur
+  .container
+    .row.text-center
+      .col-sm-3(ng-repeat='sector in sectors')
+        p
+          input(id='sector{{$index}}', ng-checked='selection.indexOf(sector) > -1', ng-click='toggleSelection(sector)', type='checkbox', value='{{sector}}')
+          label(for='sector{{$index}}')
+            span.ui
+            {{sector}}
 
 .light-gray
   .container.pvxl
     .row
-      div(ng-repeat='organization in organizations | orderBy:"name"')
+      div(ng-repeat='organization in organizations | filterSelectedMarker:selection | orderBy:"name"')
         .col-md-4.col-sm-4
           a.m-organization.block.mbl(ui-sref='organizations.show({ id: organization.slug })')
             img.max-width(src='{{organization.image.image.thumb.url}}', api-img)

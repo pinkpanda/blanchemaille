@@ -5,7 +5,6 @@ angular.module('app.workModule')
       '$log',
       '$scope',
       '$state',
-      'workData',
       'works',
       'page',
 
@@ -13,27 +12,11 @@ angular.module('app.workModule')
         $log,
         $scope,
         $state,
-        workData,
         works,
         page
       ) {
         $scope.works  = works;
         $scope.page   = page;
-        $scope.work   = {};
-
-        $scope.save = function(form) {
-          if (form.$valid) {
-            workData.saveOne($scope.work).then(
-              function(data) {
-                $state.transitionTo($state.current, {}, {
-                  reload: true,
-                  inherit: false,
-                  notify: true
-                });
-              }
-            );
-          }
-        };
       }
     ]
   )
