@@ -1,11 +1,11 @@
 .peter-river
-  .container
+  .container-fluid
     .row.mvl
       .col-md-10.col-md-offset-1
         h2(ng-show='work.id').mtm Modération d'un travail
         h2(ng-hide='work.id').mtm Ajout d'un travail
 
-.container
+.container-fluid
   .row.mvxl
     .col-md-10.col-md-offset-1
       div(ng-include="'views/admin/work/form.html'")

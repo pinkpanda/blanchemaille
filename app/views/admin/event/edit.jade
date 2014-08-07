@@ -1,11 +1,11 @@
 .peter-river
-  .container
+  .container-fluid
     .row.mvl
       .col-md-10.col-md-offset-1
         h2(ng-show='eventItem.id').mtm Modération d'un évenement
         h2(ng-hide='eventItem.id').mtm Ajout d'un évenement
 
-.container
+.container-fluid
   .row.mvxl
     .col-md-10.col-md-offset-1
       div(ng-include="'views/admin/event/form.html'")

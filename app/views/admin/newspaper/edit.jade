@@ -1,11 +1,11 @@
 .peter-river
-  .container
+  .container-fluid
     .row.mvl
       .col-md-10.col-md-offset-1
         h2(ng-show='newspaper.id').mtm Modération d'un article
         h2(ng-hide='newspaper.id').mtm Ajout d'un article
 
-.container
+.container-fluid
   .row.mvxl
     .col-md-10.col-md-offset-1
       div(ng-include="'views/admin/newspaper/form.html'")

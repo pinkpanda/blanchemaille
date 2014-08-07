@@ -5,7 +5,6 @@ angular.module('app.partnerModule')
       '$log',
       '$scope',
       '$state',
-      'partnerData',
       'partners',
       'page',
 
@@ -13,27 +12,11 @@ angular.module('app.partnerModule')
         $log,
         $scope,
         $state,
-        partnerData,
         partners,
         page
       ) {
         $scope.partners = partners;
         $scope.page     = page;
-        $scope.partner  = {};
-
-        $scope.save = function(form) {
-          if (form.$valid) {
-            partnerData.saveOne($scope.partner).then(
-              function(data) {
-                $state.transitionTo($state.current, {}, {
-                  reload: true,
-                  inherit: false,
-                  notify: true
-                });
-              }
-            );
-          }
-        };
       }
     ]
   )

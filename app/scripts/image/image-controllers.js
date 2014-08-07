@@ -5,32 +5,15 @@ angular.module('app.imageModule')
       '$log',
       '$scope',
       '$state',
-      'imageData',
       'images',
 
       function(
         $log,
         $scope,
         $state,
-        imageData,
         images
       ) {
         $scope.images = images;
-        $scope.image  = {};
-
-        $scope.save = function(form) {
-          if (form.$valid) {
-            imageData.saveOne($scope.image).then(
-              function(data) {
-                $state.transitionTo($state.current, {}, {
-                  reload: true,
-                  inherit: false,
-                  notify: true
-                });
-              }
-            );
-          }
-        };
       }
     ]
   )

@@ -5,7 +5,6 @@ angular.module('app.newspaperModule')
       '$log',
       '$scope',
       '$state',
-      'newspaperData',
       'newspapers',
       'page',
 
@@ -13,27 +12,11 @@ angular.module('app.newspaperModule')
         $log,
         $scope,
         $state,
-        newspaperData,
         newspapers,
         page
       ) {
         $scope.newspapers = newspapers;
         $scope.page       = page;
-        $scope.newspaper  = {};
-
-        $scope.save = function(form) {
-          if (form.$valid) {
-            newspaperData.saveOne($scope.newspaper).then(
-              function(data) {
-                $state.transitionTo($state.current, {}, {
-                  reload: true,
-                  inherit: false,
-                  notify: true
-                });
-              }
-            );
-          }
-        };
       }
     ]
   )

@@ -1,0 +1,106 @@
+.container-fluid.mtl
+  .row
+    .col-md-4
+      .m-dashboard.light-gray.pvm.phm.mbl
+        .clearfix
+          h2.em.pull-left Evenements ({{events.length}})
+          a.btn.btn-success.btn-inverse.pull-right.mtl(ui-sref='admin.events.new') Ajouter
+
+        .table-container
+          table.table.table-striped
+            tr
+              th Titre
+              th Chemin
+              th
+
+            tr(ng-repeat='event in events | orderBy:"scheduled_at"')
+              td {{event.title}}
+              td
+                input.form-control(ng-model='event.path', type='text')
+              td
+                a.btn.btn-info.btn-inverse(ui-sref='admin.events.edit({ id: event.id })') Editer
+
+    .col-md-4
+      .m-dashboard.light-gray.pvm.phm.mbl
+        .clearfix
+          h2.em.pull-left Articles ({{newspapers.length}})
+          a.btn.btn-success.btn-inverse.pull-right.mtl(ui-sref='admin.newspapers.new') Ajouter
+
+        .table-container
+          table.table.table-striped
+            tr
+              th Titre
+              th Nom du journal
+              th
+
+            tr(ng-repeat='newspaper in newspapers | orderBy:"-created_at"')
+              td {{newspaper.title}}
+              td {{newspaper.newspaper_name}}
+              td
+                a.btn.btn-info.btn-inverse(ui-sref='admin.newspapers.edit({ id: newspaper.id })') Editer
+
+    .col-md-4
+      .m-dashboard.light-gray.pvm.phm.mbl
+        .clearfix
+          h2.em.pull-left Membres ({{organizations.length}})
+          a.btn.btn-success.btn-inverse.pull-right.mtl(ui-sref='admin.organizations.new') Ajouter
+
+        .table-container
+          table.table.table-striped
+            tr
+              th Nom
+              th
+
+            tr(ng-repeat='organization in organizations | orderBy:"name"')
+              td {{organization.name}}
+              td
+                a.btn.btn-info.btn-inverse(ui-sref='admin.organizations.edit({ id: organization.id })') Editer
+
+    .col-md-4
+      .m-dashboard.light-gray.pvm.phm.mbl
+        h2.em.mbm Pages ({{pages.length}})
+
+        .table-container
+          table.table.table-striped
+            tr
+              th Position
+              th
+
+            tr(ng-repeat='page in pages | orderBy:"-updated_at"')
+              td {{page.info}}
+              td
+                a.btn.btn-info.btn-inverse(ui-sref='admin.pages.edit({ id: page.id })') Editer
+
+    .col-md-4
+      .m-dashboard.light-gray.pvm.phm.mbl
+        .clearfix
+          h2.em.pull-left Partenaires ({{partners.length}})
+          a.btn.btn-success.btn-inverse.pull-right.mtl(ui-sref='admin.partners.new') Ajouter
+
+        .table-container
+          table.table.table-striped
+            tr
+              th Position
+              th
+
+            tr(ng-repeat='partner in partners | orderBy:"name"')
+              td {{partner.name}}
+              td
+                a.btn.btn-info.btn-inverse(ui-sref='admin.partners.edit({ id: partner.id })') Editer
+
+    .col-md-4
+      .m-dashboard.light-gray.pvm.phm.mbl
+        .clearfix
+          h2.em.pull-left Travaux ({{works.length}})
+          a.btn.btn-success.btn-inverse.pull-right.mtl(ui-sref='admin.works.new') Ajouter
+
+        .table-container
+          table.table.table-striped
+            tr
+              th Titre
+              th
+
+            tr(ng-repeat='work in works | orderBy:"worked_at"')
+              td {{work.title}}
+              td
+                a.btn.btn-info.btn-inverse(ui-sref='admin.works.edit({ id: work.id })') Editer

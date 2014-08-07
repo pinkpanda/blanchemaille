@@ -5,32 +5,15 @@ angular.module('app.pageModule')
       '$log',
       '$scope',
       '$state',
-      'pageData',
       'pages',
 
       function(
         $log,
         $scope,
         $state,
-        pageData,
         pages
       ) {
-        $scope.pages  = pages;
-        $scope.page   = {};
-
-        $scope.save = function(form) {
-          if (form.$valid) {
-            pageData.saveOne($scope.page).then(
-              function(data) {
-                $state.transitionTo($state.current, {}, {
-                  reload: true,
-                  inherit: false,
-                  notify: true
-                });
-              }
-            );
-          }
-        };
+        $scope.pages = pages;
       }
     ]
   )
