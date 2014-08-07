@@ -5,18 +5,28 @@ form(name='pageForm', ng-show='page', novalidate)
 
   .form-group(ng-class='{ "has-error": pageForm.content.$invalid }')
     label.control-label Contenu
-    div(name='content', ng-model='page.content', text-angular, ta-toolbar-group-class='btn-group mrl', ta-toolbar-button-class='btn btn-info', ta-toolbar="[['p','h1','h2','h3','h4','h5','insertLink','insertImage','insertVideo'],['bold','italics','underline'],['justifyLeft','justifyCenter','justifyRight'],['quote','ul','ol'],['undo','redo','clear']]")
-    small(ng-if='page.slug == "faq"') Utilisez les H2, H3 pour styliser les questions/réponses
-    small(ng-if='page.slug == "calendar"') Veuillez n'y placer qu'un seul lien
-    small(ng-if='page.slug == "investment"') Veuillez n'y placer qu'un seul chiffre
+
+    div(ng-switch='page.slug')
+      div(ng-switch-when='calendar')
+        input.form-control(name='content', ng-model='page.content', type='text')
+        small Veuillez n'y placer qu'un seul lien
+
+      div(ng-switch-when='recipient')
+        input.form-control(name='content', ng-model='page.content', type='text')
+        small Veuillez n'y placer qu'une seule adresse email
+
+      div(ng-switch-when='investment')
+        input.form-control(name='content', ng-model='page.content', type='text')
+        small Veuillez n'y placer qu'un seul chiffre
+
+      div(ng-switch-default)
+        div(name='content', ng-model='page.content', text-angular, ta-toolbar-group-class='btn-group mrl', ta-toolbar-button-class='btn btn-info', ta-toolbar="[['p','h1','h2','h3','h4','h5','insertLink','insertImage','insertVideo'],['bold','italics','underline'],['justifyLeft','justifyCenter','justifyRight'],['quote','ul','ol'],['undo','redo','clear']]")
+        small(ng-if='page.slug == "faq"') Utilisez les H2, H3 pour styliser les questions/réponses
+
 
   .form-group(ng-class='{ "has-error": pageForm.info.$dirty && pageForm.info.$invalid }')
     label.control-label Plus d'informations
     input.form-control(name='info', ng-model='page.info', ng-required='true', type='text')
-
-  .form-group(ng-class='{ "has-error": pageForm.slug.$dirty && pageForm.slug.$invalid }')
-    label.control-label Slug
-    input.form-control(name='slug', ng-model='page.slug', ng-required='true', type='text')
 
   button.btn.btn-success.pull-left(ng-click='save(pageForm)', ng-disabled='pageForm.$invalid') Valider
 

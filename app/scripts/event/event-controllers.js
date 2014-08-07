@@ -5,7 +5,6 @@ angular.module('app.eventModule')
       '$log',
       '$scope',
       '$state',
-      '$filter',
       'events',
       'page',
 
@@ -13,7 +12,6 @@ angular.module('app.eventModule')
         $log,
         $scope,
         $state,
-        $filter,
         events,
         page
       ) {
@@ -34,7 +32,7 @@ angular.module('app.eventModule')
                 right: 'today prev,next'
               }
             },
-            source: [{ url: $filter('stripHtml')($scope.page.content) }]
+            source: [{ url: $scope.page.content }]
           };
         }
       }

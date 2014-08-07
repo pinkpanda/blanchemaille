@@ -67,17 +67,26 @@ angular.module('app.module', ['ui.router'])
           '$log',
           'Restangular',
           '$scope',
+          'recipient',
 
           function(
             $log,
             Restangular,
-            $scope
+            $scope,
+            recipient
           ) {
             $scope.contact = {};
 
             $scope.send = function(form) {
               if (form.$valid) {
-                Restangular.all('contact').post(_.merge($scope.contact, { to: 'contact@pinkpanda.io' })).then(
+                var email     = angular.copy($scope.contact);
+                email.subject = 'Blanchemaille : un nouveau message de ' + email.from;
+                email.body   += "\n\n\
+                  ---------------------------------------------------------------------------------------\n\
+                  Ce message a été envoyé via le formulaire de contact du site Blanchemaille.\
+                ";
+
+                Restangular.all('contact').post(_.merge(email, { to: recipient.content })).then(
                   function(data) {
                     $scope.contact = {};
                   }
@@ -85,7 +94,12 @@ angular.module('app.module', ['ui.router'])
               }
             }
           }
-        ]
+        ],
+        resolve: {
+          recipient: ['pageData', function(pageData) {
+            return pageData.getOne('recipient');
+          }]
+        }
       })
 
       .state('faq', {
