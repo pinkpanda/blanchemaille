@@ -67,15 +67,35 @@ angular.module('app.module', ['ui.router'])
           '$log',
           'Restangular',
           '$scope',
+          '$document',
           'recipient',
 
           function(
             $log,
             Restangular,
             $scope,
+            $document,
             recipient
           ) {
-            $scope.contact = {};
+            $scope.contact  = {};
+
+            var pathsArr    = new Array();
+            var lengthsArr  = new Array();
+
+            angular.forEach($document[0].querySelectorAll('path'), function(path, i) {
+              pathsArr[i] = path;
+              path.style.strokeDasharray = lengthsArr[i] = path.getTotalLength();
+            });
+
+            var draw = function(val) {
+              for (var i = 0, len = pathsArr.length; i < len; ++i){
+                pathsArr[i].style.strokeDashoffset = lengthsArr[i] * (1 - val);
+              }
+            }
+
+            $scope.$watch('loaded', function(v) {
+              draw(v);
+            });
 
             $scope.send = function(form) {
               if (form.$valid) {
@@ -88,9 +108,15 @@ angular.module('app.module', ['ui.router'])
 
                 Restangular.all('contact').post(_.merge(email, { to: recipient.content })).then(
                   function(data) {
-                    $scope.contact = {};
+                    $scope.contact  = {};
+                    $scope.isSent   = true;
+                  },
+                  function() {
+                    $scope.isSent = false;
                   }
                 );
+              } else {
+                $scope.isSent = false;
               }
             }
           }

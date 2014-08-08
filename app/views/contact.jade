@@ -10,18 +10,25 @@
   .row
     .col-md-8.col-md-offset-2
       form(name='contactForm', novalidate)
-        .form-group(ng-class='{ "has-error": contactForm.from.$dirty && contactForm.from.$invalid }')
+        .form-group
           label.control-label Email
           input.form-control(name='from', ng-model='contact.from', ng-required='true', type='email')
 
-        .form-group(ng-class='{ "has-error": contactForm.subject.$dirty && contactForm.subject.$invalid }')
+        .form-group
           label.control-label Sujet
           input.form-control(name='subject', ng-model='contact.subject', ng-required='true', type='text')
 
-        .form-group(ng-class='{ "has-error": contactForm.body.$invalid }')
+        .form-group
           label.control-label Message
           textarea.form-control(name='body', ng-model='contact.body', rows='5')
 
       .row.mtxl
-        .col-md-6.col-md-offset-3
-          button.btn.btn-success.btn-block.btn-lg(ng-click='send(contactForm)', ng-disabled='contactForm.$invalid') Envoyer
+        .col-md-6.col-md-offset-3.text-center
+          .progress-button(loading-button, lb-completed='isSent', lb-value='loaded', ng-click='send(contactForm)')
+            button
+              span.default Envoyer
+              span.error Echec
+              span.success Merci :)
+
+            svg.progress-circle(width='70', height='70')
+              path(d='m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z')

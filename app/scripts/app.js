@@ -10,6 +10,7 @@ angular.module('app', [
   'google-maps',
   'truncate',
   'textAngular',
+  'loadingButton',
   'countTo',
   'duScroll',
 
