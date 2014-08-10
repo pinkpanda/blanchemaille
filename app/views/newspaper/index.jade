@@ -11,13 +11,13 @@
 
   .row
     div(ng-repeat='newspaper in newspapers | orderBy:"-created_at"')
-      .col-md-4
+      .col-md-3
         .m-newspaper.mbl.light-gray
           .m-newspaper--header.text-center(ui-sref='newspapers.show({ id: newspaper.slug })')
             .m-newspaper--image.max-width.pos-absolute
               img.max-width(src='{{newspaper.image.image.thumb.url}}', api-img)
 
-            h2.text-white.pos-absolute-center {{newspaper.title}}
+            h3.text-white.pos-absolute-center.max-width {{newspaper.title}}
 
           .m-newspaper--content.pvl.phl
             p.text-justify {{newspaper.content | characters:200}}

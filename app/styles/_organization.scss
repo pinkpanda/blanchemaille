@@ -10,3 +10,33 @@
   font-size: 16px;
   line-height: 35px;
 }
+
+.m-organizations--item {
+  -webkit-transition: 1s linear all;
+  transition: 1s linear all;
+
+  &.ng-move, &.ng-enter {
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+  }
+
+  &.ng-leave {
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+
+    &.ng-leave-active {
+      opacity: 0;
+      max-height: 0;
+    }
+  }
+
+  &.ng-move, &.ng-enter {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  &.ng-leave, &.ng-move.ng-move-active, &.ng-enter.ng-enter-active {
+    opacity: 1;
+    max-height: 40px;
+  }
+}

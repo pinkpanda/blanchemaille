@@ -11,22 +11,22 @@
     .col-md-8.col-md-offset-2
       form(name='contactForm', novalidate)
         .form-group
-          label.control-label Email
+          label.control-label Votre email
           input.form-control(name='from', ng-model='contact.from', ng-required='true', type='email')
 
         .row
           .col-sm-6
             .form-group
-              label.control-label Prénom
+              label.control-label Votre prénom
               input.form-control(name='firstname', ng-model='contact.firstname', ng-required='true', type='text')
 
           .col-sm-6
             .form-group
-              label.control-label Nom
+              label.control-label Votre nom
               input.form-control(name='lastname', ng-model='contact.lastname', ng-required='true', type='text')
 
         .form-group
-          label.control-label Message
+          label.control-label Votre message
           textarea.form-control(name='body', ng-model='contact.body', rows='5')
 
       .row.mtxl
@@ -34,8 +34,8 @@
           .progress-button(loading-button, lb-completed='isSent', lb-value='loaded', ng-click='send(contactForm)')
             button
               span.default Envoyer
-              span.error Echec
-              span.success Merci :)
+              span.error Erreur
+              span.success Message envoyé :)
 
             svg.progress-circle(width='70', height='70')
               path(d='m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z')

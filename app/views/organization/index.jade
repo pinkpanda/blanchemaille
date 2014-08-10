@@ -11,27 +11,39 @@
 
 .turquoise.pos-relative.arrow.pbl
   .container-fluid
-    .row.text-center
-      .col-md-12.mvl
-        google-map.m-organization--map(center='map.center', options='map.options', zoom='map.zoom')
-          markers(click="'onClicked'", coords="'self'", fit='true', models='filteredMarkers')
+    .row.mvl
+      .col-md-3
+        .row.mll
+          .col-md-12.mbm
+            p
+              input(id='m-sector--unchecked', ng-checked='selection.length == sectors.length', ng-click='toggleSelectionAll()', type='checkbox')
+              label(for='m-sector--unchecked')
+                span.ui
+                | Afficher tous les secteurs
 
-  .container
-    .row.text-center
-      .col-sm-3(ng-repeat='sector in sectors')
-        p
-          input(id='sector{{$index}}', ng-checked='selection.indexOf(sector) > -1', ng-click='toggleSelection(sector)', type='checkbox', value='{{sector}}')
-          label(for='sector{{$index}}')
-            span.ui
-            {{sector}}
+          .col-md-12.mbm(ng-repeat='sector in sectors')
+            p
+              input(id='sector{{$index + 1}}', ng-checked='selection.indexOf(sector) > -1', ng-click='toggleSelection(sector)', type='checkbox', value='{{sector}}')
+              label(for='sector{{$index + 1}}')
+                span.ui
+                {{sector}}
+
+      .col-md-9
+        google-map.m-organization--map(center='map.center', options='map.options', zoom='map.zoom')
+          markers(click="'onClick'", coords="'self'", fit='true', models='filteredMarkers')
+            windows(closeClick="'closeClick'", ng-cloak, show="'showWindow'")
+              div.clearfix.text-center(ng-non-bindable)
+                h2(class='text-black') {{name}}
+                a.btn.btn-turquoise.btn-inverse.mtm.mbm(href='{{path}}') Voir la fiche détaillée
 
 .light-gray
   .container.pvxl
     .row
-      div(ng-repeat='organization in organizations | filterSelectedMarker:selection | orderBy:"name"')
-        .col-md-4.col-sm-4
-          a.m-organization.block.mbl(ui-sref='organizations.show({ id: organization.slug })')
+      div.m-organizations--item(ng-repeat='organization in organizations | filterSelectedMarker:selection | orderBy:"name"')
+        .col-sm-3
+          a.block.mbl.text-center(ui-sref='organizations.show({ id: organization.slug })')
             img.max-width(src='{{organization.image.image.thumb.url}}', api-img)
+            h3.em {{organization.name}}
 
 style.
   .m-organization--map .angular-google-map-container {

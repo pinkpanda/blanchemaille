@@ -224,7 +224,7 @@ a, a:hover {
 [type="checkbox"]:not(:checked) + label .ui:before,
 [type="checkbox"]:checked + label .ui:after {
   position: absolute;
-  left: -5px;
+  left: 5px;
   width: 65px;
   border-radius: 15px;
   font-size: 14px;
@@ -234,7 +234,7 @@ a, a:hover {
 }
 [type="checkbox"]:not(:checked) + label .ui:before {
   content: "Non";
-  left: 13px
+  left: 30px
 }
 [type="checkbox"]:checked + label .ui:after {
   content: "Oui";

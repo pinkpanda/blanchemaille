@@ -40,15 +40,32 @@ angular.module('app.organizationModule')
           $scope.filteredMarkers = $filter('filterSelectedMarker')($scope.markers, $scope.selection);
         };
 
+        $scope.toggleSelectionAll = function() {
+          if ($scope.selection.length == $scope.sectors.length) {
+            $scope.selection.splice(0, $scope.selection.length);
+          } else {
+            $scope.selection = angular.copy(sectors);
+          }
+
+          $scope.filteredMarkers = $filter('filterSelectedMarker')($scope.markers, $scope.selection);
+        };
+
         $scope.markers = _.map($scope.organizations, function(organization, i) {
+          i++;
+
           return {
             id: i,
             latitude: organization.lat,
             longitude: organization.lon,
-            onClicked: function () {
-              $state.go('organizations.show', { id: organization.slug })
+            name: organization.name,
+            path: $state.href('organizations.show', { id: organization.slug }, { absolute: true }),
+            sector: organization.sector,
+            onClick: function () {
+              organization.showWindow = true;
             },
-            sector: organization.sector
+            closeClick: function () {
+              organization.showWindow = false;
+            }
           };
         });
 
