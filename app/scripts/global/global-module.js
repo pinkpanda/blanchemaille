@@ -100,7 +100,7 @@ angular.module('app.module', ['ui.router'])
             $scope.send = function(form) {
               if (form.$valid) {
                 var email     = angular.copy($scope.contact);
-                email.subject = 'Blanchemaille : un nouveau message de ' + email.from;
+                email.subject = 'Bl@nchemaille : un nouveau message de ' + email.firstname + ' ' + email.lastname;
                 email.body   += "\n\n\
                   ---------------------------------------------------------------------------------------\n\
                   Ce message a été envoyé via le formulaire de contact du site Blanchemaille.\

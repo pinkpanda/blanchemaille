@@ -14,9 +14,16 @@
           label.control-label Email
           input.form-control(name='from', ng-model='contact.from', ng-required='true', type='email')
 
-        .form-group
-          label.control-label Sujet
-          input.form-control(name='subject', ng-model='contact.subject', ng-required='true', type='text')
+        .row
+          .col-sm-6
+            .form-group
+              label.control-label Prénom
+              input.form-control(name='firstname', ng-model='contact.firstname', ng-required='true', type='text')
+
+          .col-sm-6
+            .form-group
+              label.control-label Nom
+              input.form-control(name='lastname', ng-model='contact.lastname', ng-required='true', type='text')
 
         .form-group
           label.control-label Message
