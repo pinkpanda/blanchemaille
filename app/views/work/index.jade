@@ -5,17 +5,17 @@
     .col-md-12
       h2.em(blanchemaille) {{page.title}}
 
-      .hr.turquoise
+      .hr.blanchemaillish
 
       .text-justify(ng-bind-html='page.content')
 
   .row.pos-relative
     .m-work--timeline--container.light-gray.pos-absolute
-    .m-work--timeline.turquoise.pos-absolute
+    .m-work--timeline.blanchemaillish.pos-absolute
 
     div(ng-repeat='work in works | orderBy:"worked_at"', style='margin-top: 100px;')
       .col-md-12
-        .m-work--point.ball.turquoise.pos-absolute
+        .m-work--point.ball.blanchemaillish.pos-absolute
           .m-work--background.ball.light-gray.pos-absolute
 
         .row
@@ -23,6 +23,8 @@
             h3.em {{work.title}}
 
             .text-justify(ng-bind-html='work.content')
+
+  .m-work--footer
 
 script.
   var timeline = function() {

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: antagorg; font-style: normal; font-weight: normal;
+  src: url(/fonts/antagorg.ttf);
+}
+
 @mixin background-size($size) {
   background-size: $size;
   -webkit-background-size: $size;
@@ -21,7 +26,7 @@ html, body {
 }
 
 a, a:hover {
-  color: $turquoise;
+  color: $blanchemaillish;
   text-decoration: none;
 }
 
@@ -38,7 +43,7 @@ a, a:hover {
 }
 
 .blanchemaille {
-  font-family: "Lobster", Arial, sans-serif;
+  font-family: antagorg, Arial, sans-serif;
 }
 
 .em {
@@ -69,7 +74,7 @@ a, a:hover {
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-top: 15px solid $turquoise;
+  border-top: 15px solid $blanchemaillish;
   position: absolute;
   bottom: -15px;
   left: 50%;
@@ -80,8 +85,8 @@ a, a:hover {
   top: 0;
   z-index: 10;
 
-  .navbar-brand {
-    color: $turquoise;
+  .navbar-brand img {
+    height: 50px;
   }
 
   &.affix + .prevent-affix {
@@ -91,8 +96,8 @@ a, a:hover {
   .active {
     padding: 7px;
     margin-top: 7px;
-    color: $turquoise;
-    border: 1px solid $turquoise;
+    color: $blanchemaillish;
+    border: 1px solid $blanchemaillish;
   }
 }
 
@@ -216,7 +221,7 @@ a, a:hover {
   background:#34495E;
 }
 [type="checkbox"]:checked + label:after {
-  background: #39D2B4;
+  background: $blanchemaillish;
   top: 2px; left: 40px;
 }
 
@@ -238,7 +243,7 @@ a, a:hover {
 }
 [type="checkbox"]:checked + label .ui:after {
   content: "Oui";
-  color: #39D2B4;
+  color: $white;
 }
 [type="checkbox"]:focus + label:before {
   border: 1px dashed #777;

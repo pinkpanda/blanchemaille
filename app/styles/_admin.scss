@@ -39,7 +39,7 @@ $navs: events, images, newspapers, organizations, pages, partners, works;
   .#{$nav}:not(.new) {
     .m-nav--admin .#{$nav} .title {
       position: relative;
-      background-color: $turquoise;
+      background-color: $peter-river;
 
       &:after {
         content: "";
@@ -60,7 +60,7 @@ $navs: events, images, newspapers, organizations, pages, partners, works;
   .#{$nav}.new {
     .m-nav--admin .#{$nav} .new {
       position: relative;
-      background-color: $turquoise;
+      background-color: $peter-river;
 
       &:after {
         content: "";

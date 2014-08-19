@@ -1,40 +1,42 @@
-$turquoise:     #27ccc0; // custom for blanchemaille
-$green-sea:     #16a085;
+$blanchemaillish: #2e396b;
 
-$emerald:       #2ecc71;
-$nephritis:     #27ae60;
+$turquoise:       #1abc9c;
+$green-sea:       #16a085;
 
-$peter-river:   #3498db;
-$belize-hole:   #2980b9;
+$emerald:         #2ecc71;
+$nephritis:       #27ae60;
 
-$amethyst:      #9b59b6;
-$wisteria:      #8e44ad;
+$peter-river:     #3498db;
+$belize-hole:     #2980b9;
 
-$wet-asphalt:   #34495e;
-$midnight-blue: #2c3e50;
+$amethyst:        #9b59b6;
+$wisteria:        #8e44ad;
 
-$sun-flower:    #f1c40f;
-$orange:        #f39c12;
+$wet-asphalt:     #34495e;
+$midnight-blue:   #2c3e50;
 
-$carrot:        #e67e22;
-$pumpkin:       #d35400;
+$sun-flower:      #f1c40f;
+$orange:          #f39c12;
 
-$alizarin:      #e74c3c;
-$pomegranate:   #c0392b;
+$carrot:          #e67e22;
+$pumpkin:         #d35400;
 
-$clouds:        #ecf0f1;
-$silver:        #bdc3c7;
+$alizarin:        #e74c3c;
+$pomegranate:     #c0392b;
 
-$concrete:      #95a5a6;
-$asbestos:      #7f8c8d;
+$clouds:          #ecf0f1;
+$silver:          #bdc3c7;
 
-$white:         #FEFEFE;
-$black:         #222222;
-$light-black:   lighten($black, 10%);
-$gray:          invert($black);
-$light-gray:    lighten(invert($light-black), 20%);
+$concrete:        #95a5a6;
+$asbestos:        #7f8c8d;
 
-$colors: turquoise $turquoise, green-sea $green-sea, emerald $emerald, nephritis $nephritis, peter-river $peter-river, belize-hole $belize-hole, amethyst $amethyst, wisteria $wisteria, wet-asphalt $wet-asphalt, midnight-blue $midnight-blue, sun-flower $sun-flower, orange $orange, carrot $carrot, pumpkin $pumpkin, alizarin $alizarin, pomegranate $pomegranate, clouds $clouds, silver $silver, concrete $concrete, asbestos $asbestos, white $white, black $black, light-black $light-black, gray $gray, light-gray $light-gray;
+$white:           #FEFEFE;
+$black:           #222222;
+$light-black:     lighten($black, 10%);
+$gray:            invert($black);
+$light-gray:      lighten(invert($light-black), 20%);
+
+$colors: blanchemaillish $blanchemaillish, turquoise $turquoise, green-sea $green-sea, emerald $emerald, nephritis $nephritis, peter-river $peter-river, belize-hole $belize-hole, amethyst $amethyst, wisteria $wisteria, wet-asphalt $wet-asphalt, midnight-blue $midnight-blue, sun-flower $sun-flower, orange $orange, carrot $carrot, pumpkin $pumpkin, alizarin $alizarin, pomegranate $pomegranate, clouds $clouds, silver $silver, concrete $concrete, asbestos $asbestos, white $white, black $black, light-black $light-black, gray $gray, light-gray $light-gray;
 
 $brand-primary:   $wet-asphalt;
 $brand-success:   $emerald;
@@ -53,8 +55,12 @@ $body-bg: #FEFEFE;
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
-.btn-turquoise {
-  @include button-variant(#333, $turquoise, darken($turquoise, 5%));
+.btn-custom {
+  @include button-variant(#333, $peter-river, darken($peter-river, 5%));
+}
+
+.btn-blanchemaillish {
+  @include button-variant(#333, $blanchemaillish, darken($blanchemaillish, 5%));
 }
 
 .btn-inverse {
@@ -100,8 +106,16 @@ $body-bg: #FEFEFE;
     }
   }
 
-  &.btn-turquoise {
-    color: darken($turquoise, 5%);
+  &.btn-custom {
+    color: darken($peter-river, 5%);
+
+    &:hover {
+      color: #FFF;
+    }
+  }
+
+  &.btn-blanchemaillish {
+    color: darken($blanchemaillish, 5%);
 
     &:hover {
       color: #FFF;

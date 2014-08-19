@@ -8,10 +8,10 @@
   }
 
   .active & {
-    border-color: $turquoise;
+    border-color: $blanchemaillish;
 
     & > h3 {
-      color: $turquoise;
+      color: $blanchemaillish;
     }
   }
 }
@@ -52,4 +52,8 @@
   .active & {
     @include scale(0);
   }
+}
+
+.m-work--footer {
+  height: 200px;
 }
