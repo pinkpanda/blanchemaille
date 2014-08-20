@@ -13,7 +13,7 @@
           | &nbsp;Startups !
 
       .col-md-12.mtxl
-        a.btn.btn-custom.btn-lg.btn-inverse(du-smooth-scroll, href='#hello') Découvrir Bl@nchemaille
+        a.btn.btn-custom.btn-lg.btn-inverse(du-smooth-scroll, href='#hello') Découvrir Blanchemaille
 
 #nav.max-width(ng-include="'views/partials/header.html'")
 
@@ -32,7 +32,7 @@
     .row.text-center
       .col-md-12.mvl
         h2.em.mtm
-          span.blanchemaille Bl@nchemaille
+          span.blanchemaille Blanchemaille
           | &nbsp;en chiffres
 
 .white
@@ -94,28 +94,31 @@
     .row.pbxl
       .col-md-4
         .ptl.prl.pbl.pll
-          h3.em.text-blanchemaillish.mbl.upper {{about.title}}
+          h3.em.mbl.upper
+            b {{about.title}}
           .text-justify(ng-bind-html='about.content')
 
       .col-md-4
         .ptl.prl.pbl.pll
-          h3.em.text-blanchemaillish.mbl.upper Contact
+          h3.em.mbl.upper
+            b Contact
           p
-            i.glyphicon.glyphicon-map-marker.text-blanchemaillish.mrm
+            i.glyphicon.glyphicon-map-marker.mrm
             | 17 Grand Place
           p
-            i.glyphicon.glyphicon-tower.text-blanchemaillish.mrm
+            i.glyphicon.glyphicon-tower.mrm
             | 59100 Roubaix
           p
-            i.glyphicon.glyphicon-earphone.text-blanchemaillish.mrm
+            i.glyphicon.glyphicon-earphone.mrm
             | 03 21 12 34 56
           p
-            i.glyphicon.glyphicon-envelope.text-blanchemaillish.mrm
+            i.glyphicon.glyphicon-envelope.mrm
             | contact@blanchemaille.com
 
       .col-md-4
         .ptl.prl.pbl.pll
-          h3.em.text-blanchemaillish.mbl.upper {{networks.title}}
+          h3.em.mbl.upper
+            b {{networks.title}}
           .text-justify(ng-bind-html='networks.content')
 
 script.

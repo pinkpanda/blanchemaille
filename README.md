@@ -1,6 +1,6 @@
-# Bl@nchemaille Frontend
+# Blanchemaille Frontend
 
-Frontend Angular app for Bl@nchemaille
+Frontend Angular app for Blanchemaille
 
 ## Install
 

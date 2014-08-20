@@ -42,7 +42,7 @@ angular.module('app.directives', [])
           link: function(scope, element, attrs) {
             $timeout(function() {
               var rgxp = new RegExp('bl@nchemaille|blanchemaille', 'i');
-              element.html(element.html().replace(rgxp, '<span class="blanchemaille">Bl@nchemaille</span>'));
+              element.html(element.html().replace(rgxp, '<span class="blanchemaille">Blanchemaille</span>'));
             });
           }
         };
