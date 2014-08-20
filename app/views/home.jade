@@ -1,19 +1,13 @@
 .height-100
   .m-home--background.cover
-  .container.pos-absolute-center
-    .row.text-center
-      .col-md-12
-        h1.upper.em.m-header--title.text-white
-          | In&nbsp;
-          b Roubaix
-          | ,
-          br
-          | we&nbsp;
-          span.fa.fa-heart-o.text-alizarin
-          | &nbsp;Startups !
+  .container.pos-absolute-center.max-width.text-center
+    .row
+      .col-xs-12.col-sm-6.col-sm-offset-3.mbl
+        img.max-width(src='images/logo-white.png')
 
-      .col-md-12.mtxl
-        a.btn.btn-custom.btn-lg.btn-inverse(du-smooth-scroll, href='#hello') Découvrir Blanchemaille
+    .row
+      .col-md-12
+        a.btn.btn-custom.btn-lg.btn-inverse(du-smooth-scroll, href='#hello') En savoir plus
 
 #nav.max-width(ng-include="'views/partials/header.html'")
 
@@ -80,7 +74,7 @@
           a.m-partner.block.mbl(ui-sref='partners.show({ id: partner.slug })')
             img.max-width(src='{{partner.image.image.thumb.url}}', api-img)
 
-.pvxl.text-white
+.pvxl.text-white.m-home--footer
   .container
     .row.text-center.ptxl
       .col-md-12

@@ -1,9 +1,3 @@
-.m-header--title {
-  font-size: 60px;
-  font-weight: 400;
-  letter-spacing: 2px;
-}
-
 .m-home--background {
   background: url(/images/blanchemaille.png) no-repeat;
   position: fixed;
@@ -44,4 +38,14 @@
   font-size: 12px;
   letter-spacing: 1px;
   line-height: 0.4em;
+}
+
+.m-home--footer {
+  a, a:hover {
+    color: #FEFEFE;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }
