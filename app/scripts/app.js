@@ -14,6 +14,7 @@ angular.module('app', [
   'loadingButton',
   'countTo',
   'duScroll',
+  'angular-flexslider',
 
   'app.module',
   'app.constants',

@@ -19,27 +19,6 @@
   }
 }
 
-.m-home--statistics {
-  border-right: 1px solid #eeeeee;
-}
-
-.m-home--statistics:last-child {
-  border-right: 0px;
-}
-
-.m-home--statistics--big {
-  color: #4A5157;
-  font-size: 50px;
-  font-weight: 600;
-}
-
-.m-home--statistics--small {
-  color: #C7CDD5;
-  font-size: 12px;
-  letter-spacing: 1px;
-  line-height: 0.4em;
-}
-
 .m-home--footer {
   a, a:hover {
     color: #FEFEFE;
@@ -48,4 +27,8 @@
   a:hover {
     text-decoration: underline;
   }
+}
+
+#twitter-widget-0 {
+  width: 100% !important;
 }
