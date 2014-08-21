@@ -91,7 +91,7 @@ angular.module('app.module', ['ui.router'])
               for (var i = 0, len = pathsArr.length; i < len; ++i){
                 pathsArr[i].style.strokeDashoffset = lengthsArr[i] * (1 - val);
               }
-            }
+            };
 
             $scope.$watch('loaded', function(v) {
               draw(v);
@@ -118,7 +118,7 @@ angular.module('app.module', ['ui.router'])
               } else {
                 $scope.isSent = false;
               }
-            }
+            };
           }
         ],
         resolve: {

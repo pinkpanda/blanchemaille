@@ -17,6 +17,8 @@ angular.module('app.adminModule', ['ui.router'])
           '$log',
           '$scope',
           '$state',
+          'AuthRestangular',
+          'md5',
           'events',
           'newspapers',
           'organizations',
@@ -28,6 +30,8 @@ angular.module('app.adminModule', ['ui.router'])
             $log,
             $scope,
             $state,
+            AuthRestangular,
+            md5,
             events,
             newspapers,
             organizations,
@@ -41,6 +45,19 @@ angular.module('app.adminModule', ['ui.router'])
             $scope.pages          = pages;
             $scope.partners       = partners;
             $scope.works          = works;
+
+            $scope.updatePassword = function(form) {
+              if (form.$valid) {
+                var details       = angular.copy($scope.details);
+                details.password  = md5.createHash(details.password);
+
+                AuthRestangular.one('users', $scope.currentUser.id).customPUT(details).then(
+                  function(data) {
+                    $scope.details = {};
+                  }
+                );
+              }
+            };
 
             angular.forEach($scope.events, function(eventItem) {
               eventItem.path = $state.href('events.show', { id: eventItem.slug }, { absolute: true });

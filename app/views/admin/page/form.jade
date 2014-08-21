@@ -23,7 +23,6 @@ form(name='pageForm', ng-show='page', novalidate)
         div(name='content', ng-model='page.content', text-angular, ta-toolbar-group-class='btn-group mrl', ta-toolbar-button-class='btn btn-info', ta-toolbar="[['p','h1','h2','h3','h4','h5','insertLink','insertImage','insertVideo'],['bold','italics','underline'],['justifyLeft','justifyCenter','justifyRight'],['quote','ul','ol'],['undo','redo','clear']]")
         small(ng-if='page.slug == "faq"') Utilisez les H2, H3 pour styliser les questions/réponses
 
-
   .form-group(ng-class='{ "has-error": pageForm.info.$dirty && pageForm.info.$invalid }')
     label.control-label Plus d'informations
     input.form-control(name='info', ng-model='page.info', ng-required='true', type='text')

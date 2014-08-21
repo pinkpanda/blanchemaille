@@ -104,3 +104,16 @@
               td {{work.title}}
               td
                 a.btn.btn-info.btn-inverse(ui-sref='admin.works.edit({ id: work.id })') Editer
+
+  .hr.gray.mtl
+
+  .row
+    .col-md-12
+      form(class='form-inline', name='detailsForm', novalidate)
+        .input-group.pull-center
+          label.control-label Changer de mot de passe
+          .form-group.mlxl(ng-class='{ "has-error": detailsForm.password.$dirty && detailsForm.password.$invalid }')
+            input.form-control.m-dashboard--password(name='password', ng-model='details.password', ng-required='true', type='password')
+
+            span.input-group-btn
+              button.btn.btn-success.pull-left(ng-click='updatePassword(detailsForm)', ng-disabled='detailsForm.$invalid') Valider
