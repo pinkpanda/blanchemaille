@@ -14,6 +14,7 @@ html.no-js(ng-app='app')
     // build:css(.) styles/vendor.css
     // bower:css
     link(rel='stylesheet', href='bower_components/fullcalendar/dist/fullcalendar.css')
+    link(rel='stylesheet', href='bower_components/AngularJS-Toaster/toaster.css')
     link(rel='stylesheet', href='bower_components/ngprogress-lite/ngprogress-lite.css')
     // endbower
     link(rel='stylesheet', href='bower_components/angular-loading-button/example/angular-loading-button.css')
@@ -26,6 +27,8 @@ html.no-js(ng-app='app')
     // endbuild
 
   body(ng-controller='AppController', class='{{bodyClass}}')
+    toaster-container
+
     .sticky-footer
       .ui-view
       .sticky-footer-trick
@@ -49,6 +52,7 @@ html.no-js(ng-app='app')
 
     // build:js(.) scripts/vendor.js
     // bower:js
+    script(src='bower_components/es5-shim/es5-shim.js')
     script(src='bower_components/jquery/dist/jquery.js')
     script(src='bower_components/angular/angular.js')
     script(src='bower_components/angular-animate/angular-animate.js')
@@ -66,7 +70,9 @@ html.no-js(ng-app='app')
     script(src='bower_components/fullcalendar/dist/fullcalendar.js')
     script(src='bower_components/angular-ui-calendar/src/calendar.js')
     script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
+    script(src='bower_components/AngularJS-Toaster/toaster.js')
     script(src='bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js')
+    script(src='bower_components/json3/lib/json3.min.js')
     script(src='bower_components/ngprogress-lite/ngprogress-lite.js')
     script(src='bower_components/restangular/dist/restangular.js')
     script(src='bower_components/textAngular/dist/textAngular.min.js')

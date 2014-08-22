@@ -9,6 +9,7 @@ angular.module('app', [
   'angular-md5',
   'ui.calendar',
   'google-maps',
+  'toaster',
   'truncate',
   'textAngular',
   'loadingButton',
@@ -69,6 +70,7 @@ angular.module('app', [
       '$state',
       '$window',
       '$timeout',
+      'toaster',
       'AuthService',
       'ngProgressLite',
 
@@ -78,11 +80,22 @@ angular.module('app', [
         $state,
         $window,
         $timeout,
+        toaster,
         AuthService,
         ngProgressLite
       ) {
+        $rootScope.$on('not_created', function() {
+          toaster.pop('warning', '', 'Ca n\'a pas été effectué');
+        });
+
         $rootScope.$on('not_authorized', function() {
+          toaster.pop('error', '', 'Interdit de venir ici');
           $state.go('login');
+        });
+
+        $rootScope.$on('not_found', function() {
+          toaster.pop('error', '', 'Ce que vous cherchez n\'a pas été trouvé');
+          $state.go('home');
         });
 
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {

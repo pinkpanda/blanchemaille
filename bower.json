@@ -15,6 +15,7 @@
     "angular-truncate": "latest",
     "angular-ui-calendar": "0.8.1",
     "angular-ui-router": "0.2.10",
+    "AngularJS-Toaster": "0.4.7",
     "bootstrap-sass-official": "3.1.1",
     "es5-shim": "3.1.0",
     "fullcalendar": "2.0.2",

@@ -110,9 +110,20 @@ angular.module('app.services', [])
           var error = function (response) {
             var message = '';
 
-            // NEED TO BE FIXED
-            if (response.status === 0) {
-              message = 'not_authorized';
+            $log.info(response);
+
+            switch (response.status) {
+              case 400:
+                message = 'not_created';
+                break;
+
+              case 401:
+                message = 'not_authorized';
+                break;
+
+              case 404:
+                message = 'not_found';
+                break;
             }
 
             $rootScope.$broadcast(message);
