@@ -31,14 +31,13 @@
 .white
   .container
     .row.text-center.mvxl
-      .col-md-6
+      .col-md-6.mbl
         a.twitter-timeline(href='https://twitter.com/Blanchemaille', data-widget-id='502479346682982400') Tweets de @Blanchemaille
         script#twitter-wjs(src='http://platform.twitter.com/widgets.js')
         script.
           !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
-
-      .col-md-6
+      .col-md-6.mbl
         iframe(allowtransparency='true', frameborder='0', scrolling='no', src='//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FBlanchemaille%2F261730210654503&width&height=590&colorscheme=light&show_faces=true&header=true&stream=true&show_border=false&appId=166168030141220', style='border: none; overflow: hidden; width: 100%; height: 400px;', )
 
 .light-gray.pvxl
@@ -52,8 +51,8 @@
         .hr.blanchemaillish
 
     .row
-      div(ng-repeat='partner in partners | limitTo:4')
-        .col-sm-3
+      flex-slider(animation='slide', control-nav='false', item-margin='20', item-width='300', pause-on-hover='true', slide='partner in partners track by $index', slideshow-speed='4000')
+        li.mrl
           a.m-partner.block.mbl(ui-sref='partners.show({ id: partner.slug })')
             img.max-width(src='{{partner.image.image.thumb.url}}', api-img)
 
