@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').load();
 var modRewrite = require('connect-modrewrite');
 
 module.exports = function (grunt) {
@@ -15,8 +16,6 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     app: appConfig,
-
-    secret: grunt.file.readJSON('secret.json'),
 
     watch: {
       bower: {
@@ -294,13 +293,13 @@ module.exports = function (grunt) {
           './': 'dist/**'
         },
         options: {
-          host: '<%= secret.host %>',
-          path: '<%= secret.path %>',
-          privateKey: '<%= grunt.file.read(secret.privateKey) %>',
+          host: process.env.SERV_HOST,
+          path: process.env.SERV_PATH,
+          privateKey: grunt.file.read(process.env.SERV_KEY),
           showProgress: true,
           createDirectories: true,
           srcBasePath: 'dist/',
-          username: '<%= secret.username %>'
+          username: process.env.SERV_USER
         }
       }
     },

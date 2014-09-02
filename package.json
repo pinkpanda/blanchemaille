@@ -4,6 +4,7 @@
   "dependencies": {},
   "devDependencies": {
     "connect-modrewrite": "~0.6.4-pre",
+    "dotenv": "~0.4.0",
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.7.3",
     "grunt-concurrent": "~0.5.0",
