@@ -1,0 +1,13 @@
+form(enctype='multipart/form-data', name='reportForm', ng-show='report', novalidate)
+  .form-group(ng-class='{ "has-error": reportForm.title.$dirty && reportForm.title.$invalid }')
+    label.control-label Titre
+    input.form-control(name='title', ng-model='report.title', ng-required='true', type='text')
+
+  .form-group(ng-class='{ "has-error": reportForm.file.$dirty && reportForm.file.$invalid }')
+    label.control-label Fichier pdf
+    input.form-control(name='file', file-model='report.file', ng-required='true', type='file')
+
+  button.btn.btn-success.pull-left(ng-click='save(reportForm)', ng-disabled='reportForm.$invalid') Valider
+
+  div(ng-if='report.id')
+    button.btn.btn-danger.pull-right(ng-really-message='Êtes-vous sûr ?', ng-really-click='delete()') Supprimer {{report.title}}

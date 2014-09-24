@@ -23,21 +23,19 @@
     .col-md-4
       .m-dashboard.light-gray.pvm.phm.mbl
         .clearfix
-          h2.em.pull-left Articles ({{newspapers.length}})
-          a.btn.btn-success.btn-inverse.pull-right.mtl(ui-sref='admin.newspapers.new') Ajouter
+          h2.em.pull-left Compte rendus ({{reports.length}})
+          a.btn.btn-success.btn-inverse.pull-right.mtl(ui-sref='admin.reports.new') Ajouter
 
         .table-container
           table.table.table-striped
             tr
               th Titre
-              th Nom du journal
               th
 
-            tr(ng-repeat='newspaper in newspapers | orderBy:"-created_at"')
-              td {{newspaper.title}}
-              td {{newspaper.newspaper_name}}
+            tr(ng-repeat='report in reports | orderBy:"-created_at"')
+              td {{report.title}}
               td
-                a.btn.btn-info.btn-inverse(ui-sref='admin.newspapers.edit({ id: newspaper.id })') Editer
+                a.btn.btn-info.btn-inverse(ui-sref='admin.reports.edit({ id: report.id })') Editer
 
     .col-md-4
       .m-dashboard.light-gray.pvm.phm.mbl

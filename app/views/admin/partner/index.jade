@@ -7,4 +7,4 @@
     div(ng-repeat='partner in partners | filter:search | orderBy:"name"')
       .col-md-3
         a.m-partner.mbl(ui-sref='admin.partners.edit({ id: partner.id })')
-          img.max-width(src='{{partner.image.image.thumb.url}}', api-img)
+          img.max-width(src='{{partner.image.image.thumb.url}}', api-path)

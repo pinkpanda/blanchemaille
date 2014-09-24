@@ -42,7 +42,7 @@
       div.m-organizations--item(ng-repeat='organization in organizations | filterSelectedMarker:selection | orderBy:"name"')
         .col-sm-3
           a.block.mbl.text-center(ui-sref='organizations.show({ id: organization.slug })')
-            img.max-width(src='{{organization.image.image.thumb.url}}', api-img)
+            img.max-width(src='{{organization.image.image.thumb.url}}', api-path)
             h3.em {{organization.name}}
 
 style.

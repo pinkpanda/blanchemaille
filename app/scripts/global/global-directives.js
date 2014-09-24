@@ -1,6 +1,6 @@
 angular.module('app.directives', [])
   .directive(
-    'apiImg',
+    'apiPath',
     [
       '$log',
       '$timeout',
@@ -17,6 +17,8 @@ angular.module('app.directives', [])
             $timeout(function() {
               if (element.attr('src')) {
                 element.attr('src', API_BASE_URL + element.attr('src'));
+              } else if (element.attr('href')) {
+                element.attr('href', API_BASE_URL + element.attr('href'));
               } else {
                 element.attr('value', API_BASE_URL + element.attr('value'));
               }

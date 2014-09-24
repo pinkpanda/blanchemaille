@@ -15,7 +15,7 @@
         .m-newspaper.mbl.light-gray
           .m-newspaper--header.text-center(ui-sref='newspapers.show({ id: newspaper.slug })')
             .m-newspaper--image.max-width.pos-absolute
-              img.max-width(src='{{newspaper.image.image.thumb.url}}', api-img)
+              img.max-width(src='{{newspaper.image.image.thumb.url}}', api-path)
 
             h3.text-white.pos-absolute-center.max-width {{newspaper.title}}
 

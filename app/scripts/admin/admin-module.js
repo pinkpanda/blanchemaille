@@ -24,6 +24,7 @@ angular.module('app.adminModule', ['ui.router'])
           'organizations',
           'pages',
           'partners',
+          'reports',
           'works',
 
           function(
@@ -37,6 +38,7 @@ angular.module('app.adminModule', ['ui.router'])
             organizations,
             pages,
             partners,
+            reports,
             works
           ) {
             $scope.events         = events;
@@ -44,6 +46,7 @@ angular.module('app.adminModule', ['ui.router'])
             $scope.organizations  = organizations;
             $scope.pages          = pages;
             $scope.partners       = partners;
+            $scope.reports        = reports;
             $scope.works          = works;
 
             $scope.updatePassword = function(form) {
@@ -87,6 +90,10 @@ angular.module('app.adminModule', ['ui.router'])
 
           partners: ['partnerData', function(partnerData) {
             return partnerData.getIndex();
+          }],
+
+          reports: ['reportData', function(reportData) {
+            return reportData.getIndex();
           }],
 
           works: ['workData', function(workData) {
@@ -369,6 +376,45 @@ angular.module('app.adminModule', ['ui.router'])
         resolve: {
           partner: ['$stateParams', 'partnerData', function($stateParams, partnerData) {
             return partnerData.getOne($stateParams.id);
+          }]
+        }
+      })
+
+
+      .state('admin.reports', {
+        abstract: true,
+        url: '/reports',
+        template: '<div ui-view></div>',
+        bodyClass: 'reports'
+      })
+
+      .state('admin.reports.index', {
+        url: '',
+        templateUrl: 'views/admin/report/index.html',
+        controller: 'ReportIndexController',
+        resolve: {
+          reports: ['reportData', function(reportData) {
+            return reportData.getIndex();
+          }],
+
+          page: function() {}
+        }
+      })
+
+      .state('admin.reports.new', {
+        url: '/new',
+        templateUrl: 'views/admin/report/edit.html',
+        bodyClass: 'new',
+        controller: 'ReportNewController'
+      })
+
+      .state('admin.reports.edit', {
+        url: '/:id/edit',
+        templateUrl: 'views/admin/report/edit.html',
+        controller: 'ReportEditController',
+        resolve: {
+          report: ['$stateParams', 'reportData', function($stateParams, reportData) {
+            return reportData.getOne($stateParams.id);
           }]
         }
       })

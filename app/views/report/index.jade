@@ -1,0 +1,17 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h2.em(blanchemaille) {{page.title}}
+
+      .hr.blanchemaillish
+
+      .text-justify(ng-bind-html='page.content')
+
+  .row
+    div(ng-repeat='report in reports | orderBy:"-created_at"')
+      .col-md-3
+        .m-report.mbl.light-gray
+          .m-report--header.text-center(ui-sref='reports.show({ id: report.slug })')
+            h3.text-black.pos-absolute-center.max-width {{report.title}}

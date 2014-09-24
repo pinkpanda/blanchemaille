@@ -30,6 +30,7 @@ angular.module('app', [
   'app.organizationModule',
   'app.pageModule',
   'app.partnerModule',
+  'app.reportModule',
   'app.workModule'
 ])
   .config(

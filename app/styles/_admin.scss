@@ -33,7 +33,7 @@
   }
 }
 
-$navs: events, images, newspapers, organizations, pages, partners, works;
+$navs: events, images, newspapers, organizations, pages, partners, reports, works;
 
 @each $nav in $navs {
   .#{$nav}:not(.new) {

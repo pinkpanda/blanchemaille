@@ -7,4 +7,4 @@
     div(ng-repeat='organization in organizations | filter:search | orderBy:"name"')
       .col-md-3
         a.m-organization.mbl(ui-sref='admin.organizations.edit({ id: organization.id })')
-          img.max-width(src='{{organization.image.image.thumb.url}}', api-img)
+          img.max-width(src='{{organization.image.image.thumb.url}}', api-path)

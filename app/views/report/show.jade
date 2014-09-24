@@ -1,0 +1,8 @@
+#nav.max-width(ng-include="'views/partials/header.html'")
+
+.container.pvxl.prevent-affix
+  .row.text-center
+    .col-md-12
+      h1.em(blanchemaille) {{report.title}}
+
+      a.btn.btn-blanchemaillish.btn-inverse(ng-href='{{report.file.file.url}}', api-path) Voir le compte rendu

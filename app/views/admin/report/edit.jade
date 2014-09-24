@@ -1,0 +1,11 @@
+.peter-river
+  .container-fluid
+    .row.mvl
+      .col-md-10.col-md-offset-1
+        h2(ng-show='report.id').mtm Modération d'un compte rendu
+        h2(ng-hide='report.id').mtm Ajout d'un compte rendu
+
+.container-fluid
+  .row.mvxl
+    .col-md-10.col-md-offset-1
+      div(ng-include="'views/admin/report/form.html'")
