@@ -7,10 +7,6 @@ form(name='pageForm', ng-show='page', novalidate)
     label.control-label Contenu
 
     div(ng-switch='page.slug')
-      div(ng-switch-when='calendar')
-        input.form-control(name='content', ng-model='page.content', type='text')
-        small Veuillez n'y placer qu'un seul lien
-
       div(ng-switch-when='recipient')
         input.form-control(name='content', ng-model='page.content', type='text')
         small Veuillez n'y placer qu'une seule adresse email

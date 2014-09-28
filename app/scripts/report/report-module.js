@@ -21,16 +21,5 @@ angular.module('app.reportModule', ['ui.router'])
           }]
         }
       })
-
-      .state('reports.show', {
-        url: '/:id',
-        templateUrl: 'views/report/show.html',
-        controller: 'ReportShowController',
-        resolve: {
-          report: ['$stateParams', 'reportData', function($stateParams, reportData) {
-            return reportData.getOne($stateParams.id);
-          }]
-        }
-      })
   }])
 ;

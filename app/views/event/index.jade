@@ -7,4 +7,9 @@
 
       .hr.blanchemaillish
 
-      div(ui-calendar='calendar.config', ng-model='calendar.source')
+      .text-justify(ng-bind-html='page.content')
+
+  .row.mtl
+    ul
+      li(ng-repeat='event in events | orderBy:"scheduled_at"')
+        a(ui-sref='events.show({ id: event.slug })') {{event.title}}

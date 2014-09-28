@@ -30,7 +30,7 @@
 
       .col-md-9
         google-map.m-organization--map(center='map.center', options='map.options', zoom='map.zoom')
-          markers(click="'onClick'", coords="'self'", fit='true', models='filteredMarkers')
+          markers(click="'onClick'", coords="'self'", models='filteredMarkers')
             windows(closeClick="'closeClick'", ng-cloak, show="'showWindow'")
               div.clearfix.text-center(ng-non-bindable)
                 h2(class='text-black') {{name}}

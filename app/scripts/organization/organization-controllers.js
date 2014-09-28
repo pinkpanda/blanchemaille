@@ -60,10 +60,10 @@ angular.module('app.organizationModule')
             name: organization.name,
             path: $state.href('organizations.show', { id: organization.slug }, { absolute: true }),
             sector: organization.sector,
-            onClick: function () {
+            onClick: function() {
               organization.showWindow = true;
             },
-            closeClick: function () {
+            closeClick: function() {
               organization.showWindow = false;
             }
           };
@@ -73,8 +73,8 @@ angular.module('app.organizationModule')
 
         $scope.map = {
           center: {
-            latitude: 50.7,
-            longitude: 3.1667
+            latitude: 50.690987,
+            longitude: 3.174044
           },
           marker: {
             latitude: null,
@@ -89,7 +89,7 @@ angular.module('app.organizationModule')
           options: {
             scrollwheel: false
           },
-          zoom: 11
+          zoom: 13
         };
       }
     ]
@@ -114,8 +114,8 @@ angular.module('app.organizationModule')
 
         $scope.map = {
           center: {
-            latitude: $scope.organization.lat || 50.7,
-            longitude: $scope.organization.lon || 3.1667
+            latitude: $scope.organization.lat || 50.690987,
+            longitude: $scope.organization.lon || 3.174044
           },
           marker: {
             latitude: $scope.organization.lat,
@@ -124,7 +124,7 @@ angular.module('app.organizationModule')
           options: {
             scrollwheel: false
           },
-          zoom: 11
+          zoom: 13
         };
       }
     ]
@@ -164,8 +164,8 @@ angular.module('app.organizationModule')
 
         $scope.map = {
           center: {
-            latitude: 50.7,
-            longitude: 3.1667
+            latitude: 50.690987,
+            longitude: 3.174044
           },
           marker: {
             latitude: null,
@@ -177,7 +177,7 @@ angular.module('app.organizationModule')
               }
             }
           },
-          zoom: 11
+          zoom: 13
         };
 
         $scope.getCoord = function(address) {
@@ -245,8 +245,8 @@ angular.module('app.organizationModule')
 
         $scope.map = {
           center: {
-            latitude: $scope.organization.lat || 50.7,
-            longitude: $scope.organization.lon || 3.1667
+            latitude: $scope.organization.lat || 50.690987,
+            longitude: $scope.organization.lon || 3.174044
           },
           marker: {
             latitude: $scope.organization.lat,
@@ -258,7 +258,7 @@ angular.module('app.organizationModule')
               }
             }
           },
-          zoom: 11
+          zoom: 13
         };
 
         $scope.getCoord = function(address) {

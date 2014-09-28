@@ -7,7 +7,6 @@ angular.module('app', [
   'ui.router',
   'ngProgressLite',
   'angular-md5',
-  'ui.calendar',
   'google-maps',
   'toaster',
   'truncate',

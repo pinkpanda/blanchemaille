@@ -35,15 +35,15 @@
             marker(coords='map.marker')
 
         .col-md-12.phl.pvl
-          .row.mbm
+          .row.mbm(ng-show='organization.ceo_name')
             .col-xs-2
               .fa.fa-user.ball.blanchemaillish.m-organization--info.mtm.mbl
 
             .col-xs-10
-              p.h4.mtx Président
+              p.h4.mtx Nom du contact
               p {{organization.ceo_name}}
 
-          .row.mbm
+          .row.mbm(ng-show='organization.nb_employees')
             .col-xs-2
               .fa.fa-globe.ball.blanchemaillish.m-organization--info.mtm.mbl
 
@@ -51,7 +51,7 @@
               p.h4.mtx Effectif
               p(count-to='{{organization.nb_employees}}', duration='3', value='0')
 
-          .row
+          .row(ng-show='organization.sector')
             .col-xs-2
               .fa.fa-dot-circle-o.ball.blanchemaillish.m-organization--info.mtm.mbl
 

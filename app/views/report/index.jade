@@ -9,9 +9,11 @@
 
       .text-justify(ng-bind-html='page.content')
 
-  .row
+  .row.mtl
     div(ng-repeat='report in reports | orderBy:"-created_at"')
-      .col-md-3
-        .m-report.mbl.light-gray
-          .m-report--header.text-center(ui-sref='reports.show({ id: report.slug })')
+      .col-md-3.mbl.text-center
+        .m-report.mbm.light-gray
+          .m-report--header
             h3.text-black.pos-absolute-center.max-width {{report.title}}
+
+        a.btn.btn-blanchemaillish.btn-inverse(ng-href='{{report.file.file.url}}', api-path) Voir le compte rendu

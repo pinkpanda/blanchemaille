@@ -22,26 +22,6 @@ angular.module('app.reportModule')
   )
 
   .controller(
-    'ReportShowController',
-
-    [
-      '$log',
-      '$scope',
-      'reportData',
-      'report',
-
-      function(
-        $log,
-        $scope,
-        reportData,
-        report
-      ) {
-        $scope.report = report;
-      }
-    ]
-  )
-
-  .controller(
     'ReportNewController',
 
     [
