@@ -9,6 +9,7 @@ angular.module('app', [
   'angular-md5',
   'google-maps',
   'toaster',
+  'angularMoment',
   'truncate',
   'textAngular',
   'loadingButton',
@@ -73,6 +74,7 @@ angular.module('app', [
       'toaster',
       'AuthService',
       'ngProgressLite',
+      'amMoment',
 
       function(
         $log,
@@ -82,8 +84,11 @@ angular.module('app', [
         $timeout,
         toaster,
         AuthService,
-        ngProgressLite
+        ngProgressLite,
+        amMoment
       ) {
+        amMoment.changeLocale('fr');
+
         $rootScope.$on('not_created', function() {
           toaster.pop('warning', '', 'Ca n\'a pas été effectué');
         });

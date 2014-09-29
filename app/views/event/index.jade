@@ -10,6 +10,23 @@
       .text-justify(ng-bind-html='page.content')
 
   .row.mtl
-    ul
-      li(ng-repeat='event in events | orderBy:"scheduled_at"')
-        a(ui-sref='events.show({ id: event.slug })') {{event.title}}
+    h4 Evenements à venir
+    div(ng-repeat='event in events | orderBy:"-scheduled_at" | compareFromNow:"after"')
+      .col-md-3.text-center
+        a.block(ui-sref='events.show({ id: event.slug })')
+          span.block.mbl {{event.title}}
+          span.blanchemaillish.pvm.phl
+            i.mrs.fa.fa-clock-o
+            {{event.scheduled_at | amDateFormat:'DD/MM/YYYY'}}
+
+  .row.mtl
+    .hr.blanchemaillish
+
+    h4 Evenements passés
+    div(ng-repeat='event in events | orderBy:"-scheduled_at" | compareFromNow:"before"')
+      .col-md-3.text-center
+        a.block(ui-sref='events.show({ id: event.slug })')
+          span.block.mbl {{event.title}}
+          span.blanchemaillish.pvm.phl
+            i.mrs.fa.fa-clock-o
+            {{event.scheduled_at | amDateFormat:'DD/MM/YYYY'}}

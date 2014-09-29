@@ -15,6 +15,29 @@ angular.module('app.filters', [])
   )
 
   .filter(
+    'compareFromNow',
+    [
+      '$log',
+
+      function(
+        $log
+      ) {
+        return function(input, when) {
+          return _.filter(input, function(ev) {
+            if (when == 'before') {
+              if (moment().isAfter(ev.scheduled_at))
+                return true;
+            } else {
+              if (moment().isBefore(ev.scheduled_at))
+                return true;
+            }
+          });
+        };
+      }
+    ]
+  )
+
+  .filter(
     'filterSelectedMarker',
     [
       '$log',

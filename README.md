@@ -6,7 +6,7 @@ Frontend Angular app for Blanchemaille
 
 Firstly clone the repo.
 
-To get started, `npm install && bower install` should do the trick.
+To get started, `npm install` should do the trick.
 
 Last thing, create a `secret.json` to fit with our lovely `Gruntfile.js`.
 
