@@ -47,7 +47,7 @@ angular.module('app.organizationModule')
           var deferred  = $q.defer();
           var fd        = new FormData();
 
-          _(['address', 'ceo_bio', 'ceo_name', 'city', 'email', 'image', 'lat', 'link', 'lon', 'name', 'nb_employees', 'phone', 'sector']).each(function(attr) {
+          _(['address', 'ceo_bio', 'ceo_name', 'city', 'email', 'iframe', 'image', 'lat', 'link', 'lon', 'name', 'nb_employees', 'phone', 'sector']).each(function(attr) {
             if (model[attr]) {
               fd.append(attr, model[attr]);
             }

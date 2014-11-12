@@ -1,10 +1,16 @@
 .container-fluid.mvxl
-  .row
-    .col-md-6.col-md-offset-3.mbxl
+  .row.mbxl
+    .col-md-3.col-md-offset-3
       input.form-control(ng-model='search', type='text', placeholder='Rechercher')
 
+    .col-md-3.mts
+      input#iframe(name='iframe', ng-model='iframe', type='checkbox')
+      label(for='iframe')
+        span.ui
+        | Présents dans l'iframe
+
   .row
-    div(ng-repeat='organization in organizations | filter:search | orderBy:"name"')
+    div(ng-repeat='organization in organizations | filter:search | filter:{ iframe: iframe } | orderBy:"name"')
       .col-md-3.mbl
         a.m-organization(ui-sref='admin.organizations.edit({ id: organization.id })')
           img.max-width(src='{{organization.image.image.thumb.url}}', api-path)

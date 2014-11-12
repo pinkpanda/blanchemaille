@@ -39,7 +39,7 @@
 .light-gray
   .container.pvxl
     .row
-      div.m-organizations--item(ng-repeat='organization in organizations | filterSelectedMarker:selection | orderBy:"name"')
+      div.m-organizations--item(ng-repeat='organization in organizations | filterSelectedMarker:selection | filter:{ iframe: iframe } | orderBy:"name"')
         .col-sm-3
           a.block.mbl.text-center(ui-sref='organizations.show({ id: organization.slug })')
             img.max-width(src='{{organization.image.image.thumb.url}}', api-path)

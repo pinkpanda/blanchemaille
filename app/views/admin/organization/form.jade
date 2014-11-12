@@ -74,6 +74,14 @@ form(enctype='multipart/form-data', name='organizationForm', ng-show='organizati
         label.control-label Biographie du dirigeant
         textarea.form-control(name='ceo_bio', ng-model='organization.ceo_bio', rows='5')
 
+  .row
+    .col-md-12
+      .form-group(ng-class='{ "has-error": organizationForm.iframe.$dirty && organizationForm.iframe.$invalid }')
+        input#iframe(name='iframe', ng-model='organization.iframe', ng-required='true', type='checkbox')
+        label(for='iframe')
+          span.ui
+          | Que dans l'iframe ?
+
   button.btn.btn-success.pull-left(ng-click='save(organizationForm)', ng-disabled='organizationForm.$invalid') Valider
 
   div(ng-if='organization.id')

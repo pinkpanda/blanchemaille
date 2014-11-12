@@ -8,6 +8,6 @@ Firstly clone the repo.
 
 To get started, `npm install` should do the trick.
 
-Last thing, create a `secret.json` to fit with our lovely `Gruntfile.js`.
+Last thing, create a `.env` to fit with our lovely `Gruntfile.js`.
 
 Then, let's there be rock `grunt serve`.

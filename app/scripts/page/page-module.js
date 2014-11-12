@@ -17,5 +17,6 @@ angular.module('app.pageModule', ['ui.router'])
           }]
         }
       })
+    ;
   }])
 ;

@@ -168,5 +168,6 @@ angular.module('app.module', ['ui.router'])
           }
         ]
       })
+    ;
   }])
 ;

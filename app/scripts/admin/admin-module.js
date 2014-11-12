@@ -251,7 +251,9 @@ angular.module('app.adminModule', ['ui.router'])
             );
 
             return deferred.promise;
-          }]
+          }],
+
+          iframe: function() { return false; }
         }
       })
 
@@ -457,5 +459,6 @@ angular.module('app.adminModule', ['ui.router'])
           }]
         }
       })
+    ;
   }])
 ;

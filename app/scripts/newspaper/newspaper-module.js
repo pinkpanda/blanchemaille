@@ -32,5 +32,6 @@ angular.module('app.newspaperModule', ['ui.router'])
           }]
         }
       })
+    ;
   }])
 ;

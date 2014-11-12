@@ -21,5 +21,6 @@ angular.module('app.reportModule', ['ui.router'])
           }]
         }
       })
+    ;
   }])
 ;

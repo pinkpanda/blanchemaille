@@ -33,5 +33,6 @@ angular.module('app.eventModule', ['ui.router'])
           }]
         }
       })
+    ;
   }])
 ;

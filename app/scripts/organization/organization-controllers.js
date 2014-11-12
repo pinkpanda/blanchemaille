@@ -10,6 +10,7 @@ angular.module('app.organizationModule')
       'organizations',
       'page',
       'sectors',
+      'iframe',
       'API_BASE_URL',
 
       function(
@@ -21,12 +22,14 @@ angular.module('app.organizationModule')
         organizations,
         page,
         sectors,
+        iframe,
         API_BASE_URL
       ) {
         $scope.organizations  = organizations;
         $scope.page           = page;
         $scope.sectors        = angular.copy(sectors);
         $scope.selection      = angular.copy(sectors);
+        $scope.iframe         = iframe;
 
         $scope.toggleSelection = function(sector) {
           var idx = $scope.selection.indexOf(sector);
@@ -37,7 +40,7 @@ angular.module('app.organizationModule')
             $scope.selection.push(sector);
           }
 
-          $scope.filteredMarkers = $filter('filterSelectedMarker')($scope.markers, $scope.selection);
+          $scope.filteredMarkers = $filter('filter')($filter('filterSelectedMarker')($scope.markers, $scope.selection), { iframe: iframe });
         };
 
         $scope.toggleSelectionAll = function() {
@@ -55,6 +58,7 @@ angular.module('app.organizationModule')
 
           return {
             id: i,
+            iframe: organization.iframe,
             latitude: organization.lat,
             longitude: organization.lon,
             name: organization.name,
@@ -69,7 +73,7 @@ angular.module('app.organizationModule')
           };
         });
 
-        $scope.filteredMarkers = $filter('filterSelectedMarker')($scope.markers, $scope.selection);
+        $scope.filteredMarkers = $filter('filter')($filter('filterSelectedMarker')($scope.markers, $scope.selection), { iframe: iframe });
 
         $scope.map = {
           center: {
